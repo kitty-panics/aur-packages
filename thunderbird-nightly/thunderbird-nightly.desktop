@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Thunderbird Nightly
+Comment=Standalone mail and news reader from mozilla.org (Nightly)
+Exec=thunderbird-nightly %u
+Icon=thunderbird-nightly
+Terminal=false
+Categories=Network;Email;
+StartupNotify=true
+MimeType=message/rfc822;x-scheme-handler/mailto;application/x-xpinstall;

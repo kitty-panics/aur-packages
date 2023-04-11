@@ -1,0 +1,12 @@
+pkgbase = librime-data
+	pkgdesc = Placeholder of preset librime data.
+	pkgver = 0.0.0.20220409
+	pkgrel = 1
+	url = https://github.com/rime
+	arch = any
+	license = LGPL
+	depends = librime
+	provides = librime-data
+	conflicts = librime-data
+
+pkgname = librime-data

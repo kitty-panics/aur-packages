@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Tencent QQ
+Comment=An instant messaging software developed by Tencent
+Exec=tencent-qq
+Icon=tencent-qq
+Categories=Network;
+Terminal=false
+StartupWMClass=tencent-qq

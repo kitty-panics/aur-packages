@@ -1,0 +1,34 @@
+# Maintainer: Kitty Panics
+
+pkgname=virtualbox-guest-iso-old
+pkgver=6.1.26
+pkgrel=3
+url="https://download.virtualbox.org/virtualbox/${pkgver}/"
+pkgdesc='The official VirtualBox Guest Additions ISO image (v6.1.26).'
+arch=('any')
+license=('custom:PUEL')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+depends=('virtualbox')
+install=${pkgname}.install
+source=("https://download.virtualbox.org/virtualbox/${pkgver}/VBoxGuestAdditions_${pkgver}.iso"
+        "${pkgname}.install"
+        "LICENSE")
+sha256sums=('SKIP'
+            'c7096ed2a9d30588d5fefb7bf5b5e4f0663ebd1b7524f466ec376b0789fc5946'
+            '94a00067a248fd7d1d610fcd9094d50ce1b67e4200ade0b5f135392806d7e68b')
+noextract=("VBoxGuestAdditions_${pkgver}.iso")
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/usr/lib/virtualbox/additions/
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+
+    # package files
+    install -Dm644 "${srcdir}"/VBoxGuestAdditions_"${pkgver}".iso \
+                   "${pkgdir}"/usr/lib/virtualbox/additions/VBoxGuestAdditions-old.iso
+
+    # licenses
+    install -Dm644 "${srcdir}"/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+}

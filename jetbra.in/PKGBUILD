@@ -1,0 +1,50 @@
+# Maintainer: Kitty Panics
+
+pkgname=jetbra.in
+pkgver=2022.08.01
+pkgrel=5
+url="https://3.jetbra.in/"
+pkgdesc="A Java instrumentation framework for JetBrains IDE testing purposes only."
+arch=('any')
+license=('GPL3')
+provides=("${pkgname}" 'ja-netfilter')
+conflicts=("${pkgname}" 'ja-netfilter')
+depends=('java-environment')
+install="${pkgname}.install"
+_zip="jetbra-1126574a2f82debceb72e7f948eb7d4f616ffddf.zip"
+_code="bafybeiatyghkzrrtodzt3stm652rkrjxndg4hq2ublfdmifk7plg5k5brq"
+_url="https://ipfs.io/ipfs/${_code}"
+#_url="https://gateway.ipfs.io/ipfs/${_code}"     # 备用1
+#_url="https://cloudflare-ipfs.com/ipfs/${_code}" # 备用2
+#_url="https://${_code}.ipfs.cf-ipfs.com"         # 备用3
+#_url="https://ipfs.fleek.co/ipfs/${_code}"       # 备用4
+source=("${pkgname}.zip"::"${_url}/files/${_zip}"
+        "${pkgname}.install")
+sha256sums=('SKIP'
+            '841ef4a86dae3f52656a4f3474d430be37760e1a38ec9ec585a38d0198458d5f')
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/etc/"${pkgname}"/
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -dm755 "${pkgdir}"/usr/share/java/"${pkgname}"/
+
+    # package files
+    bsdtar --strip-components 1 -xf "${srcdir}"/"${pkgname}".zip \
+                                 -C "${pkgdir}"/usr/share/java/"${pkgname}"/
+    # etc
+    mv "${pkgdir}"/usr/share/java/"${pkgname}"/vmoptions \
+       "${pkgdir}"/etc/"${pkgname}"/
+    for i in `find "${pkgdir}"/etc/"${pkgname}"/vmoptions -type f`; do
+        echo "-javaagent:/usr/share/java/${pkgname}/ja-netfilter.jar=jetbrains" >> "$i"
+    done
+
+    # doc
+    ln -s /usr/share/java/"${pkgname}"/README.pdf \
+          "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    ln -s /usr/share/java/"${pkgname}"/readme.txt \
+          "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
+    # useless files
+    rm -r "${pkgdir}"/usr/share/java/"${pkgname}"/{scripts,sha1sum.txt}
+}

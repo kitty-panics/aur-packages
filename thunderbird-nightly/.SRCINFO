@@ -1,0 +1,26 @@
+pkgbase = thunderbird-nightly
+	pkgdesc = Standalone mail and news reader from mozilla.org (Nightly).
+	pkgver = 113.0a1
+	pkgrel = 20230331
+	url = https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = nspr
+	depends = nss
+	depends = alsa-lib
+	optdepends = libotr: OTR support for active one-to-one chats
+	optdepends = libnotify: Notification integration
+	provides = thunderbird-nightly
+	conflicts = thunderbird-nightly
+	source = https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/thunderbird-113.0a1.en-US.linux-x86_64.tar.bz2
+	source = policies.json
+	source = thunderbird-nightly.desktop
+	source = vendor-prefs.js
+	sha256sums = SKIP
+	sha256sums = cb75fbc7489904edf08041213b70c67c8dad3f54fdecdadd623fdb0f44cbaef6
+	sha256sums = 4b654ebed72754c7757b06e326da16c78fa4f24aebd9df384adbc8c00c8fee7f
+	sha256sums = fa11b4736bbf53ec015f71cd42b1040b22d1a855c562b76927b3f0eccb925c85
+
+pkgname = thunderbird-nightly

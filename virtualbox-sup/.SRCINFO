@@ -1,0 +1,15 @@
+pkgbase = virtualbox-sup
+	pkgdesc = Supplement the missing files of VirtualBox.
+	pkgver = 7.0.4
+	pkgrel = 2
+	url = https://download.virtualbox.org/virtualbox/7.0.4/
+	arch = x86_64
+	license = GPL3
+	makedepends = p7zip
+	depends = virtualbox
+	provides = virtualbox-sup
+	conflicts = virtualbox-sup
+	source = https://download.virtualbox.org/virtualbox/7.0.4/VirtualBox-7.0.4-154605-Linux_amd64.run
+	sha256sums = SKIP
+
+pkgname = virtualbox-sup

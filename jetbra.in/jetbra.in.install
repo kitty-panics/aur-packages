@@ -1,0 +1,46 @@
+_notice() {
+    cat << EOF
+###################################################################################################
+#                 Please add environment variables for the required JetBrains IDE                 #
+###################################################################################################
+
+# AppCode:
+export APPCODE_VM_OPTIONS="/etc/jetbra.in/vmoptions/appcode.vmoptions"
+# CLion:
+export CLION_VM_OPTIONS="/etc/jetbra.in/vmoptions/clion.vmoptions"
+# DataGrip:
+export DATAGRIP_VM_OPTIONS="/etc/jetbra.in/vmoptions/datagrip.vmoptions"
+# DataSpell:
+export DATASPELL_VM_OPTIONS="/etc/jetbra.in/vmoptions/dataspell.vmoptions"
+# GoLand:
+export GOLAND_VM_OPTIONS="/etc/jetbra.in/vmoptions/goland.vmoptions"
+# IntelliJ IDEA:
+export IDEA_VM_OPTIONS="/etc/jetbra.in/vmoptions/idea.vmoptions"
+# PhpStorm:
+export PHPSTORM_VM_OPTIONS="/etc/jetbra.in/vmoptions/phpstorm.vmoptions"
+# PyCharm:
+export PYCHARM_VM_OPTIONS="/etc/jetbra.in/vmoptions/pycharm.vmoptions"
+# Rider:
+export RIDER_VM_OPTIONS="/etc/jetbra.in/vmoptions/rider.vmoptions"
+# RubyMine:
+export RUBYMINE_VM_OPTIONS="/etc/jetbra.in/vmoptions/rubymine.vmoptions"
+# WebStorm:
+export WEBIDE_VM_OPTIONS="/etc/jetbra.in/vmoptions/webide.vmoptions"
+
+# Others:
+export DEVECOSTUDIO_VM_OPTIONS="/etc/jetbra.in/vmoptions/devecostudio.vmoptions"
+export GATEWAY_VM_OPTIONS="/etc/jetbra.in/vmoptions/gateway.vmoptions"
+export JETBRAINSCLIENT_VM_OPTIONS="/etc/jetbra.in/vmoptions/jetbrainsclient.vmoptions"
+export JETBRAINS_CLIENT_VM_OPTIONS="/etc/jetbra.in/vmoptions/jetbrains_client.vmoptions"
+export STUDIO_VM_OPTIONS="/etc/jetbra.in/vmoptions/studio.vmoptions"
+export WEBSTORM_VM_OPTIONS="/etc/jetbra.in/vmoptions/webstorm.vmoptions"
+EOF
+}
+
+post_install() {
+    _notice
+}
+
+post_upgrade() {
+    _notice
+}

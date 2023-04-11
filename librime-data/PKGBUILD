@@ -1,0 +1,16 @@
+# Maintainer: Kitty Panics
+
+pkgname=librime-data
+pkgver=0.0.0.20220409
+pkgrel=1
+url="https://github.com/rime"
+pkgdesc="Placeholder of preset librime data."
+arch=('any')
+license=('LGPL')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+depends=('librime')
+
+package() {
+    :
+}

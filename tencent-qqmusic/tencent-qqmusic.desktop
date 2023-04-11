@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=QQ Music
+Comment=A music platform of Tencent
+Exec=tencent-qqmusic --no-sandbox %U
+Icon=tencent-qqmusic
+Terminal=false
+Categories=AudioVideo;Education;
+StartupWMClass=tencent-qqmusic

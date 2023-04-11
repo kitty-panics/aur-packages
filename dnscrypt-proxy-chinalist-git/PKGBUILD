@@ -1,0 +1,47 @@
+# Maintainer: Kitty Panics
+
+pkgname=dnscrypt-proxy-chinalist-git
+pkgver=r150221.f497952c7c
+pkgrel=1
+url="https://github.com/felixonmars/dnsmasq-china-list"
+pkgdesc="Chinese-specific configuration to improve dnscrypt-proxy."
+arch=('any')
+license=('custom:DWTFYWT')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+depends=('dnscrypt-proxy')
+install="${pkgname}.install"
+source=('https://github.com/felixonmars/dnsmasq-china-list/raw/master/accelerated-domains.china.conf'
+        "${pkgname}.install"
+        'LICENSE'
+        'Makefile')
+sha256sums=('SKIP'
+            'bbcd9487612c36c2bdeb00db7413cb3367c8093a29d6e8e695953394060677d1'
+            'f9e00539c44942d94e3c6d20f0c90e63e810ea181b10f16a252c93e4ea5cefd7'
+            '73df443f453aae48f1c2b6659cd00a4b933da553af5bc48e694bb397b6e7cabb')
+
+pkgver() {
+    _base_url="https://api.github.com/repos/felixonmars/dnsmasq-china-list"
+    _commit_count=$(curl -sLI "${_base_url}/commits?per_page=1" | sed -n '/^[Ll]ink:/ s/.*"next".*page=\([0-9]*\).*"last".*/\1/p')
+    _last_commit=$(curl -sL "${_base_url}/git/refs/heads/master" | grep 'sha' | cut -d '"' -f 4 | cut -c 1-10)
+    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+}
+
+build() {
+    DEDICATED_SERVER='223.5.5.5'
+    make SERVER="$DEDICATED_SERVER" dnscrypt-proxy
+}
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/etc/dnscrypt-proxy/
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+
+    # package files
+    install -Dm644 "${srcdir}"/dnscrypt-proxy-forwarding-rules.txt \
+                   "${pkgdir}"/etc/dnscrypt-proxy/chinalist.txt
+
+    # licenses
+    install -Dm644 "${srcdir}"/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

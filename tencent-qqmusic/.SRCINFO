@@ -1,0 +1,23 @@
+pkgbase = tencent-qqmusic
+	pkgdesc = A music platform of Tencent.
+	pkgver = 1.1.5
+	pkgrel = 9
+	url = https://y.qq.com/download/download.html
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = dpkg
+	depends = nspr
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	provides = tencent-qqmusic
+	conflicts = tencent-qqmusic
+	noextract = qqmusic_1.1.5_amd64.deb
+	source = https://dldir1.qq.com/music/clntupate/linux/deb/qqmusic_1.1.5_amd64.deb
+	source = tencent-qqmusic.desktop
+	source = tencent-qqmusic.sh
+	sha256sums = SKIP
+	sha256sums = 0a5410f6ebbeb457c373338a1260f87a0b0da1969f77e23620aa0296361a5590
+	sha256sums = 4730edef46f8cfb87161fb860082fe7d423bb94dd70202c0cb07785af5e0441e
+
+pkgname = tencent-qqmusic

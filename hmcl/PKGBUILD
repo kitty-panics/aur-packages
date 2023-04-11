@@ -1,0 +1,51 @@
+# Maintainer: Kitty Panics
+
+pkgname=hmcl
+pkgver=3.5.4.232
+pkgrel=1
+url="https://github.com/huanghongxun/HMCL/releases"
+pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
+arch=('any')
+license=('GPL3')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+depends=('java-runtime')
+source=("https://github.com/huanghongxun/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar"
+        "${pkgname}.desktop"
+        "${pkgname}.sh")
+sha256sums=('SKIP'
+            '68360fe5d23bd50aa43e853b65932fa3784927fc357c85f1c70ae34302ff6c9e'
+            '3dac6043ac66a25a990e681195660fa60f486786957280da7c71b284d33e78de')
+noextract=("HMCL-${pkgver}.jar")
+
+prepare() {
+    bsdtar --strip-components 2 -xf "${srcdir}"/HMCL-"${pkgver}".jar assets/img/icon.png
+    bsdtar --strip-components 2 -xf "${srcdir}"/HMCL-"${pkgver}".jar assets/img/icon@2x.png
+    bsdtar --strip-components 2 -xf "${srcdir}"/HMCL-"${pkgver}".jar assets/img/icon@8x.png
+}
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/usr/bin/
+    install -dm755 "${pkgdir}"/usr/share/applications/
+    install -dm755 "${pkgdir}"/usr/share/java/"${pkgname}"/
+    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/{32x32,64x64,256x256}/apps/
+
+    # package files
+    install -Dm644 "${srcdir}"/HMCL-${pkgver}.jar \
+                   "${pkgdir}"/usr/share/java/"${pkgname}"/hmcl.jar
+    # /usr/bin/
+    install -Dm755 "${srcdir}"/hmcl.sh \
+                   "${pkgdir}"/usr/bin/hmcl
+
+    # .desktop
+    install -Dm644 "${srcdir}/${pkgname}.desktop" \
+                   "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    # icons/hicolor
+    install -Dm644 "${srcdir}/icon.png" \
+                   "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
+    install -Dm644 "${srcdir}/icon@2x.png" \
+                   "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
+    install -Dm644 "${srcdir}/icon@8x.png" \
+                   "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+}

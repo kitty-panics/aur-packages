@@ -1,0 +1,21 @@
+pkgbase = dnscrypt-proxy-chinalist-git
+	pkgdesc = Chinese-specific configuration to improve dnscrypt-proxy.
+	pkgver = r150221.f497952c7c
+	pkgrel = 1
+	url = https://github.com/felixonmars/dnsmasq-china-list
+	install = dnscrypt-proxy-chinalist-git.install
+	arch = any
+	license = custom:DWTFYWT
+	depends = dnscrypt-proxy
+	provides = dnscrypt-proxy-chinalist-git
+	conflicts = dnscrypt-proxy-chinalist-git
+	source = https://github.com/felixonmars/dnsmasq-china-list/raw/master/accelerated-domains.china.conf
+	source = dnscrypt-proxy-chinalist-git.install
+	source = LICENSE
+	source = Makefile
+	sha256sums = SKIP
+	sha256sums = bbcd9487612c36c2bdeb00db7413cb3367c8093a29d6e8e695953394060677d1
+	sha256sums = f9e00539c44942d94e3c6d20f0c90e63e810ea181b10f16a252c93e4ea5cefd7
+	sha256sums = 73df443f453aae48f1c2b6659cd00a4b933da553af5bc48e694bb397b6e7cabb
+
+pkgname = dnscrypt-proxy-chinalist-git

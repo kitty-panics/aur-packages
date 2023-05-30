@@ -31,6 +31,7 @@ Personally maintained AUR packages.
 - [X] [jetbrains-webstorm-old]
 - [X] libreoffice-daily
 - [X] librime-data
++ [X] n_m3u8dl-re
 - [ ] tencent-meeting
 - [X] tencent-qq
 - [X] tencent-qqmusic

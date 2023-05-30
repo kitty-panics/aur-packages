@@ -1,8 +1,8 @@
 # Maintainer: Kitty Panics
 
 pkgname=libreoffice-daily
-pkgver=7.6.0.0.alpha0
-pkgrel=20230331
+pkgver=7.6.0.0.alpha1
+pkgrel=20230530
 url="https://dev-builds.libreoffice.org/daily/master/Linux-rpm_deb-x86_64@tb87-TDF/current/"
 pkgdesc="LibreOffice development branch"
 arch=('x86_64')

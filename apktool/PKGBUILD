@@ -10,7 +10,7 @@ license=('Apache')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=('java-runtime')
-source=("https://github.com/iBotPeaches/Apktool/releases/download/v${pkgver}/apktool_${pkgver}.jar"
+source=("${url}/download/v${pkgver}/apktool_${pkgver}.jar"
         "${pkgname}.sh")
 sha256sums=('SKIP'
             '9f2c14689381a117f8705753f318bfcb39ed357642f952d50d9864285b86666b')

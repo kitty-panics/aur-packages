@@ -1,0 +1,23 @@
+# Maintainer: Kitty Panics
+
+pkgname=n_m3u8dl-re
+_pkgver=v0.1.6-beta
+pkgver=0.1.6_beta
+pkgrel=1
+url="https://github.com/nilaoda/N_m3u8DL-RE/releases"
+pkgdesc="Cross-Platform, modern and powerful stream downloader for MPD/M3U8/ISM."
+arch=('x86_64')
+license=('MIT')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+depends=('ffmpeg')
+source=("${url}/download/${_pkgver}/N_m3u8DL-RE_Beta_linux-x64_20230412.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/usr/bin/
+
+    # /usr/bin/
+    install -Dm755 "${srcdir}/N_m3u8DL-RE_Beta_linux-x64/N_m3u8DL-RE"  "${pkgdir}"/usr/bin/"${pkgbase}"
+}

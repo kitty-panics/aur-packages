@@ -1,8 +1,8 @@
 # Maintainer: Kitty Panics
 
 pkgname=thunderbird-nightly
-pkgver=113.0a1
-pkgrel=20230331
+pkgver=115.0a1
+pkgrel=20230529
 url="https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/"
 pkgdesc='Standalone mail and news reader from mozilla.org (Nightly).'
 arch=('x86_64')

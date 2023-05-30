@@ -10,7 +10,7 @@ license=('GPL3')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=('java-runtime')
-source=("https://github.com/huanghongxun/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar"
+source=("${url}/download/v${pkgver}/HMCL-${pkgver}.jar"
         "${pkgname}.desktop"
         "${pkgname}.sh")
 sha256sums=('SKIP'

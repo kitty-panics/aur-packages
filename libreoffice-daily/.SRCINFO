@@ -1,7 +1,7 @@
 pkgbase = libreoffice-daily
 	pkgdesc = LibreOffice development branch
-	pkgver = 7.6.0.0.alpha0
-	pkgrel = 20230331
+	pkgver = 7.6.0.0.alpha1
+	pkgrel = 20230530
 	url = https://dev-builds.libreoffice.org/daily/master/Linux-rpm_deb-x86_64@tb87-TDF/current/
 	arch = x86_64
 	license = LGPL3
@@ -30,8 +30,8 @@ pkgbase = libreoffice-daily
 	optdepends = qt6-base: for QT6 desktop integration
 	provides = libreoffice-daily
 	conflicts = libreoffice-daily
-	source = https://dev-builds.libreoffice.org/daily/master/Linux-rpm_deb-x86_64@tb87-TDF/current//LibreOfficeDev_7.6.0.0.alpha0_Linux_x86-64_deb.tar.gz
-	source = https://dev-builds.libreoffice.org/daily/master/Linux-rpm_deb-x86_64@tb87-TDF/current//LibreOfficeDev_7.6.0.0.alpha0_Linux_x86-64_deb_helppack_en-US.tar.gz
+	source = https://dev-builds.libreoffice.org/daily/master/Linux-rpm_deb-x86_64@tb87-TDF/current//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_deb.tar.gz
+	source = https://dev-builds.libreoffice.org/daily/master/Linux-rpm_deb-x86_64@tb87-TDF/current//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_deb_helppack_en-US.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 

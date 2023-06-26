@@ -7,7 +7,7 @@ Personally maintained AUR packages.
 - [ ] alibaba-dingding
 - [X] apktool
 - [X] dnscrypt-proxy-chinalist-git
-- [ ] firefox-nightly
+- [X] friend
 - [X] hmcl
 - [X] jetbra.in
 - [X] [jetbrains-clion]
@@ -29,7 +29,7 @@ Personally maintained AUR packages.
 - [X] [jetbrains-rubymine-old]
 - [X] [jetbrains-webstorm]
 - [X] [jetbrains-webstorm-old]
-- [X] libreoffice-daily
+- [X] libreoffice-nightly
 - [X] librime-data
 + [X] n_m3u8dl-re
 - [ ] tencent-meeting
@@ -37,6 +37,7 @@ Personally maintained AUR packages.
 - [X] tencent-qqmusic
 - [ ] tencent-weixin
 - [X] thunderbird-nightly
+- [X] vimix-cursors-git
 - [X] virtualbox-guest-iso-dev
 - [X] virtualbox-guest-iso-old
 - [X] virtualbox-sup

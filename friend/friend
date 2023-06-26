@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+#
+# friend
+#
+
+echo "No devices were found."

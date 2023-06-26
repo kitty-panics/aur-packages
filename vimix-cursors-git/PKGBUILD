@@ -1,0 +1,38 @@
+# Maintainer: Kitty Panics
+
+pkgname=vimix-cursors-git
+pkgver=r16.9bc292f409
+pkgrel=1
+url="https://github.com/vinceliuice/Vimix-cursors"
+pkgdesc="Vimix-cursors for linux desktop"
+arch=('any')
+license=('GPL3')
+makedepends=('rsync')
+provides=("${pkgname}" "vimix-cursors")
+conflicts=("${pkgname:0:-4}")
+_commit="9bc292f40904e0a33780eda5c5d92eb9a1154e9c"
+source=("git+$url")
+sha256sums=('SKIP')
+
+pkgver() {
+    _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
+    _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | sed -n '/^[Ll]ink:/ s/.*"next".*page=\([0-9]*\).*"last".*/\1/p')
+    _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/master" | grep 'sha' | cut -d '"' -f 4 | cut -c 1-10)
+    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+}
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/usr/share/icons/{"${conflicts^}"/,"${conflicts^}"-white/}
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # package files
+    rsync -rtl "${srcdir}"/"${conflicts^}"/dist/ \
+               "${pkgdir}"/usr/share/icons/"${conflicts^}"
+    rsync -rtl "${srcdir}"/"${conflicts^}"/dist-white/ \
+               "${pkgdir}"/usr/share/icons/"${conflicts^}"-white
+
+    # licenses
+    install -Dm644 "${srcdir}"/"${conflicts^}"/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

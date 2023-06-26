@@ -1,0 +1,15 @@
+pkgbase = vimix-cursors-git
+	pkgdesc = Vimix-cursors for linux desktop
+	pkgver = r16.9bc292f409
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Vimix-cursors
+	arch = any
+	license = GPL3
+	makedepends = rsync
+	provides = vimix-cursors-git
+	provides = vimix-cursors
+	conflicts = vimix-cursors
+	source = git+https://github.com/vinceliuice/Vimix-cursors
+	sha256sums = SKIP
+
+pkgname = vimix-cursors-git

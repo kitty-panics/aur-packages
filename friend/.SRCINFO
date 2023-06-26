@@ -1,0 +1,17 @@
+pkgbase = friend
+	pkgdesc = Soft kitty, warm kitty, little ball of fur.
+	pkgver = 2023.02.14
+	pkgrel = 4
+	url = https://b23.tv/ZEtwjPn
+	arch = any
+	license = unknown
+	source = friend
+	sha256sums = SKIP
+
+pkgname = boyfriend
+	provides = boyfriend
+	conflicts = boyfriend
+
+pkgname = girlfriend
+	provides = girlfriend
+	conflicts = girlfriend

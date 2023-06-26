@@ -1,0 +1,40 @@
+# Maintainer: Kitty Panics
+
+pkgbase=friend
+pkgname=(boy"${pkgbase}" girl"${pkgbase}")
+pkgver=2023.02.14
+pkgrel=4
+url="https://b23.tv/ZEtwjPn"
+pkgdesc="Soft kitty, warm kitty, little ball of fur."
+arch=('any')
+license=('unknown')
+source=("${pkgbase}")
+sha256sums=('SKIP')
+
+package_boyfriend() {
+    provides=("${pkgname}")
+    conflicts=("${pkgname}")
+
+    # create dir
+    install -dm755 "${pkgdir}"/usr/bin/
+
+    # /usr/bin/
+    install -Dm755 "${srcdir}"/"${pkgbase}" \
+                   "${pkgdir}"/usr/bin/"${pkgname}"
+    sed -i "s/${pkgbase}/${pkgname}/" \
+           "${pkgdir}"/usr/bin/"${pkgname}"
+}
+
+package_girlfriend() {
+    provides=("${pkgname}")
+    conflicts=("${pkgname}")
+
+    # create dir
+    install -dm755 "${pkgdir}"/usr/bin/
+
+    # /usr/bin/
+    install -Dm755 "${srcdir}"/"${pkgbase}" \
+                   "${pkgdir}"/usr/bin/"${pkgname}"
+    sed -i "s/${pkgbase}/${pkgname}/" \
+           "${pkgdir}"/usr/bin/"${pkgname}"
+}

@@ -1,0 +1,18 @@
+pkgbase = nginx-mainline-mod-dav-ext-git
+	pkgdesc = nginx WebDAV PROPFIND,OPTIONS,LOCK,UNLOCK support (mainline).
+	pkgver = r122.f5e30888a2
+	pkgrel = 1
+	url = https://github.com/arut/nginx-dav-ext-module
+	arch = any
+	license = BSD2
+	makedepends = nginx-mainline-src
+	depends = nginx-mainline
+	depends = libxml2
+	depends = libxslt
+	provides = nginx-mainline-mod-dav-ext-git
+	provides = nginx-mainline-mod-dav-ext
+	conflicts = nginx-mainline-mod-dav-ext
+	source = nginx-dav-ext-module::git+https://github.com/arut/nginx-dav-ext-module
+	sha256sums = SKIP
+
+pkgname = nginx-mainline-mod-dav-ext-git

@@ -31,7 +31,11 @@ Personally maintained AUR packages.
 - [X] [jetbrains-webstorm-old]
 - [X] libreoffice-nightly
 - [X] librime-data
-+ [X] n_m3u8dl-re
+- [X] n_m3u8dl-re
+- [X] nginx-mainline-mod-brotli-git
+- [X] nginx-mainline-mod-dav-ext-git
+- [X] nginx-mainline-mod-fancyindex-git
+- [X] nginx-mainline-mod-headers-more-git
 - [ ] tencent-meeting
 - [X] tencent-qq
 - [X] tencent-qqmusic

@@ -1,0 +1,53 @@
+# Maintainer: Kitty Panics
+
+pkgname=nginx-mainline-mod-dav-ext-git
+pkgver=r122.f5e30888a2
+pkgrel=1
+url="https://github.com/arut/nginx-dav-ext-module"
+pkgdesc='nginx WebDAV PROPFIND,OPTIONS,LOCK,UNLOCK support (mainline).'
+arch=('any')
+license=('BSD2')
+provides=("${pkgname}" "${pkgname:0:-4}")
+conflicts=("${pkgname:0:-4}")
+depends=('nginx-mainline' 'libxml2' 'libxslt')
+makedepends=('nginx-mainline-src')
+_modname="nginx-dav-ext-module"
+source=("${_modname}::git+${url}")
+sha256sums=('SKIP')
+
+pkgver() {
+    _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
+    _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
+    _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/master" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
+    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+}
+
+prepare() {
+    mkdir -p build
+    cd build
+    ln -sf /usr/src/nginx/auto
+    ln -sf /usr/src/nginx/src
+}
+
+build() {
+    cd build
+    /usr/src/nginx/configure --with-compat --add-dynamic-module=../${_modname}
+    make modules
+}
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/usr/lib/nginx/modules/
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+
+    # package files
+    cd "${srcdir}"/build/objs
+    for i in ngx_*.so; do
+        install -Dm644 ${i} \
+                       "${pkgdir}"/usr/lib/nginx/modules/${i}
+    done
+
+    # licenses
+    install -Dm644 "${srcdir}"/${_modname}/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+}

@@ -1,0 +1,15 @@
+pkgbase = wallpaper-windows10
+	pkgdesc = MS Windows10 (22H2) wallpaper.
+	pkgver = 2023.06.22H2
+	pkgrel = 1
+	url = https://next.itellyou.cn/Original/Index#cbp=Product?ID=f905b2d9-11e7-4ee3-8b52-407a8befe8d1
+	arch = any
+	license = custom
+	makedepends = p7zip
+	makedepends = rsync
+	provides = wallpaper-windows10
+	conflicts = wallpaper-windows10
+	source = zh-cn_windows_10_business_editions_version_22h2_updated_june_2023_x64_dvd_e1795b9e.iso
+	sha256sums = 4a4dd5847765920bb503fa7ffaabd45a79acc2c8aafa4347dee633bfa65835b9
+
+pkgname = wallpaper-windows10

@@ -1,0 +1,15 @@
+pkgbase = wallpaper-windows7
+	pkgdesc = MS Windows7 wallpaper.
+	pkgver = 2019.sp1.ult
+	pkgrel = 1
+	url = https://next.itellyou.cn/Original/Index#cbp=Product?ID=6f677346-0a09-43fa-b60d-e878ed7625a0
+	arch = any
+	license = custom
+	makedepends = p7zip
+	makedepends = rsync
+	provides = wallpaper-windows7
+	conflicts = wallpaper-windows7
+	source = 7601.24214.180801-1700.win7sp1_ldr_escrow_client_ultimate_x64fre_en-us.iso
+	sha256sums = dec04cbd352b453e437b2fe9614b67f28f7c0b550d8351827bc1e9ef3f601389
+
+pkgname = wallpaper-windows7

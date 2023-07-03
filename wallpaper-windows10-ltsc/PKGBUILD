@@ -1,0 +1,46 @@
+# Maintainer: Kitty Panics
+
+pkgname=wallpaper-windows10-ltsc
+pkgver=2021
+pkgrel=1
+url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=f905b2d9-11e7-4ee3-8b52-407a8befe8d1"
+pkgdesc="MS Windows10 LTSC (2021) wallpaper."
+arch=('any')
+license=('custom')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+makedepends=("p7zip" "rsync")
+_iso="$(ls -A | grep -i '.iso$')"
+source=("${_iso}")
+sha256sums=('c117c5ddbc51f315c739f9321d4907fa50090ba7b48e7e9a2d173d49ef2f73a3')
+
+prepare() {
+    echo " - Extracting Windows installation image"
+    7z e "${source}" sources/install.wim
+
+    echo " - Extracting files from local Windows installation image"
+    7z x install.wim Windows/Web "${srcdir}"/
+
+    # set the correct permissions
+    find "${srcdir}"/Windows/Web -type d -exec chmod 755 {} \;
+    find "${srcdir}"/Windows/Web -type f -exec chmod 644 {} \;
+}
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/usr/share/backgrounds/"${pkgname}"/
+
+    # package files
+    rsync -rtl "${srcdir}"/Windows/Web/Wallpaper/ \
+               "${pkgdir}"/usr/share/backgrounds/"${pkgname}"/ \
+               --exclude="Desktop.ini" --exclude="img13.jpg"
+    rsync -rtl "${srcdir}"/Windows/Web/Screen \
+               "${pkgdir}"/usr/share/backgrounds/"${pkgname}"/ \
+               --exclude="img100.jpg"
+    # symbolic links
+    cd "${pkgdir}"/usr/share/backgrounds/"${pkgname}"/
+    find . -type f | while read i; do
+        ln -s /usr/share/backgrounds/"${pkgname}"/"${i:2}" \
+              "${pkgdir}"/usr/share/backgrounds/"${pkgname}"/
+    done
+}

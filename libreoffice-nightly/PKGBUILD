@@ -2,7 +2,7 @@
 
 pkgname=libreoffice-nightly
 pkgver=24.2.0.0.alpha0
-pkgrel=20230616
+pkgrel=20230703
 url="https://dev-builds.libreoffice.org/daily/master/Linux-rpm_deb-x86_64@tb87-TDF/current/"
 pkgdesc="LibreOffice development branch"
 arch=('x86_64')

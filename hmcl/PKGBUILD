@@ -1,7 +1,7 @@
 # Maintainer: Kitty Panics
 
 pkgname=hmcl
-pkgver=3.5.4.232
+pkgver=3.5.4.234
 pkgrel=1
 url="https://github.com/huanghongxun/HMCL/releases"
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."

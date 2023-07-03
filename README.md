@@ -29,7 +29,7 @@ Personally maintained AUR packages.
 - [X] [jetbrains-rubymine-old]
 - [X] [jetbrains-webstorm]
 - [X] [jetbrains-webstorm-old]
-- [X] libreoffice-nightly
+- [x] libreoffice-nightly
 - [X] librime-data
 - [X] n_m3u8dl-re
 - [X] nginx-mainline-mod-brotli-git
@@ -40,7 +40,7 @@ Personally maintained AUR packages.
 - [X] tencent-qq
 - [X] tencent-qqmusic
 - [ ] tencent-weixin
-- [X] thunderbird-nightly
+- [x] thunderbird-nightly
 - [X] vimix-cursors-git
 - [X] virtualbox-guest-iso-dev
 - [X] virtualbox-guest-iso-old

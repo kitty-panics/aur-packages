@@ -4,7 +4,7 @@ pkgname=wallpaper-windows7
 pkgver=2019.sp1.ult
 pkgrel=1
 url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=6f677346-0a09-43fa-b60d-e878ed7625a0"
-pkgdesc="MS Windows7 wallpaper."
+pkgdesc="MS Windows7 (2019) wallpaper."
 arch=('any')
 license=('custom')
 provides=("${pkgname}")

@@ -2,7 +2,7 @@
 
 pkgname=thunderbird-nightly
 pkgver=116.0a1
-pkgrel=20230616
+pkgrel=20230703
 url="https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/"
 pkgdesc='Standalone mail and news reader from mozilla.org (Nightly).'
 arch=('x86_64')

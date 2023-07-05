@@ -16,10 +16,10 @@ sha256sums=('c117c5ddbc51f315c739f9321d4907fa50090ba7b48e7e9a2d173d49ef2f73a3')
 
 prepare() {
     echo " - Extracting Windows installation image"
-    7z e "${source}" sources/install.wim
+    7z e -aos "${source}" sources/install.wim
 
     echo " - Extracting files from local Windows installation image"
-    7z x install.wim Windows/Web "${srcdir}"/
+    7z x -aos install.wim Windows/Web "${srcdir}"/
 
     # set the correct permissions
     find "${srcdir}"/Windows/Web -type d -exec chmod 755 {} \;

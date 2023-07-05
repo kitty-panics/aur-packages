@@ -3,7 +3,7 @@
 pkgbase=aria-ng
 pkgname=(${pkgbase} ${pkgbase}-allinone)
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 url="https://github.com/mayswind/AriaNg/releases"
 pkgdesc="A modern web frontend making aria2 easier to use."
 arch=('any')
@@ -22,8 +22,11 @@ sha256sums=('2d36e1a39d95867b8e0cdb3cde96d04d40117bd37e8742d639da92496e07cc7b'
 noextract=("AriaNg-${pkgver}.zip" "AriaNg-${pkgver}-AllInOne.zip")
 
 prepare() {
-    7z x "AriaNg-${pkgver}.zip" -o"${srcdir}"/AriaNg
-    7z x "AriaNg-${pkgver}-AllInOne.zip" -o"${srcdir}"/AriaNg-AllInOne
+    7z x -aos "AriaNg-${pkgver}.zip" -o"${srcdir}"/AriaNg
+    7z x -aos "AriaNg-${pkgver}-AllInOne.zip" -o"${srcdir}"/AriaNg-AllInOne
+    # set the correct permissions
+    find "${srcdir}" -type d -exec chmod 755 {} \;
+    find "${srcdir}" -type f -exec chmod 644 {} \;
 }
 
 package_aria-ng() {
@@ -41,7 +44,7 @@ package_aria-ng() {
 
     # licenses
     install -Dm644 "${srcdir}"/AriaNg/LICENSE \
-                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
 
 package_aria-ng-allinone() {
@@ -58,5 +61,5 @@ package_aria-ng-allinone() {
 
     # licenses
     install -Dm644 "${srcdir}"/AriaNg-AllInOne/LICENSE \
-                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

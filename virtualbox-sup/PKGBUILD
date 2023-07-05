@@ -15,7 +15,7 @@ source=("vbox.run::https://download.virtualbox.org/virtualbox/${pkgver}/VirtualB
 sha256sums=('SKIP')
 
 prepare() {
-    7z x vbox.run -o"${srcdir}"/
+    7z x -aos vbox.run -o"${srcdir}"/
     bsdtar -xf "${srcdir}"/VirtualBox.tar.bz2 -C "${srcdir}"/
 }
 

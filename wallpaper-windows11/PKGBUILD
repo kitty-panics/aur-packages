@@ -6,7 +6,7 @@ pkgrel=1
 url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=42e87ac8-9cd6-eb11-bdf8-e0d4e850c9c6"
 pkgdesc="MS Windows11 (22H2) wallpaper."
 arch=('any')
-license=('custom')
+license=('custom:FUMS')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=("p7zip" "rsync")

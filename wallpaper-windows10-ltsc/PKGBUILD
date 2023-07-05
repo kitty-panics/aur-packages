@@ -6,7 +6,7 @@ pkgrel=1
 url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=f905b2d9-11e7-4ee3-8b52-407a8befe8d1"
 pkgdesc="MS Windows10 LTSC (2021) wallpaper."
 arch=('any')
-license=('custom')
+license=('custom:FUMS')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=("p7zip" "rsync")

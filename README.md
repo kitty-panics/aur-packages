@@ -6,6 +6,7 @@ Personally maintained AUR packages.
 
 - [ ] alibaba-dingding
 - [X] apktool
+- [X] aria-ng
 - [X] dnscrypt-proxy-chinalist-git
 - [X] friend
 - [X] hmcl

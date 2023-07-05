@@ -1,7 +1,7 @@
 # Maintainer: Kitty Panics
 
 pkgname=virtualbox-sup
-pkgver=7.0.4
+pkgver=7.0.8
 pkgrel=2
 url="https://download.virtualbox.org/virtualbox/${pkgver}/"
 pkgdesc='Supplement the missing files of VirtualBox.'
@@ -11,11 +11,11 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=('virtualbox')
 makedepends=('p7zip')
-source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-154605-Linux_amd64.run")
+source=("vbox.run::https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-156879-Linux_amd64.run")
 sha256sums=('SKIP')
 
 prepare() {
-    7z x VirtualBox-"${pkgver}"-154605-Linux_amd64.run -o"${srcdir}"/
+    7z x vbox.run -o"${srcdir}"/
     bsdtar -xf "${srcdir}"/VirtualBox.tar.bz2 -C "${srcdir}"/
 }
 

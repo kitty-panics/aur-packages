@@ -8,12 +8,12 @@ pkgdesc="Fancy indexes module for the Nginx web server (mainline)."
 arch=('any')
 license=('custom')
 provides=("${pkgname}" "${pkgname:0:-4}")
-conflicts=("${pkgname:0:-4}")
+conflicts=("${pkgname}" "${pkgname:0:-4}")
 depends=('nginx-mainline')
-makedepends=('nginx-mainline-src')
+makedepends=('git' 'nginx-mainline-src')
 _modname="nginx-fancyindex-module"
-source=("${_modname}::git+${url}")
-sha256sums=('SKIP')
+#source=("${_modname}::git+${url}")
+#sha256sums=('SKIP')
 
 pkgver() {
     _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
@@ -23,6 +23,8 @@ pkgver() {
 }
 
 prepare() {
+    git clone --depth=1 "${url}" "${srcdir}"/"${_modname}"
+
     mkdir -p build
     cd build
     ln -sf /usr/src/nginx/auto

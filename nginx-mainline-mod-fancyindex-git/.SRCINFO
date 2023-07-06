@@ -5,12 +5,12 @@ pkgbase = nginx-mainline-mod-fancyindex-git
 	url = https://github.com/aperezdc/ngx-fancyindex
 	arch = any
 	license = custom
+	makedepends = git
 	makedepends = nginx-mainline-src
 	depends = nginx-mainline
 	provides = nginx-mainline-mod-fancyindex-git
 	provides = nginx-mainline-mod-fancyindex
+	conflicts = nginx-mainline-mod-fancyindex-git
 	conflicts = nginx-mainline-mod-fancyindex
-	source = nginx-fancyindex-module::git+https://github.com/aperezdc/ngx-fancyindex
-	sha256sums = SKIP
 
 pkgname = nginx-mainline-mod-fancyindex-git

@@ -7,8 +7,8 @@ url="https://dev-builds.libreoffice.org/daily/master/Linux-rpm_deb-x86_64@tb87-T
 pkgdesc="LibreOffice development branch"
 arch=('x86_64')
 license=('LGPL3')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${pkgname}" "libreoffice")
+conflicts=("${pkgname}" "libreoffice" "libreoffice-fresh" "libreoffice-still")
 depends=('nspr' 'nss' 'gstreamer' 'kwindowsystem' 'orc' 'qt5-x11extras')
 optdepends=('java-runtime:    adds java support'
             'pstoedit:        translates PostScript and PDF graphics into other vector formats'
@@ -83,9 +83,9 @@ package() {
                            "${pkgdir}"/usr/share/icons/hicolor/"${i}"/apps/"${pkgname}"-"${j}".png
         done
     done
-    for j in `echo $_soffice_list`; do
-        install -Dm644 "${srcdir}"/usr/share/icons/hicolor/scalable/apps/libreofficedev"${pkgver%%.0*}"-"${j}".svg \
-                       "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/"${pkgname}"-"${j}".svg
+    for i in `echo $_soffice_list`; do
+        install -Dm644 "${srcdir}"/usr/share/icons/hicolor/scalable/apps/libreofficedev"${pkgver%%.0*}"-"${i}".svg \
+                       "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/"${pkgname}"-"${i}".svg
     done
     # licenses
     ln -s /opt/"${pkgname}"/LICENSE \

@@ -2,16 +2,16 @@
 
 pkgname=vimix-cursors-git
 pkgver=r16.9bc292f409
-pkgrel=1
+pkgrel=2
 url="https://github.com/vinceliuice/Vimix-cursors"
 pkgdesc="Vimix-cursors for linux desktop"
 arch=('any')
 license=('GPL3')
-makedepends=('rsync')
-provides=("${pkgname}" "vimix-cursors")
-conflicts=("${pkgname:0:-4}")
-source=("git+$url")
-sha256sums=('SKIP')
+makedepends=('git' 'rsync')
+provides=("${pkgname}" "${pkgname:0:-4}")
+conflicts=("${pkgname}" "${pkgname:0:-4}")
+#source=("git+$url.git")
+#sha256sums=('SKIP')
 
 pkgver() {
     _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
@@ -20,18 +20,22 @@ pkgver() {
     printf "r%s.%s" "${_commit_count}" "${_last_commit}"
 }
 
+prepare() {
+    git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+}
+
 package() {
     # create dir
-    install -dm755 "${pkgdir}"/usr/share/icons/{"${conflicts^}"/,"${conflicts^}"-white/}
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/icons/{"${pkgname:0:-4}"/,"${pkgname:0:-4}"-white/}
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
     # package files
-    rsync -rtl "${srcdir}"/"${conflicts^}"/dist/ \
-               "${pkgdir}"/usr/share/icons/"${conflicts^}"
-    rsync -rtl "${srcdir}"/"${conflicts^}"/dist-white/ \
-               "${pkgdir}"/usr/share/icons/"${conflicts^}"-white
+    rsync -rtl "${srcdir}"/"${pkgname}"/dist/ \
+               "${pkgdir}"/usr/share/icons/"${pkgname:0:-4}"
+    rsync -rtl "${srcdir}"/"${pkgname}"/dist-white/ \
+               "${pkgdir}"/usr/share/icons/"${pkgname:0:-4}"-white
 
     # licenses
-    install -Dm644 "${srcdir}"/"${conflicts^}"/LICENSE \
+    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE \
                    "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

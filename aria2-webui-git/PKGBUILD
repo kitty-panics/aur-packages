@@ -1,0 +1,51 @@
+# Maintainer: Kitty Panics
+
+pkgname=aria2-webui-git
+pkgver=r705.109903f0e2
+pkgrel=2
+url="https://github.com/ziahamza/webui-aria2"
+pkgdesc="The aim for this project is to create the worlds best and hottest interface to interact with aria2."
+arch=('any')
+license=('MIT')
+provides=("${pkgname}" "${pkgname:0:-4}")
+conflicts=("${pkgname}" "${pkgname:0:-4}")
+depends=('aria2')
+makedepends=('git' 'rsync')
+optdepends=('apache: A supported application server'
+            'nginx: A supported application server'
+            'nginx-mainline: A supported application server'
+            'caddy: A supported application server'
+            'lighttpd: A supported application server')
+#source=("git+${url}.git")
+#sha256sums=('SKIP')
+
+pkgver() {
+    _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
+    _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
+    _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/master" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
+    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+}
+
+prepare() {
+    git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+}
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname:0:-4}"/
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+
+    # package files
+    rsync -rtl "${srcdir}"/"${pkgname}"/docs/ \
+               "${pkgdir}"/usr/share/"${pkgname:0:-4}" \
+               --exclude="LICENSE"
+    install -Dm644 "${srcdir}"/"${pkgname}"/favicon.ico \
+                   "${pkgdir}"/usr/share/"${pkgname:0:-4}"/
+    sed -i 's/\.\.\/favicon.ico/favicon.ico/' "${pkgdir}"/usr/share/"${pkgname:0:-4}"/index.html
+    # optimize for China network
+    sed -i 's/googleapis\.com/googleapis\.cn/' "${pkgdir}"/usr/share/"${pkgname:0:-4}"/index.html
+
+    # licenses
+    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

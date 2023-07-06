@@ -1,0 +1,21 @@
+pkgbase = aria2-webui-git
+	pkgdesc = The aim for this project is to create the worlds best and hottest interface to interact with aria2.
+	pkgver = r705.109903f0e2
+	pkgrel = 2
+	url = https://github.com/ziahamza/webui-aria2
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rsync
+	depends = aria2
+	optdepends = apache: A supported application server
+	optdepends = nginx: A supported application server
+	optdepends = nginx-mainline: A supported application server
+	optdepends = caddy: A supported application server
+	optdepends = lighttpd: A supported application server
+	provides = aria2-webui-git
+	provides = aria2-webui
+	conflicts = aria2-webui-git
+	conflicts = aria2-webui
+
+pkgname = aria2-webui-git

@@ -7,8 +7,8 @@ url="https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/"
 pkgdesc='Standalone mail and news reader from mozilla.org (Nightly).'
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${pkgname}" "thunderbird")
+conflicts=("${pkgname}" "thunderbird")
 depends=('nspr' 'nss' 'alsa-lib')
 optdepends=('libotr: OTR support for active one-to-one chats'
             'libnotify: Notification integration')
@@ -47,8 +47,8 @@ package() {
     done
 
     # use system provided dictionaries
-    ln -Ts /usr/share/hunspell "${pkgdir}"/opt/"${pkgname}"/dictionaries
-    ln -Ts /usr/share/hyphen   "${pkgdir}"/opt/"${pkgname}"/hyphenation
+    ln -sT /usr/share/hunspell "${pkgdir}"/opt/"${pkgname}"/dictionaries
+    ln -sT /usr/share/hyphen   "${pkgdir}"/opt/"${pkgname}"/hyphenation
     # disable auto update
     install -Dm644 "${srcdir}"/policies.json \
                    "${pkgdir}"/opt/"${pkgname}"/distribution/policies.json

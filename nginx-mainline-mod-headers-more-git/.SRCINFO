@@ -5,12 +5,12 @@ pkgbase = nginx-mainline-mod-headers-more-git
 	url = https://github.com/openresty/headers-more-nginx-module
 	arch = any
 	license = BSD
+	makedepends = git
 	makedepends = nginx-mainline-src
 	depends = nginx-mainline
 	provides = nginx-mainline-mod-headers-more-git
 	provides = nginx-mainline-mod-headers-more
+	conflicts = nginx-mainline-mod-headers-more-git
 	conflicts = nginx-mainline-mod-headers-more
-	source = nginx-headers-more-module::git+https://github.com/openresty/headers-more-nginx-module
-	sha256sums = SKIP
 
 pkgname = nginx-mainline-mod-headers-more-git

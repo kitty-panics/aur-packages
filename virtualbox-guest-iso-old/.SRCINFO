@@ -1,14 +1,16 @@
 pkgbase = virtualbox-guest-iso-old
 	pkgdesc = The official VirtualBox Guest Additions ISO image (v6.1.26).
 	pkgver = 6.1.26
-	pkgrel = 3
+	pkgrel = 4
 	url = https://download.virtualbox.org/virtualbox/6.1.26/
 	install = virtualbox-guest-iso-old.install
 	arch = any
 	license = custom:PUEL
 	depends = virtualbox
 	provides = virtualbox-guest-iso-old
+	provides = virtualbox-guest-iso
 	conflicts = virtualbox-guest-iso-old
+	conflicts = virtualbox-guest-iso
 	noextract = VBoxGuestAdditions_6.1.26.iso
 	source = https://download.virtualbox.org/virtualbox/6.1.26/VBoxGuestAdditions_6.1.26.iso
 	source = virtualbox-guest-iso-old.install

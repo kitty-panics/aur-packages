@@ -9,7 +9,7 @@ pkgdesc="A modern web frontend making aria2 easier to use."
 arch=('any')
 license=('MIT')
 depends=('aria2')
-makedepends=("p7zip" "rsync")
+makedepends=('p7zip' 'rsync')
 optdepends=('apache: A supported application server'
             'nginx: A supported application server'
             'nginx-mainline: A supported application server'

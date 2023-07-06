@@ -5,13 +5,13 @@ pkgbase = nginx-mainline-mod-brotli-git
 	url = https://github.com/google/ngx_brotli
 	arch = any
 	license = BSD2
+	makedepends = git
 	makedepends = nginx-mainline-src
 	depends = nginx-mainline
 	depends = brotli
 	provides = nginx-mainline-mod-brotli-git
 	provides = nginx-mainline-mod-brotli
+	conflicts = nginx-mainline-mod-brotli-git
 	conflicts = nginx-mainline-mod-brotli
-	source = nginx-brotli-module::git+https://github.com/google/ngx_brotli
-	sha256sums = SKIP
 
 pkgname = nginx-mainline-mod-brotli-git

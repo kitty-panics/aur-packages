@@ -7,6 +7,7 @@ Personally maintained AUR packages.
 - [ ] alibaba-dingding
 - [X] apktool
 - [X] aria-ng
+- [X] aria2-webui-git
 - [X] dnscrypt-proxy-chinalist-git
 - [X] friend
 - [X] hmcl
@@ -37,6 +38,8 @@ Personally maintained AUR packages.
 - [X] nginx-mainline-mod-dav-ext-git
 - [X] nginx-mainline-mod-fancyindex-git
 - [X] nginx-mainline-mod-headers-more-git
+- [X] oh-my-bash-git
+- [X] oh-my-zsh-git
 - [ ] tencent-meeting
 - [X] tencent-qq
 - [X] tencent-qqmusic

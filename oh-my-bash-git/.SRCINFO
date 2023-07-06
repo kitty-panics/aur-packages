@@ -1,0 +1,17 @@
+pkgbase = oh-my-bash-git
+	pkgdesc = A delightful community-driven framework for managing your bash configuration.
+	pkgver = r463.117e203d38
+	pkgrel = 1
+	url = https://github.com/ohmybash/oh-my-bash
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rsync
+	depends = bash
+	optdepends = git: Support for git repositories
+	provides = oh-my-bash-git
+	provides = oh-my-bash
+	conflicts = oh-my-bash-git
+	conflicts = oh-my-bash
+
+pkgname = oh-my-bash-git

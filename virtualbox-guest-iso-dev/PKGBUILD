@@ -2,13 +2,13 @@
 
 pkgname=virtualbox-guest-iso-dev
 pkgver=7.0.97_157801
-pkgrel=1
+pkgrel=2
 url="https://www.virtualbox.org/wiki/Testbuilds"
 pkgdesc='The official VirtualBox Guest Additions ISO image (development snapshots).'
 arch=('any')
 license=('custom:PUEL')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${pkgname}" "${pkgname:0:-4}")
+conflicts=("${pkgname}" "${pkgname:0:-4}")
 depends=('virtualbox')
 install=${pkgname}.install
 source=("https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_${pkgver//_/-}.iso"
@@ -26,7 +26,7 @@ package() {
 
     # package files
     install -Dm644 "${srcdir}"/VBoxGuestAdditions_"${pkgver//_/-}".iso \
-                   "${pkgdir}"/usr/lib/virtualbox/additions/VBoxGuestAdditions-dev.iso
+                   "${pkgdir}"/usr/lib/virtualbox/additions/VBoxGuestAdditions.iso
 
     # licenses
     install -Dm644 "${srcdir}"/LICENSE \

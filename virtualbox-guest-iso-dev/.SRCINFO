@@ -1,14 +1,16 @@
 pkgbase = virtualbox-guest-iso-dev
 	pkgdesc = The official VirtualBox Guest Additions ISO image (development snapshots).
 	pkgver = 7.0.97_157801
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.virtualbox.org/wiki/Testbuilds
 	install = virtualbox-guest-iso-dev.install
 	arch = any
 	license = custom:PUEL
 	depends = virtualbox
 	provides = virtualbox-guest-iso-dev
+	provides = virtualbox-guest-iso
 	conflicts = virtualbox-guest-iso-dev
+	conflicts = virtualbox-guest-iso
 	noextract = VBoxGuestAdditions_7.0.97-157801.iso
 	source = https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_7.0.97-157801.iso
 	source = virtualbox-guest-iso-dev.install

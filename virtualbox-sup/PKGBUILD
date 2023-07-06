@@ -25,12 +25,12 @@ package() {
     install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname%%-*}"/
 
     # package files
-    for i in `ls "${srcdir}/UnattendedTemplates" | cat`; do
+    for i in `ls "${srcdir}/UnattendedTemplates"`; do
         install -Dm644 "${srcdir}"/UnattendedTemplates/"${i}" \
                        "${pkgdir}"/usr/share/virtualbox/UnattendedTemplates/
     done
 
-    # /usr/share/doc/
+    # doc
     install -Dm644 "${srcdir}"/UserManual.{pdf,qch,qhc} \
                    "${pkgdir}"/usr/share/doc/"${pkgname%%-*}"/
 }

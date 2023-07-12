@@ -1,6 +1,6 @@
 pkgbase = dnscrypt-proxy-chinalist-git
 	pkgdesc = Chinese-specific configuration to improve dnscrypt-proxy.
-	pkgver = r157702.f59b9f0608
+	pkgver = r158077.3b2c7a6a73
 	pkgrel = 1
 	url = https://github.com/felixonmars/dnsmasq-china-list
 	install = dnscrypt-proxy-chinalist-git.install

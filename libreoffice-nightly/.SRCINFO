@@ -1,7 +1,7 @@
 pkgbase = libreoffice-nightly
 	pkgdesc = LibreOffice development branch
 	pkgver = 24.2.0.0.alpha0
-	pkgrel = 20230703
+	pkgrel = 20230707
 	url = https://dev-builds.libreoffice.org/daily/master/Linux-rpm_deb-x86_64@tb87-TDF/current/
 	arch = x86_64
 	license = LGPL3

@@ -1,7 +1,7 @@
 pkgbase = vimix-cursors-git
 	pkgdesc = Vimix-cursors for linux desktop
 	pkgver = r16.9bc292f409
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/vinceliuice/Vimix-cursors
 	arch = any
 	license = GPL3

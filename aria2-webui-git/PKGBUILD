@@ -2,7 +2,7 @@
 
 pkgname=aria2-webui-git
 pkgver=r705.109903f0e2
-pkgrel=2
+pkgrel=1
 url="https://github.com/ziahamza/webui-aria2"
 pkgdesc="The aim for this project is to create the worlds best and hottest interface to interact with aria2."
 arch=('any')

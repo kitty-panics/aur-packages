@@ -49,7 +49,6 @@ Personally maintained AUR packages.
 - [X] virtualbox-guest-iso-dev
 - [X] virtualbox-guest-iso-old
 - [X] virtualbox-sup
-- [ ] wallpaper-selfuse
 - [X] wallpaper-windows7
 - [X] wallpaper-windows10
 - [X] wallpaper-windows10-ltsc

@@ -1,7 +1,7 @@
 # Maintainer: Kitty Panics
 
 pkgname=dnscrypt-proxy-chinalist-git
-pkgver=r157702.f59b9f0608
+pkgver=r158077.3b2c7a6a73
 pkgrel=1
 url="https://github.com/felixonmars/dnsmasq-china-list"
 pkgdesc="Chinese-specific configuration to improve dnscrypt-proxy."

@@ -1,15 +1,15 @@
 pkgbase = wallpaper-windows11
 	pkgdesc = MS Windows11 (22H2) wallpaper.
-	pkgver = 2023.06.22H2
+	pkgver = 2023.09.22H2
 	pkgrel = 1
 	url = https://next.itellyou.cn/Original/Index#cbp=Product?ID=42e87ac8-9cd6-eb11-bdf8-e0d4e850c9c6
 	arch = any
-	license = custom
+	license = custom:FUMS
 	makedepends = p7zip
 	makedepends = rsync
 	provides = wallpaper-windows11
 	conflicts = wallpaper-windows11
-	source = zh-cn_windows_11_business_editions_version_22h2_updated_june_2023_x64_dvd_8e846a1e.iso
-	sha256sums = 16ea95e1818c91fde6c5b8b0c8c34bebc06fee572db2b3fc5090cadbd7fa7be0
+	source = zh-cn_windows_11_business_editions_version_22h2_updated_sep_2023_x64_dvd_6e779ec7.iso
+	sha256sums = SKIP
 
 pkgname = wallpaper-windows11

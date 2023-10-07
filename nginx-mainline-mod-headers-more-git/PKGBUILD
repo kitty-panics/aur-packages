@@ -1,8 +1,8 @@
 # Maintainer: Kitty Panics
 
 pkgname=nginx-mainline-mod-headers-more-git
-pkgver=r265.33b646d69f
-pkgrel=1
+pkgver=r267.607d1b1f32
+pkgrel=2
 url="https://github.com/openresty/headers-more-nginx-module"
 pkgdesc="Set, add, and clear arbitrary output headers in NGINX http servers (mainline)."
 arch=('any')

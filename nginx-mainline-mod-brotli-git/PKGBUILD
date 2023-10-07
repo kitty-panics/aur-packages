@@ -1,7 +1,7 @@
 # Maintainer: Kitty Panics
 
 pkgname=nginx-mainline-mod-brotli-git
-pkgver=r55.6e975bcb01
+pkgver=r57.63ca02abdc
 pkgrel=1
 url="https://github.com/google/ngx_brotli"
 pkgdesc="NGINX module for Brotli compression (mainline)."
@@ -24,15 +24,14 @@ pkgver() {
 
 prepare() {
     git clone --depth=1 "${url}" "${srcdir}"/"${_modname}"
-
-    mkdir -p build
-    cd build
-    ln -sf /usr/src/nginx/auto
-    ln -sf /usr/src/nginx/src
+    cd "${srcdir}"/"${_modname}"
+    git submodule update --init
 }
 
 build() {
-    cd build
+    mkdir -p build; cd build
+    ln -sf /usr/src/nginx/auto
+    ln -sf /usr/src/nginx/src
     /usr/src/nginx/configure --with-compat --add-dynamic-module=../${_modname}
     make modules
 }

@@ -1,7 +1,7 @@
 # Maintainer: Kitty Panics
 
 pkgname=wallpaper-windows11
-pkgver=2023.06.22H2
+pkgver=2023.09.22H2
 pkgrel=1
 url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=42e87ac8-9cd6-eb11-bdf8-e0d4e850c9c6"
 pkgdesc="MS Windows11 (22H2) wallpaper."
@@ -12,7 +12,7 @@ conflicts=("${pkgname}")
 makedepends=("p7zip" "rsync")
 _iso="$(ls -A | grep -i '.iso$')"
 source=("${_iso}")
-sha256sums=('16ea95e1818c91fde6c5b8b0c8c34bebc06fee572db2b3fc5090cadbd7fa7be0')
+sha256sums=('SKIP')
 
 prepare() {
     echo " - Extracting Windows installation image"

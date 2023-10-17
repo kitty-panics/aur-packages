@@ -1,7 +1,7 @@
 # Maintainer: Kitty Panics
 
 pkgname=nginx-mainline-mod-brotli-git
-pkgver=r57.63ca02abdc
+pkgver=r62.a71f9312c2
 pkgrel=1
 url="https://github.com/google/ngx_brotli"
 pkgdesc="NGINX module for Brotli compression (mainline)."

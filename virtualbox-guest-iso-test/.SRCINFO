@@ -1,0 +1,22 @@
+pkgbase = virtualbox-guest-iso-test
+	pkgdesc = The official VirtualBox Guest Additions ISO image (7.0.x test builds).
+	pkgver = 7.0.11_159206
+	pkgrel = 1
+	url = https://www.virtualbox.org/wiki/Testbuilds
+	install = virtualbox-guest-iso-test.install
+	arch = any
+	license = custom:PUEL
+	depends = virtualbox
+	provides = virtualbox-guest-iso-test
+	provides = virtualbox-guest-iso
+	conflicts = virtualbox-guest-iso-test
+	conflicts = virtualbox-guest-iso
+	noextract = VBoxGuestAdditions_7.0.11-159206.iso
+	source = https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_7.0.11-159206.iso
+	source = virtualbox-guest-iso-test.install
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 656447f1b55cb8eb0a03d53a4709ed7b3806e3c004c1592e9e520d065a91a704
+	sha256sums = 94a00067a248fd7d1d610fcd9094d50ce1b67e4200ade0b5f135392806d7e68b
+
+pkgname = virtualbox-guest-iso-test

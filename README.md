@@ -8,29 +8,32 @@ Personally maintained AUR packages.
 - [X] apktool
 - [X] aria-ng
 - [X] aria2-webui-git
++ [ ] cloudflare-speedtest
++ [ ] cst-cad-navigator
 - [X] dnscrypt-proxy-chinalist-git
 - [X] friend
 - [X] hmcl
 - [X] jetbra.in
 - [X] [jetbrains-clion]
-- [X] [jetbrains-clion-old]
+- [x] [jetbrains-clion-old]
 - [X] [jetbrains-datagrip]
-- [X] [jetbrains-datagrip-old]
+- [x] [jetbrains-datagrip-old]
 - [X] [jetbrains-dataspell]
 - [X] [jetbrains-goland]
-- [X] [jetbrains-goland-old]
+- [x] [jetbrains-goland-old]
 - [X] [jetbrains-intellij-idea]
-- [X] [jetbrains-intellij-idea-old]
+- [x] [jetbrains-intellij-idea-old]
 - [X] [jetbrains-phpstorm]
-- [X] [jetbrains-phpstorm-old]
+- [x] [jetbrains-phpstorm-old]
 - [X] [jetbrains-pycharm]
-- [X] [jetbrains-pycharm-old]
+- [x] [jetbrains-pycharm-old]
 - [X] [jetbrains-rider]
-- [X] [jetbrains-rider-old]
+- [x] [jetbrains-rider-old]
 - [X] [jetbrains-rubymine]
-- [X] [jetbrains-rubymine-old]
+- [x] [jetbrains-rubymine-old]
 - [X] [jetbrains-webstorm]
-- [X] [jetbrains-webstorm-old]
+- [x] [jetbrains-webstorm-old]
+- [ ] launch4j
 - [x] libreoffice-nightly
 - [X] librime-data
 - [X] n_m3u8dl-re
@@ -44,10 +47,12 @@ Personally maintained AUR packages.
 - [X] tencent-qq
 - [X] tencent-qqmusic
 - [ ] tencent-weixin
+- [ ] translator-git
 - [x] thunderbird-nightly
 - [X] vimix-cursors-git
 - [X] virtualbox-guest-iso-dev
-- [X] virtualbox-guest-iso-old
+- [x] virtualbox-guest-iso-old
+- [X] virtualbox-guest-iso-test
 - [X] virtualbox-sup
 - [X] wallpaper-windows7
 - [X] wallpaper-windows10

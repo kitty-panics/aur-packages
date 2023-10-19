@@ -8,8 +8,8 @@ Personally maintained AUR packages.
 - [X] apktool
 - [X] aria-ng
 - [X] aria2-webui-git
-+ [ ] cloudflare-speedtest
-+ [ ] cst-cad-navigator
+- [ ] cloudflare-speedtest
+- [ ] cst-cad-navigator
 - [X] dnscrypt-proxy-chinalist-git
 - [X] friend
 - [X] hmcl
@@ -50,9 +50,9 @@ Personally maintained AUR packages.
 - [ ] translator-git
 - [x] thunderbird-nightly
 - [X] vimix-cursors-git
-- [X] virtualbox-guest-iso-dev
+- [x] virtualbox-guest-iso-dev
 - [x] virtualbox-guest-iso-old
-- [X] virtualbox-guest-iso-test
+- [x] virtualbox-guest-iso-test
 - [X] virtualbox-sup
 - [X] wallpaper-windows7
 - [X] wallpaper-windows10

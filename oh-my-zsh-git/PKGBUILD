@@ -1,7 +1,7 @@
 # Maintainer: Kitty Panics
 
 pkgname=oh-my-zsh-git
-pkgver=r7020.f939768751
+pkgver=r7027.104041a018
 pkgrel=1
 url="https://github.com/ohmyzsh/ohmyzsh"
 pkgdesc="A delightful community-driven framework for managing your zsh configuration."

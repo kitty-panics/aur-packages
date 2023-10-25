@@ -1,7 +1,7 @@
 # Maintainer: Kitty Panics
 
 pkgname=oh-my-bash-git
-pkgver=r511.07d9382938
+pkgver=r512.9b244fe81e
 pkgrel=1
 url="https://github.com/ohmybash/oh-my-bash"
 pkgdesc="A delightful community-driven framework for managing your bash configuration."

@@ -1,0 +1,17 @@
+pkgbase = rime-see-me-old
+	pkgdesc = Skin editor for Weasel (Rime frontend on Windows).
+	pkgver = 0.0
+	pkgrel = 20130728
+	url = https://tieba.baidu.com/p/2491103778
+	arch = any
+	license = UNLICENSE
+	makedepends = rsync
+	provides = rime-see-me-old
+	provides = rime-see-me
+	conflicts = rime-see-me-old
+	conflicts = rime-see-me
+	conflicts = rime-see-me-git
+	source = Rime See Me.zip::https://pan.baidu.com/share/link?shareid=1116561757&uk=2635838991
+	sha256sums = fe35c2bc8d8234c088b9c0d16f8e2d2a8caec43ce43837b835a732cac3da2635
+
+pkgname = rime-see-me-old

@@ -1,0 +1,16 @@
+pkgbase = rime-see-me-git
+	pkgdesc = Skin editor for Weasel (Rime frontend on Windows).
+	pkgver = r23.7112285032
+	pkgrel = 1
+	url = https://github.com/fxliang/RimeSeeMe
+	arch = any
+	license = UNLICENSE
+	makedepends = git
+	makedepends = rsync
+	provides = rime-see-me-git
+	provides = rime-see-me
+	conflicts = rime-see-me-git
+	conflicts = rime-see-me
+	conflicts = rime-see-me-old
+
+pkgname = rime-see-me-git

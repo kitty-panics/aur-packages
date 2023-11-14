@@ -43,6 +43,9 @@ Personally maintained AUR packages.
 - [X] nginx-mainline-mod-headers-more-git
 - [X] oh-my-bash-git
 - [X] oh-my-zsh-git
+- [X] qmk-udev-git
+- [X] rime-see-me-git
+- [X] rime-see-me-old
 - [ ] tencent-meeting
 - [X] tencent-qq
 - [X] tencent-qqmusic

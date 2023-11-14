@@ -1,0 +1,35 @@
+# Maintainer: Kitty Panics
+
+pkgname=rime-see-me-git
+pkgver=r23.7112285032
+pkgrel=1
+url="https://github.com/fxliang/RimeSeeMe"
+pkgdesc="Skin editor for Weasel (Rime frontend on Windows)."
+arch=('any')
+license=('UNLICENSE')
+provides=("${pkgname}" "${pkgname:0:-4}")
+conflicts=("${pkgname}" "${pkgname:0:-4}" "${pkgname:0:-4}"-old)
+makedepends=('git' 'rsync')
+#source=("git+${url}.git")
+#sha256sums=('SKIP')
+
+pkgver() {
+    _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
+    _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
+    _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/master" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
+    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+}
+
+prepare() {
+    git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+}
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname:0:-4}"/
+
+    # package files
+    rsync -rtl "${srcdir}"/"${pkgname}"/ \
+               "${pkgdir}"/usr/share/"${pkgname:0:-4}" \
+               --exclude=".git"
+}

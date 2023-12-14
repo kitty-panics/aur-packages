@@ -2,8 +2,8 @@
 
 pkgbase=aria-ng
 pkgname=(${pkgbase} ${pkgbase}-allinone)
-pkgver=1.3.6
-pkgrel=2
+pkgver=1.3.7
+pkgrel=1
 url="https://github.com/mayswind/AriaNg/releases"
 pkgdesc="A modern web frontend making aria2 easier to use."
 arch=('any')
@@ -17,8 +17,8 @@ optdepends=('apache: A supported application server'
             'lighttpd: A supported application server')
 source=("${url}/download/${pkgver}/AriaNg-${pkgver}.zip"
         "${url}/download/${pkgver}/AriaNg-${pkgver}-AllInOne.zip")
-sha256sums=('2d36e1a39d95867b8e0cdb3cde96d04d40117bd37e8742d639da92496e07cc7b'
-            '101504ab56072bfd42e9b58ef8abcfba1cb0eddcd4d9257ee011e0254616a720')
+sha256sums=('SKIP'
+            'SKIP')
 noextract=("AriaNg-${pkgver}.zip" "AriaNg-${pkgver}-AllInOne.zip")
 
 prepare() {

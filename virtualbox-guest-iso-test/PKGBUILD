@@ -1,7 +1,7 @@
 # Maintainer: Kitty Panics
 
 pkgname=virtualbox-guest-iso-test
-pkgver=7.0.11_159406
+pkgver=7.0.13_160546
 pkgrel=1
 url="https://www.virtualbox.org/wiki/Testbuilds"
 pkgdesc='The official VirtualBox Guest Additions ISO image (7.0.x test builds).'

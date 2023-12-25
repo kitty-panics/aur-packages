@@ -12,6 +12,7 @@ Personally maintained AUR packages.
 - [ ] cst-cad-navigator
 - [X] dnscrypt-proxy-chinalist-git
 - [X] friend
+- [X] gsconnect
 - [X] hmcl
 - [X] jetbra.in
 - [X] [jetbrains-clion]

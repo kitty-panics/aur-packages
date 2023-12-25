@@ -1,0 +1,44 @@
+# Maintainer: Kitty Panics
+
+pkgname=gsconnect
+pkgver=56
+pkgrel=1
+url="https://github.com/GSConnect/gnome-shell-extension-gsconnect"
+pkgdesc="KDE Connect implementation for GNOME."
+arch=('any')
+license=('GPL')
+provides=("${pkgname}" "kdeconnect" "gnome-shell-extension-gsconnect")
+conflicts=("${pkgname}" "kdeconnect" "gnome-shell-extension-gsconnect")
+depends=('gjs')
+makedepends=('meson')
+optdepends=('gnome-shell: Get all the functions'
+            'evolution-data-server: Contacts Integration'
+            'python-nautilus: File Manager Integration (Nautilus)'
+            'gsound: Sound Effects'
+            'libcanberra: Sound Effects'
+            'ydotool: Generic command-line automation tool (Wayland)'
+            'wl-clipboard: Command-line copy/paste utilities (Wayland)')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "gsconnect-daemon.sh"
+        "gsconnect-preferences.sh")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+build() {
+    arch-meson -Dinstalled_tests=false -Dfirewalld=true "gnome-shell-extension-${pkgname}-${pkgver}" build
+    meson compile -C build
+}
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/usr/bin/
+
+    # package files
+    DESTDIR="${pkgdir}" meson install -C build
+    # /usr/bin/
+    install -Dm755 "${srcdir}"/gsconnect-daemon.sh \
+                   "${pkgdir}"/usr/bin/gsconnect-daemon
+    install -Dm755 "${srcdir}"/gsconnect-preferences.sh \
+                   "${pkgdir}"/usr/bin/gsconnect-pref
+}

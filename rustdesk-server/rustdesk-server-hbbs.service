@@ -1,0 +1,14 @@
+[Unit]
+Description=Rustdesk Signal (ID/Rendezvous) Server
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/rustdesk-server/
+ExecStart=rustdesk-server-hbbs -k _
+Restart=always
+User=nobody
+Group=nobody
+
+[Install]
+WantedBy=multi-user.target

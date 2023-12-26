@@ -47,6 +47,7 @@ Personally maintained AUR packages.
 - [X] qmk-udev-git
 - [X] rime-see-me-git
 - [X] rime-see-me-old
+- [X] rustdesk-server
 - [ ] tencent-meeting
 - [X] tencent-qq
 - [X] tencent-qqmusic

@@ -1,0 +1,36 @@
+# Maintainer: Kitty Panics
+
+pkgname=rustdesk-server
+pkgver=1.1.9
+pkgrel=1
+url="https://github.com/rustdesk/rustdesk-server/releases"
+pkgdesc="RustDesk Server Program."
+arch=('x86_64')
+license=('AGPL3')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+source=("${url}/download/${pkgver}/${pkgname}-linux-amd64.zip"
+        "${pkgname}-hbbr.service"
+        "${pkgname}-hbbs.service")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
+
+package() {
+    # create dir
+    install -dm755 "${pkgdir}"/opt/rustdesk-server/
+    install -dm755 "${pkgdir}"/usr/bin/
+    install -dm755 "${pkgdir}"/var/lib/rustdesk-server/
+
+    # package files
+    install -Dm755 "${srcdir}"/amd64/* \
+                -t "${pkgdir}"/opt/"${pkgname}"/
+    # /usr/bin/
+    ln -s /opt/"${pkgname}"/hbbr \
+               "${pkgdir}"/usr/bin/"${pkgname}"-hbbr
+    ln -s /opt/"${pkgname}"/hbbs \
+               "${pkgdir}"/usr/bin/"${pkgname}"-hbbs
+    # .service
+    install -Dm644 "${pkgname}"-hbb*.service \
+                -t "${pkgdir}"/usr/lib/systemd/system/
+
+    chown -R nobody:nobody "${pkgdir}"/var/lib/rustdesk-server/
+}

@@ -1,0 +1,21 @@
+pkgbase = n2n-git
+	pkgdesc = Peer-to-peer VPN.
+	pkgver = r1426.fff50a7d80
+	pkgrel = 1
+	url = https://github.com/ntop/n2n
+	arch = x86_64
+	license = GPL
+	makedepends = libpcap
+	depends = zstd
+	depends = openssl
+	depends = libcap
+	depends = miniupnpc
+	optdepends = libpcap: for n2n-decode
+	provides = n2n-git
+	provides = n2n
+	conflicts = n2n-git
+	conflicts = n2n
+	backup = etc/n2n/edge.conf
+	backup = etc/n2n/supernode.conf
+
+pkgname = n2n-git

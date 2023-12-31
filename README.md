@@ -13,7 +13,7 @@ Personally maintained AUR packages.
 - [X] dnscrypt-proxy-chinalist-git
 - [X] friend
 - [X] gsconnect
-- [X] headscale-alpha
+- [x] headscale-alpha
 - [X] hmcl
 - [X] jetbra.in
 - [X] [jetbrains-clion]
@@ -38,6 +38,7 @@ Personally maintained AUR packages.
 - [ ] launch4j
 - [x] libreoffice-nightly
 - [X] librime-data
+- [X] n2n-git
 - [X] n_m3u8dl-re
 - [X] nginx-mainline-mod-brotli-git
 - [X] nginx-mainline-mod-dav-ext-git

@@ -1,0 +1,63 @@
+# Maintainer: Kitty Panics
+# Upstream: https://gitlab.archlinux.org/archlinux/packaging/packages/n2n
+#
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+
+pkgname=n2n-git
+pkgver=r1426.fff50a7d80
+pkgrel=1
+url="https://github.com/ntop/n2n"
+pkgdesc="Peer-to-peer VPN."
+arch=('x86_64')
+license=('GPL')
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+depends=('zstd' 'openssl' 'libcap' 'miniupnpc')
+makedepends=('libpcap')
+optdepends=('libpcap: for n2n-decode')
+backup=('etc/n2n/edge.conf'
+        'etc/n2n/supernode.conf')
+#source=("git+${url}")
+#sha256sums=('SKIP')
+
+pkgver() {
+    _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
+    _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
+    _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/dev" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
+    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+}
+
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+      git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+    cd "${srcdir}"/"${pkgname}"
+
+    sed -i 's|/sbin|/bin|' Makefile
+    sed -i "/^\t@scripts/c\\\t@echo -n \"${pkgver}\"" Makefile
+    sed -i "/^N2N_COMMIT_HASH/c\\N2N_COMMIT_HASH='${pkgver}'" Makefile
+}
+
+build() {
+    cd "${srcdir}"/"${pkgname}"
+    ./autogen.sh
+    ./configure --with-zstd --with-openssl --enable-pthread --enable-cap --enable-pcap --enable-miniupnp
+    make
+}
+
+package() {
+    cd "${srcdir}"/"${pkgname}"
+
+    # /usr/bin/*, man-pages
+    DESTDIR="${pkgdir}" SBINDIR="${pkgdir}"/usr/bin make install
+
+    # /etc/n2n/*.conf
+    install -Dm644 packages/etc/n2n/edge.conf.sample \
+                   "${pkgdir}"/etc/n2n/edge.conf
+    install -Dm644 packages/etc/n2n/supernode.conf.sample \
+                   "${pkgdir}"/etc/n2n/supernode.conf
+
+    # .service
+    install -Dm644 packages/etc/systemd/system/* \
+                -t "${pkgdir}"/usr/lib/systemd/system/
+}

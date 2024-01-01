@@ -1,7 +1,7 @@
 pkgbase = n2n-git
 	pkgdesc = Peer-to-peer VPN.
 	pkgver = r1426.fff50a7d80
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ntop/n2n
 	arch = x86_64
 	license = GPL
@@ -17,5 +17,13 @@ pkgbase = n2n-git
 	conflicts = n2n
 	backup = etc/n2n/edge.conf
 	backup = etc/n2n/supernode.conf
+	source = git+https://github.com/ntop/n2n.git
+	source = full-edge.conf
+	source = full-supernode.conf
+	source = version.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = n2n-git

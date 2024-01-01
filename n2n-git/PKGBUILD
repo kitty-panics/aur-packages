@@ -5,7 +5,7 @@
 
 pkgname=n2n-git
 pkgver=r1426.fff50a7d80
-pkgrel=1
+pkgrel=3
 url="https://github.com/ntop/n2n"
 pkgdesc="Peer-to-peer VPN."
 arch=('x86_64')
@@ -17,45 +17,56 @@ makedepends=('libpcap')
 optdepends=('libpcap: for n2n-decode')
 backup=('etc/n2n/edge.conf'
         'etc/n2n/supernode.conf')
-#source=("git+${url}")
-#sha256sums=('SKIP')
+source=("git+${url}.git"
+        'full-edge.conf'
+        'full-supernode.conf'
+        'version.sh')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-    _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
-    _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
-    _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/dev" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
-    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+    #_repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
+    #_commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
+    #_last_commit=$(curl -sL "${_repo_url}/git/refs/heads/dev" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
+    #printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+
+    cd "${srcdir}"/"${pkgname%-*}"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
-      git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
-    fi
-    cd "${srcdir}"/"${pkgname}"
+    cd "${srcdir}"/"${pkgname%-*}"
 
+    # fix: sbin -> bin
     sed -i 's|/sbin|/bin|' Makefile
-    sed -i "/^\t@scripts/c\\\t@echo -n \"${pkgver}\"" Makefile
-    sed -i "/^N2N_COMMIT_HASH/c\\N2N_COMMIT_HASH='${pkgver}'" Makefile
+    # fix: Error: VERSION file does not match tag version (3.1.1 != )
+    cp -f "${srcdir}"/version.sh scripts/version.sh
+    # fix: Welcome to n2n v.
+    sed -i '/Welcome to n2n/ s|v\.||' src/n2n.c
 }
 
 build() {
-    cd "${srcdir}"/"${pkgname}"
+    cd "${srcdir}"/"${pkgname%-*}"
     ./autogen.sh
     ./configure --with-zstd --with-openssl --enable-pthread --enable-cap --enable-pcap --enable-miniupnp
     make
 }
 
 package() {
-    cd "${srcdir}"/"${pkgname}"
+    cd "${srcdir}"/"${pkgname%-*}"
 
     # /usr/bin/*, man-pages
     DESTDIR="${pkgdir}" SBINDIR="${pkgdir}"/usr/bin make install
 
     # /etc/n2n/*.conf
-    install -Dm644 packages/etc/n2n/edge.conf.sample \
+    install -Dm644 "${srcdir}"/full-edge.conf \
                    "${pkgdir}"/etc/n2n/edge.conf
-    install -Dm644 packages/etc/n2n/supernode.conf.sample \
+    install -Dm644 "${srcdir}"/full-supernode.conf \
                    "${pkgdir}"/etc/n2n/supernode.conf
+
+    install -Dm644 packages/etc/n2n/edge.conf.sample \
+                   "${pkgdir}/usr/share/${pkgname}/edge-sample.conf"
+    install -Dm644 packages/etc/n2n/supernode.conf.sample \
+                   "${pkgdir}/usr/share/${pkgname}/supernode-sample.conf"
 
     # .service
     install -Dm644 packages/etc/systemd/system/* \

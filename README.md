@@ -13,7 +13,7 @@ Personally maintained AUR packages.
 - [X] dnscrypt-proxy-chinalist-git
 - [X] friend
 - [X] gsconnect
-- [x] headscale-alpha
+- [X] headscale-git
 - [X] hmcl
 - [X] jetbra.in
 - [X] [jetbrains-clion]

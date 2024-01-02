@@ -4,17 +4,18 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=n2n-git
-pkgver=r1426.fff50a7d80
-pkgrel=3
+pkgver=r1426.fff50a7
+pkgrel=4
 url="https://github.com/ntop/n2n"
 pkgdesc="Peer-to-peer VPN."
 arch=('x86_64')
 license=('GPL')
-provides=("${pkgname}" "${pkgname%-*}")
-conflicts=("${pkgname}" "${pkgname%-*}")
+provides=("${pkgname}" "${pkgname%-*}" "n3n" "n3n-git")
+conflicts=("${pkgname}" "${pkgname%-*}" "n3n" "n3n-git")
 depends=('zstd' 'openssl' 'libcap' 'miniupnpc')
 makedepends=('libpcap')
-optdepends=('libpcap: for n2n-decode')
+optdepends=('libpcap: for n2n-decode'
+            'python: for n2n-ctl, n2n-httpd')
 backup=('etc/n2n/edge.conf'
         'etc/n2n/supernode.conf')
 source=("git+${url}.git"
@@ -24,11 +25,6 @@ source=("git+${url}.git"
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-    #_repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
-    #_commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
-    #_last_commit=$(curl -sL "${_repo_url}/git/refs/heads/dev" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
-    #printf "r%s.%s" "${_commit_count}" "${_last_commit}"
-
     cd "${srcdir}"/"${pkgname%-*}"
     echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
@@ -57,6 +53,11 @@ package() {
     # /usr/bin/*, man-pages
     DESTDIR="${pkgdir}" SBINDIR="${pkgdir}"/usr/bin make install
 
+    # utilities
+    install -Dm644 scripts/n2n-ctl   "${pkgdir}"/usr/bin
+    install -Dm644 scripts/n2n-httpd "${pkgdir}"/usr/bin
+    chmod +x "${pkgdir}"/usr/bin/n2n-*
+
     # /etc/n2n/*.conf
     install -Dm644 "${srcdir}"/full-edge.conf \
                    "${pkgdir}"/etc/n2n/edge.conf
@@ -71,4 +72,7 @@ package() {
     # .service
     install -Dm644 packages/etc/systemd/system/* \
                 -t "${pkgdir}"/usr/lib/systemd/system/
+    find "${pkgdir}"/usr/lib/systemd/system/ -type f -exec sed -i 's|/sbin|/bin|g' {} \;
+    sed -i '/User=/c\User=nobody'   "${pkgdir}"/usr/lib/systemd/system/supernode.service
+    sed -i '/Group=/c\Group=nobody' "${pkgdir}"/usr/lib/systemd/system/supernode.service
 }

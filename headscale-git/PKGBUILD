@@ -4,8 +4,8 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Matt Harrison <matt@harrison.us.com>
 
-pkgname=headscale-alpha
-pkgver=0.23.0_alpha2
+pkgname=headscale-git
+pkgver=r3028.054b06d4
 pkgrel=1
 url="https://github.com/juanfont/headscale"
 pkgdesc="An open source, self-hosted implementation of the Tailscale control server."
@@ -13,43 +13,53 @@ arch=('x86_64')
 license=('BSD')
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
-depends=('glibc')
 makedepends=('go')
 optdepends=('wireguard-tools: CLI tools for generating keys'
             'postgresql: alternative database provider')
 backup=("etc/${pkgname%-*}/config.yaml"
         "etc/${pkgname%-*}/derp.yaml")
-source=("${pkgname%-*}-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
+source=("git+${url}.git"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 sha256sums=('SKIP'
             '059353f4843dec6eb447c567fac890ef63cc9c8acea18840fcfc3f4a76d596db'
             '8a22d7193ceeac0be32725cf8108f963be3a21855e6099de964f810094d0adc7')
 
+pkgver() {
+    cd "${srcdir}"/"${pkgname%-*}"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
 build() {
-    cd "${srcdir}/${pkgname%-*}-${pkgver//_/-}"
+    cd "${srcdir}"/"${pkgname%-*}"
+
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -v -o headscale -tags="ts2019" -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -s -w -X github.com/juanfont/headscale/cmd/headscale/cli.Version=${pkgver//_/-}" ./cmd/headscale
+    go build -tags="ts2021" -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -s -w" ./cmd/headscale
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-*}-${pkgver//_/-}"
+    cd "${srcdir}"/"${pkgname%-*}"
+
+    # /usr/bin/
     install -D -m755 "${pkgname%-*}" "${pkgdir}/usr/bin/${pkgname%-*}"
 
+    # config files
     install -D -m644 "config-example.yaml" "${pkgdir}/etc/${pkgname%-*}/config.yaml"
+    install -D -m644 "derp-example.yaml"   "${pkgdir}/etc/${pkgname%-*}/derp.yaml"
     install -D -m644 "config-example.yaml" "${pkgdir}/usr/share/${pkgname}/config-example.yaml"
+    install -D -m644 "derp-example.yaml"   "${pkgdir}/usr/share/${pkgname}/derp-example.yaml"
 
-    install -D -m644 "derp-example.yaml" "${pkgdir}/etc/${pkgname%-*}/derp.yaml"
-    install -D -m644 "derp-example.yaml" "${pkgdir}/usr/share/${pkgname}/derp-example.yaml"
-
+    # /usr/lib/
     install -D -m644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -D -m644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
+    # systemd .service
     install -D -m644 "docs/packaging/headscale.systemd.service" "${pkgdir}/usr/lib/systemd/system/${pkgname%-*}.service"
+
+    # licenses
+    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,0 +1,70 @@
+# Maintainer: Kitty Panics
+
+pkgname=n3n-git
+pkgver=r1562.cd23e54
+pkgrel=1
+url="https://github.com/hamishcoleman/n3n" # n42n/n3n
+pkgdesc="Peer-to-peer VPN."
+arch=('x86_64')
+license=('GPL')
+provides=("${pkgname}" "${pkgname%-*}" "n2n" "n2n-git")
+conflicts=("${pkgname}" "${pkgname%-*}" "n2n" "n2n-git")
+depends=('zstd' 'openssl' 'libcap' 'miniupnpc')
+makedepends=('libpcap')
+optdepends=('libpcap: for n3n-decode'
+            'python: for n2n-ctl, n2n-httpd')
+backup=('etc/n3n/edge.conf'
+        'etc/n3n/supernode.conf')
+source=("git+${url}.git"
+        'full-edge.conf'
+        'full-supernode.conf'
+        'version.sh')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+pkgver() {
+    cd "${srcdir}"/"${pkgname%-*}"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "${srcdir}"/"${pkgname%-*}"
+
+    # fix: sbin -> bin
+    sed -i 's|/sbin|/bin|' Makefile
+    # fix: Error: VERSION file does not match tag version (3.1.1 != )
+    cp -f "${srcdir}"/version.sh scripts/version.sh
+    # fix: Welcome to n3n v.
+    sed -i '/Welcome to n3n/ s| v| |' src/n2n.c
+}
+
+build() {
+    cd "${srcdir}"/"${pkgname%-*}"
+    ./autogen.sh
+    ./configure --with-zstd --with-openssl --enable-pthread --enable-cap --enable-pcap --enable-miniupnp
+    make
+}
+
+package() {
+    cd "${srcdir}"/"${pkgname%-*}"
+
+    # /usr/bin/*, man-pages
+    DESTDIR="${pkgdir}" SBINDIR="${pkgdir}"/usr/bin make install
+
+    # utilities
+    install -Dm644 scripts/n2n-ctl   "${pkgdir}"/usr/bin
+    install -Dm644 scripts/n2n-httpd "${pkgdir}"/usr/bin
+    chmod +x "${pkgdir}"/usr/bin/n2n-*
+
+    # /etc/n3n/*.conf
+    install -Dm644 "${srcdir}"/full-edge.conf \
+                   "${pkgdir}"/etc/n3n/edge.conf
+    install -Dm644 "${srcdir}"/full-supernode.conf \
+                   "${pkgdir}"/etc/n3n/supernode.conf
+
+    # .service
+    install -Dm644 packages/lib/systemd/system/* \
+                -t "${pkgdir}"/usr/lib/systemd/system/
+    find "${pkgdir}"/usr/lib/systemd/system/ -type f -exec sed -i 's|/sbin|/bin|g' {} \;
+    sed -i '/User=/c\User=nobody'   "${pkgdir}"/usr/lib/systemd/system/supernode.service
+    sed -i '/Group=/c\Group=nobody' "${pkgdir}"/usr/lib/systemd/system/supernode.service
+}

@@ -39,6 +39,7 @@ Personally maintained AUR packages.
 - [x] libreoffice-nightly
 - [X] librime-data
 - [X] n2n-git
+- [X] n3n-git
 - [X] n_m3u8dl-re
 - [X] nginx-mainline-mod-brotli-git
 - [X] nginx-mainline-mod-dav-ext-git

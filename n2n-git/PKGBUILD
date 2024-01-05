@@ -5,17 +5,15 @@
 
 pkgname=n2n-git
 pkgver=r1426.fff50a7
-pkgrel=4
+pkgrel=6
 url="https://github.com/ntop/n2n"
 pkgdesc="Peer-to-peer VPN."
 arch=('x86_64')
 license=('GPL')
 provides=("${pkgname}" "${pkgname%-*}" "n3n" "n3n-git")
 conflicts=("${pkgname}" "${pkgname%-*}" "n3n" "n3n-git")
-depends=('zstd' 'openssl' 'libcap' 'miniupnpc')
-makedepends=('libpcap')
-optdepends=('libpcap: for n2n-decode'
-            'python: for n2n-ctl, n2n-httpd')
+depends=('zstd' 'openssl' 'libcap' 'libpcap' 'libnatpmp' 'miniupnpc')
+optdepends=('python: for n2n-ctl, n2n-httpd')
 backup=('etc/n2n/edge.conf'
         'etc/n2n/supernode.conf')
 source=("git+${url}.git"
@@ -43,8 +41,10 @@ prepare() {
 build() {
     cd "${srcdir}"/"${pkgname%-*}"
     ./autogen.sh
-    ./configure --with-zstd --with-openssl --enable-pthread --enable-cap --enable-pcap --enable-miniupnp
-    make
+    ./configure --with-zstd --with-openssl \
+                --enable-cap --enable-pcap \
+                --enable-natpmp --enable-miniupnp
+    make -j32
 }
 
 package() {

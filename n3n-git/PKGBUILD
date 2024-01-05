@@ -9,10 +9,8 @@ arch=('x86_64')
 license=('GPL')
 provides=("${pkgname}" "${pkgname%-*}" "n2n" "n2n-git")
 conflicts=("${pkgname}" "${pkgname%-*}" "n2n" "n2n-git")
-depends=('zstd' 'openssl' 'libcap' 'miniupnpc')
-makedepends=('libpcap')
-optdepends=('libpcap: for n3n-decode'
-            'python: for n2n-ctl, n2n-httpd')
+depends=('zstd' 'openssl' 'libcap' 'libpcap' 'libnatpmp' 'miniupnpc')
+optdepends=('python: for n2n-ctl, n2n-httpd')
 backup=('etc/n3n/edge.conf'
         'etc/n3n/supernode.conf')
 source=("git+${url}.git"
@@ -40,8 +38,10 @@ prepare() {
 build() {
     cd "${srcdir}"/"${pkgname%-*}"
     ./autogen.sh
-    ./configure --with-zstd --with-openssl --enable-pthread --enable-cap --enable-pcap --enable-miniupnp
-    make
+    ./configure --with-zstd --with-openssl \
+                --enable-cap --enable-pcap \
+                --enable-natpmp --enable-miniupnp
+    make -j32
 }
 
 package() {
@@ -51,9 +51,9 @@ package() {
     DESTDIR="${pkgdir}" SBINDIR="${pkgdir}"/usr/bin make install
 
     # utilities
-    install -Dm644 scripts/n2n-ctl   "${pkgdir}"/usr/bin
-    install -Dm644 scripts/n2n-httpd "${pkgdir}"/usr/bin
-    chmod +x "${pkgdir}"/usr/bin/n2n-*
+    install -Dm644 scripts/n3n-ctl   "${pkgdir}"/usr/bin
+    install -Dm644 scripts/n3n-httpd "${pkgdir}"/usr/bin
+    chmod +x "${pkgdir}"/usr/bin/n3n-*
 
     # /etc/n3n/*.conf
     install -Dm644 "${srcdir}"/full-edge.conf \

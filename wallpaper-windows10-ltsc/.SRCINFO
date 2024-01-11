@@ -4,12 +4,12 @@ pkgbase = wallpaper-windows10-ltsc
 	pkgrel = 1
 	url = https://next.itellyou.cn/Original/Index#cbp=Product?ID=f905b2d9-11e7-4ee3-8b52-407a8befe8d1
 	arch = any
-	license = custom
+	license = custom:FUMS
 	makedepends = p7zip
 	makedepends = rsync
 	provides = wallpaper-windows10-ltsc
 	conflicts = wallpaper-windows10-ltsc
-	source = SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO
+	source = 
 	sha256sums = c117c5ddbc51f315c739f9321d4907fa50090ba7b48e7e9a2d173d49ef2f73a3
 
 pkgname = wallpaper-windows10-ltsc

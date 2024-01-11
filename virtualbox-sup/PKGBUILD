@@ -11,26 +11,26 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=('virtualbox')
 makedepends=('p7zip')
-source=("vbox.run::https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-159484-Linux_amd64.run")
+source=("vbox.run::${url}/VirtualBox-${pkgver}-159484-Linux_amd64.run")
 sha256sums=('SKIP')
 
 prepare() {
-    7z x -aos vbox.run -o"${srcdir}"/
-    bsdtar -xf "${srcdir}"/VirtualBox.tar.bz2 -C "${srcdir}"/
+    7z x -aos vbox.run -o"${srcdir}"
+    bsdtar -xf "${srcdir}"/VirtualBox.tar.bz2 -C "${srcdir}"
 }
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/usr/share/"${pkgname%%-*}"/UnattendedTemplates/
-    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname%%-*}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname%%-*}"/UnattendedTemplates
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname%%-*}"
 
-    # package files
+    # pkg files
     for i in `ls "${srcdir}/UnattendedTemplates"`; do
         install -Dm644 "${srcdir}"/UnattendedTemplates/"${i}" \
                        "${pkgdir}"/usr/share/virtualbox/UnattendedTemplates/
     done
 
     # doc
-    install -Dm644 "${srcdir}"/UserManual.{pdf,qch,qhc} \
-                   "${pkgdir}"/usr/share/doc/"${pkgname%%-*}"/
+    install -Dm644 "${srcdir}"/UserManual.* \
+                -t "${pkgdir}"/usr/share/doc/"${pkgname%%-*}"/
 }

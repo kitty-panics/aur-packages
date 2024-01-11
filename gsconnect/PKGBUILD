@@ -2,13 +2,13 @@
 
 pkgname=gsconnect
 pkgver=56
-pkgrel=1
+pkgrel=2
 url="https://github.com/GSConnect/gnome-shell-extension-gsconnect"
 pkgdesc="KDE Connect implementation for GNOME."
 arch=('any')
 license=('GPL')
-provides=("${pkgname}" "kdeconnect" "gnome-shell-extension-gsconnect")
-conflicts=("${pkgname}" "kdeconnect" "gnome-shell-extension-gsconnect")
+provides=("${pkgname}" "gnome-shell-extension-gsconnect")
+conflicts=("${pkgname}" "gnome-shell-extension-gsconnect")
 depends=('gjs')
 makedepends=('meson')
 optdepends=('gnome-shell: Get all the functions'
@@ -31,12 +31,13 @@ build() {
 }
 
 package() {
-    # create dir
+    # mkdir
     install -dm755 "${pkgdir}"/usr/bin/
 
-    # package files
+    # pkg files
     DESTDIR="${pkgdir}" meson install -C build
-    # /usr/bin/
+
+    # bin
     install -Dm755 "${srcdir}"/gsconnect-daemon.sh \
                    "${pkgdir}"/usr/bin/gsconnect-daemon
     install -Dm755 "${srcdir}"/gsconnect-preferences.sh \

@@ -9,7 +9,7 @@ pkgbase = virtualbox-sup
 	depends = virtualbox
 	provides = virtualbox-sup
 	conflicts = virtualbox-sup
-	source = vbox.run::https://download.virtualbox.org/virtualbox/7.0.12/VirtualBox-7.0.12-159484-Linux_amd64.run
+	source = vbox.run::https://download.virtualbox.org/virtualbox/7.0.12//VirtualBox-7.0.12-159484-Linux_amd64.run
 	sha256sums = SKIP
 
 pkgname = virtualbox-sup

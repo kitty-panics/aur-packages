@@ -21,23 +21,19 @@ sha256sums=('SKIP'
             'SKIP')
 noextract=("AriaNg-${pkgver}.zip" "AriaNg-${pkgver}-AllInOne.zip")
 
-prepare() {
-    # set the correct permissions
-    find "${srcdir}" -type d -exec chmod 755 {} \;
-    find "${srcdir}" -type f -exec chmod 644 {} \;
-}
-
 package_aria-ng() {
     provides=("${pkgname}")
     conflicts=("${pkgname}")
 
-    # package files
+    # mkdir
     install -dm755 "${pkgdir}"/usr/share/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # package files
     unzip "${srcdir}"/AriaNg-"${pkgver}".zip \
        -d "${pkgdir}"/usr/share/"${pkgname}"
 
     # licenses
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
     mv "${pkgdir}"/usr/share/"${pkgname}"/LICENSE \
        "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }
@@ -46,13 +42,15 @@ package_aria-ng-allinone() {
     provides=("${pkgname}")
     conflicts=("${pkgname}")
 
-    # package files
+    # mkdir
     install -dm755 "${pkgdir}"/usr/share/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # package files
     unzip "${srcdir}"/AriaNg-"${pkgver}"-AllInOne.zip \
        -d "${pkgdir}"/usr/share/"${pkgname}"
 
     # licenses
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
     mv "${pkgdir}"/usr/share/"${pkgname}"/LICENSE \
        "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }

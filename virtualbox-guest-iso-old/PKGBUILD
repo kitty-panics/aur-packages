@@ -2,8 +2,8 @@
 
 pkgname=virtualbox-guest-iso-old
 pkgver=6.1.26
-pkgrel=4
-url="https://download.virtualbox.org/virtualbox/${pkgver}/"
+pkgrel=5
+url="https://download.virtualbox.org/virtualbox/${pkgver}"
 pkgdesc='The official VirtualBox Guest Additions ISO image (v6.1.26).'
 arch=('any')
 license=('custom:PUEL')
@@ -11,7 +11,7 @@ provides=("${pkgname}" "${pkgname:0:-4}")
 conflicts=("${pkgname}" "${pkgname:0:-4}")
 depends=('virtualbox')
 install=${pkgname}.install
-source=("https://download.virtualbox.org/virtualbox/${pkgver}/VBoxGuestAdditions_${pkgver}.iso"
+source=("${url}/VBoxGuestAdditions_${pkgver}.iso"
         "${pkgname}.install"
         "LICENSE")
 sha256sums=('SKIP'
@@ -20,11 +20,11 @@ sha256sums=('SKIP'
 noextract=("VBoxGuestAdditions_${pkgver}.iso")
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/usr/lib/virtualbox/additions/
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/lib/virtualbox/additions
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # package files
+    # pkg files
     install -Dm644 "${srcdir}"/VBoxGuestAdditions_"${pkgver}".iso \
                    "${pkgdir}"/usr/lib/virtualbox/additions/VBoxGuestAdditions.iso
 

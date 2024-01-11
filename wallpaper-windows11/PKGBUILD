@@ -27,10 +27,10 @@ prepare() {
 }
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/usr/share/backgrounds/"${pkgname}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/backgrounds/"${pkgname}"
 
-    # package files
+    # pkg files
     rsync -rtl "${srcdir}"/5/Windows/Web/Wallpaper/ \
                "${pkgdir}"/usr/share/backgrounds/"${pkgname}"/ \
                --exclude="Desktop.ini" --exclude="Extended" --exclude="img50.jpg"

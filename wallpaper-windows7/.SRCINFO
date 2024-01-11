@@ -9,7 +9,7 @@ pkgbase = wallpaper-windows7
 	makedepends = rsync
 	provides = wallpaper-windows7
 	conflicts = wallpaper-windows7
-	source = 7601.24214.180801-1700.win7sp1_ldr_escrow_client_ultimate_x64fre_en-us.iso
+	source = 
 	sha256sums = dec04cbd352b453e437b2fe9614b67f28f7c0b550d8351827bc1e9ef3f601389
 
 pkgname = wallpaper-windows7

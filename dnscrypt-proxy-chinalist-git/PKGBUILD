@@ -7,8 +7,8 @@ url="https://github.com/felixonmars/dnsmasq-china-list"
 pkgdesc="Chinese-specific configuration to improve dnscrypt-proxy."
 arch=('any')
 license=('custom:DWTFYWT')
-provides=("${pkgname}" "${pkgname:0:-4}")
-conflicts=("${pkgname}" "${pkgname:0:-4}")
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
 depends=('dnscrypt-proxy')
 install="${pkgname}.install"
 source=("${url}/raw/master/accelerated-domains.china.conf"
@@ -33,11 +33,11 @@ build() {
 }
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/etc/dnscrypt-proxy/
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/etc/dnscrypt-proxy
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # package files
+    # pkg files
     install -Dm644 "${srcdir}"/dnscrypt-proxy-forwarding-rules.txt \
                    "${pkgdir}"/etc/dnscrypt-proxy/chinalist.txt
 

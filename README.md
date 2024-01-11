@@ -8,7 +8,7 @@ Personally maintained AUR packages.
 - [X] apktool
 - [X] aria-ng
 - [X] aria2-webui-git
-- [ ] cloudflare-speedtest
+- [X] cloudflare-speedtest
 - [ ] cst-cad-navigator
 - [X] dnscrypt-proxy-chinalist-git
 - [X] friend

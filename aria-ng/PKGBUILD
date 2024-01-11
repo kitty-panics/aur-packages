@@ -9,7 +9,7 @@ pkgdesc="A modern web frontend making aria2 easier to use."
 arch=('any')
 license=('MIT')
 depends=('aria2')
-makedepends=('p7zip' 'rsync')
+makedepends=('unzip')
 optdepends=('apache: A supported application server'
             'nginx: A supported application server'
             'nginx-mainline: A supported application server'
@@ -22,8 +22,6 @@ sha256sums=('SKIP'
 noextract=("AriaNg-${pkgver}.zip" "AriaNg-${pkgver}-AllInOne.zip")
 
 prepare() {
-    7z x -aos "AriaNg-${pkgver}.zip" -o"${srcdir}"/AriaNg
-    7z x -aos "AriaNg-${pkgver}-AllInOne.zip" -o"${srcdir}"/AriaNg-AllInOne
     # set the correct permissions
     find "${srcdir}" -type d -exec chmod 755 {} \;
     find "${srcdir}" -type f -exec chmod 644 {} \;
@@ -33,33 +31,28 @@ package_aria-ng() {
     provides=("${pkgname}")
     conflicts=("${pkgname}")
 
-    # create dir
-    install -dm755 "${pkgdir}"/usr/share/"${pkgname}"/
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
-
     # package files
-    rsync -rtl "${srcdir}"/AriaNg/ \
-               "${pkgdir}"/usr/share/"${pkgname}" \
-               --exclude="LICENSE"
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname}"
+    unzip "${srcdir}"/AriaNg-"${pkgver}".zip \
+       -d "${pkgdir}"/usr/share/"${pkgname}"
 
     # licenses
-    install -Dm644 "${srcdir}"/AriaNg/LICENSE \
-                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    mv "${pkgdir}"/usr/share/"${pkgname}"/LICENSE \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }
 
 package_aria-ng-allinone() {
     provides=("${pkgname}")
     conflicts=("${pkgname}")
 
-    # create dir
-    install -dm755 "${pkgdir}"/usr/share/"${pkgname}"/
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
-
     # package files
-    install -Dm644 "${srcdir}"/AriaNg-AllInOne/index.html \
-                   "${pkgdir}"/usr/share/"${pkgname}"/
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname}"
+    unzip "${srcdir}"/AriaNg-"${pkgver}"-AllInOne.zip \
+       -d "${pkgdir}"/usr/share/"${pkgname}"
 
     # licenses
-    install -Dm644 "${srcdir}"/AriaNg-AllInOne/LICENSE \
-                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    mv "${pkgdir}"/usr/share/"${pkgname}"/LICENSE \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }

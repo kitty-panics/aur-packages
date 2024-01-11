@@ -1,7 +1,7 @@
 # Maintainer: Kitty Panics
 
 pkgname=apktool
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 url="https://github.com/iBotPeaches/Apktool/releases"
 pkgdesc="A tool for reverse engineering Android apk files."
@@ -17,14 +17,14 @@ sha256sums=('SKIP'
 noextract=("apktool_${pkgver}.jar")
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/usr/bin/
-    install -dm755 "${pkgdir}"/usr/share/java/"${pkgname}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/java/"${pkgname}"
 
-    # package files
+    # pkg files
     install -Dm644 "${srcdir}"/apktool_"${pkgver}".jar \
                    "${pkgdir}"/usr/share/java/"${pkgname}"/apktool.jar
-    # /usr/bin/
+    # bin
     install -Dm755 "${srcdir}"/apktool.sh \
                    "${pkgdir}"/usr/bin/apktool
 }

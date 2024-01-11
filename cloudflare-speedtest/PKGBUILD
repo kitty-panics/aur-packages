@@ -1,0 +1,38 @@
+# Maintainer: Kitty Panics
+
+pkgname=cloudflare-speedtest
+pkgver=2.2.5
+pkgrel=1
+url="https://github.com/XIU2/CloudflareSpeedTest/releases"
+pkgdesc="自选优选 IP」测试 Cloudflare CDN 延迟和速度，获取最快 IP ！"
+arch=('any')
+license=('GPL3')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+source=("${url}/download/v"${pkgver}"/CloudflareST_linux_amd64.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/etc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname}"
+
+    # pkg files
+    install -Dm644 "${srcdir}"/CloudflareST \
+                   "${pkgdir}"/usr/share/"${pkgname}"/"${pkgname}"
+    install -Dm644 "${srcdir}"/cfst_hosts.sh \
+                   "${pkgdir}"/usr/share/"${pkgname}"/
+    chmod +x "${pkgdir}"/usr/share/"${pkgname}"/*
+
+    # etc
+    install -Dm644 "${srcdir}"/ip*.txt \
+                -t "${pkgdir}"/etc/"${pkgname}"/
+    # bin
+    ln -s /usr/share/"${pkgname}"/"${pkgname}" \
+          "${pkgdir}"/usr/bin/"${pkgname}"
+    # doc
+    install -Dm644 "${srcdir}"/使用+错误+反馈说明.txt \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/README.txt
+}

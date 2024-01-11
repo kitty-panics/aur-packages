@@ -45,21 +45,21 @@ package() {
     cd "${srcdir}"/"${pkgname%-*}"
 
     # /usr/bin/
-    install -D -m755 "${pkgname%-*}" "${pkgdir}/usr/bin/${pkgname%-*}"
+    install -Dm755 "${pkgname%-*}" "${pkgdir}/usr/bin/${pkgname%-*}"
 
     # config files
-    install -D -m644 "config-example.yaml" "${pkgdir}/etc/${pkgname%-*}/config.yaml"
-    install -D -m644 "derp-example.yaml"   "${pkgdir}/etc/${pkgname%-*}/derp.yaml"
-    install -D -m644 "config-example.yaml" "${pkgdir}/usr/share/${pkgname}/config-example.yaml"
-    install -D -m644 "derp-example.yaml"   "${pkgdir}/usr/share/${pkgname}/derp-example.yaml"
+    install -Dm644 "config-example.yaml" "${pkgdir}/etc/${pkgname%-*}/config.yaml"
+    install -Dm644 "derp-example.yaml"   "${pkgdir}/etc/${pkgname%-*}/derp.yaml"
+    install -Dm644 "config-example.yaml" "${pkgdir}/usr/share/${pkgname}/config-example.yaml"
+    install -Dm644 "derp-example.yaml"   "${pkgdir}/usr/share/${pkgname}/derp-example.yaml"
 
     # /usr/lib/
-    install -D -m644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -D -m644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
     # systemd .service
-    install -D -m644 "docs/packaging/headscale.systemd.service" "${pkgdir}/usr/lib/systemd/system/${pkgname%-*}.service"
+    install -Dm644 "docs/packaging/headscale.systemd.service" "${pkgdir}/usr/lib/systemd/system/${pkgname%-*}.service"
 
     # licenses
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

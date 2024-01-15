@@ -5,7 +5,7 @@ pkgver=2023.09.22H2
 pkgrel=1
 url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=f905b2d9-11e7-4ee3-8b52-407a8befe8d1"
 pkgdesc="MS Windows10 (22H2) wallpaper."
-arch=('any')
+arch=('x86_64')
 license=('custom:FUMS')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -28,7 +28,7 @@ prepare() {
 
 package() {
     # mkdir
-    install -dm755 "${pkgdir}"/usr/share/backgrounds/"${pkgname}"/
+    install -dm755 "${pkgdir}"/usr/share/backgrounds/"${pkgname}"
 
     # pkg files
     rsync -rtl "${srcdir}"/5/Windows/Web/Wallpaper \

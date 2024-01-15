@@ -1,0 +1,46 @@
+# Maintainer: Kitty Panics
+
+pkgname=github-cli
+pkgver=2.42.0
+pkgrel=1
+url="https://github.com/cli/cli/releases"
+pkgdesc="GitHub’s official command line tool."
+arch=('x86_64')
+license=('MIT')
+provides=("${pkgname}" "gh" "gh-cli")
+conflicts=("${pkgname}" "gh" "gh-cli")
+depends=('git')
+source=("${url}/download/v${pkgver}/gh_${pkgver}_linux_amd64.deb")
+sha256sums=('SKIP')
+
+prepare() {
+    tar -xzf "${srcdir}"/data.tar.gz
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/opt/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/bin
+    #install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files
+    install -Dm755 "${srcdir}"/usr/bin/gh \
+                   "${pkgdir}"/opt/"${pkgname}"/gh-cli
+
+    # bin
+    ln -s /opt/"${pkgname}"/gh-cli \
+          "${pkgdir}"/usr/bin/gh
+    # bash, fish, zsh
+    cp -a "${srcdir}"/usr/share/bash-completion \
+          "${pkgdir}"/usr/share/
+    cp -a "${srcdir}"/usr/share/fish \
+          "${pkgdir}"/usr/share/
+    cp -a "${srcdir}"/usr/share/zsh \
+          "${pkgdir}"/usr/share/
+    # man
+    install -Dm644 "${srcdir}"/usr/share/man/man1/* \
+                -t "${pkgdir}"/usr/share/man/man1/
+    # licenses
+    #install -Dm644 "${srcdir}"/gh_"${pkgver}"_linux_amd64/LICENSE \
+    #               "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

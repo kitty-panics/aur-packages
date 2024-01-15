@@ -5,11 +5,11 @@ pkgver=r16.9bc292f409
 pkgrel=1
 url="https://github.com/vinceliuice/Vimix-cursors"
 pkgdesc="Vimix-cursors for linux desktop"
-arch=('any')
+arch=('x86_64')
 license=('GPL3')
-makedepends=('git' 'rsync')
-provides=("${pkgname}" "${pkgname:0:-4}")
-conflicts=("${pkgname}" "${pkgname:0:-4}")
+makedepends=('git')
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
 #source=("git+$url.git")
 #sha256sums=('SKIP')
 
@@ -21,21 +21,23 @@ pkgver() {
 }
 
 prepare() {
-    git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
 }
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/usr/share/icons/{"${pkgname:0:-4}"/,"${pkgname:0:-4}"-white/}
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/icons/{"${pkgname%-*}","${pkgname%-*}"-white}
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # package files
-    rsync -rtl "${srcdir}"/"${pkgname}"/dist/ \
-               "${pkgdir}"/usr/share/icons/"${pkgname:0:-4}"
-    rsync -rtl "${srcdir}"/"${pkgname}"/dist-white/ \
-               "${pkgdir}"/usr/share/icons/"${pkgname:0:-4}"-white
+    # pkg files
+    cp -a "${srcdir}"/"${pkgname}"/dist/* \
+          "${pkgdir}"/usr/share/icons/"${pkgname%-*}"/
+    cp -a "${srcdir}"/"${pkgname}"/dist-white/* \
+          "${pkgdir}"/usr/share/icons/"${pkgname%-*}"-white/
 
     # licenses
     install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE \
-                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }

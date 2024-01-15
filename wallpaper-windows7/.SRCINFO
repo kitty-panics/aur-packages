@@ -3,7 +3,7 @@ pkgbase = wallpaper-windows7
 	pkgver = 2019.sp1.ultimate
 	pkgrel = 1
 	url = https://next.itellyou.cn/Original/Index#cbp=Product?ID=6f677346-0a09-43fa-b60d-e878ed7625a0
-	arch = any
+	arch = x86_64
 	license = custom:FUMS
 	makedepends = p7zip
 	makedepends = rsync

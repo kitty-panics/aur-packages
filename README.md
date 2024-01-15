@@ -12,6 +12,8 @@ Personally maintained AUR packages.
 - [ ] cst-cad-navigator
 - [X] dnscrypt-proxy-chinalist-git
 - [X] friend
+- [x] github-cli
+- [x] github-desktop
 - [X] gsconnect
 - [X] headscale-git
 - [X] hmcl

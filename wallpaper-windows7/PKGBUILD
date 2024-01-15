@@ -5,7 +5,7 @@ pkgver=2019.sp1.ultimate
 pkgrel=1
 url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=6f677346-0a09-43fa-b60d-e878ed7625a0"
 pkgdesc="MS Windows7 (2019) wallpaper."
-arch=('any')
+arch=('x86_64')
 license=('custom:FUMS')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -28,7 +28,7 @@ prepare() {
 
 package() {
     # mkdir
-    install -dm755 "${pkgdir}"/usr/share/backgrounds/"${pkgname}"/
+    install -dm755 "${pkgdir}"/usr/share/backgrounds/"${pkgname}"
 
     # pkg files
     rsync -rtl "${srcdir}"/Windows/Web/Wallpaper \

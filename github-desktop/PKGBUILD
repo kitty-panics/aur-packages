@@ -1,0 +1,46 @@
+# Maintainer: Kitty Panics
+
+pkgname=github-desktop
+pkgver=3.3.6_RC3
+pkgrel=1
+url="https://github.com/shiftkey/desktop/releases" # desktop/desktop.git
+pkgdesc="Fork of GitHub Desktop to support various Linux distributions."
+arch=('x86_64')
+license=('MIT')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+depends=('gtk3' 'libnotify' 'nss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libdrm' 'mesa'
+         'libxcb' 'kde-cli-tools' 'trash-cli' 'glib2' 'gvfs' 'curl' 'libsecret' 'gnome-keyring')
+optdepends=('pulseaudio: A featureful, general-purpose sound server'
+            'alsa-lib: An alternative implementation of Linux sound support'
+            'lsb-release: LSB version query program')
+source=("${url}/download/release-3.3.6-linux3/GitHubDesktop-linux-amd64-3.3.6-linux3.deb")
+sha256sums=('SKIP')
+
+prepare() {
+    tar -xJf "${srcdir}"/data.tar.xz
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/opt/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files
+    cp -a "${srcdir}"/usr/lib/"${pkgname}"/* \
+          "${pkgdir}"/opt/"${pkgname}"/
+
+    # bin
+    ln -s /opt/"${pkgname}"/"${pkgname}" \
+          "${pkgdir}"/usr/bin/"${pkgname}"
+    # .desktop
+    install -Dm644 "${srcdir}"/usr/share/applications/"${pkgname}".desktop \
+                   "${pkgdir}"/usr/share/applications/"${pkgname}".desktop
+    # icons
+    cp -a "${srcdir}"/usr/share/icons \
+          "${pkgdir}"/usr/share/icons
+    # licenses
+    install -Dm644 "${srcdir}"/usr/share/doc/github-desktop/copyright \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

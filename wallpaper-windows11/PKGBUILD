@@ -5,7 +5,7 @@ pkgver=2023.09.22H2
 pkgrel=1
 url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=42e87ac8-9cd6-eb11-bdf8-e0d4e850c9c6"
 pkgdesc="MS Windows11 (22H2) wallpaper."
-arch=('any')
+arch=('x86_64')
 license=('custom:FUMS')
 provides=("${pkgname}")
 conflicts=("${pkgname}")

@@ -20,11 +20,10 @@ package() {
     install -dm755 "${pkgdir}"/usr/share/"${pkgname}"
 
     # pkg files
-    install -Dm644 "${srcdir}"/CloudflareST \
+    install -Dm755 "${srcdir}"/CloudflareST \
                    "${pkgdir}"/usr/share/"${pkgname}"/"${pkgname}"
-    install -Dm644 "${srcdir}"/cfst_hosts.sh \
+    install -Dm755 "${srcdir}"/cfst_hosts.sh \
                    "${pkgdir}"/usr/share/"${pkgname}"/
-    chmod +x "${pkgdir}"/usr/share/"${pkgname}"/*
 
     # etc
     install -Dm644 "${srcdir}"/ip*.txt \

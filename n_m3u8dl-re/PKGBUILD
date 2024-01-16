@@ -1,24 +1,36 @@
 # Maintainer: Kitty Panics
 
 pkgname=n_m3u8dl-re
-_pkgver=v0.2.0-beta
 pkgver=0.2.0_beta
 pkgrel=1
-url="https://github.com/nilaoda/N_m3u8DL-RE/releases"
+url="https://github.com/nilaoda/N_m3u8DL-RE"
 pkgdesc="Cross-Platform, modern and powerful stream downloader for MPD/M3U8/ISM."
 arch=('x86_64')
 license=('MIT')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=('ffmpeg')
-source=("${url}/download/${_pkgver}/N_m3u8DL-RE_Beta_linux-x64_20230628.tar.gz")
-sha256sums=('SKIP')
+source=("${url}/releases/download/v${pkgver/_/-}/N_m3u8DL-RE_Beta_linux-x64_20230628.tar.gz"
+        "${url}/raw/main/README.md"
+        "${url}/raw/main/LICENSE")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/usr/bin/
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # /usr/bin/
-    install -Dm755 "${srcdir}/N_m3u8DL-RE_Beta_linux-x64/N_m3u8DL-RE" \
+    # pkg files / bin
+    install -Dm755 "${srcdir}"/N_m3u8DL-RE_Beta_linux-x64/N_m3u8DL-RE \
                    "${pkgdir}"/usr/bin/"${pkgname}"
+
+    # doc
+    install -Dm644 "${srcdir}"/README.md \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"
+    # licenses
+    install -Dm644 "${srcdir}"/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"
 }

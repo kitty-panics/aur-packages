@@ -10,7 +10,6 @@ license=('custom:PUEL')
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
 depends=('virtualbox')
-install=${pkgname}.install
 source=("${url}/VBoxGuestAdditions_${pkgver}.iso"
         "${pkgname}.install"
         "LICENSE")

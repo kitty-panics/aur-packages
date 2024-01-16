@@ -3,7 +3,6 @@ pkgbase = virtualbox-guest-iso-old
 	pkgver = 6.1.26
 	pkgrel = 5
 	url = https://download.virtualbox.org/virtualbox/6.1.26
-	install = virtualbox-guest-iso-old.install
 	arch = x86_64
 	license = custom:PUEL
 	depends = virtualbox

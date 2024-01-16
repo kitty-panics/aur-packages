@@ -1,16 +1,16 @@
 # Maintainer: Kitty Panics
 
 pkgname=oh-my-zsh-git
-pkgver=r7059.418046e958
+pkgver=r7095.8be4789bbb
 pkgrel=1
 url="https://github.com/ohmyzsh/ohmyzsh"
 pkgdesc="A delightful community-driven framework for managing your zsh configuration."
 arch=('any')
 license=('MIT')
-provides=("${pkgname}" "${pkgname:0:-4}")
-conflicts=("${pkgname}" "${pkgname:0:-4}")
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
 depends=('zsh')
-makedepends=('git' 'rsync')
+makedepends=('git')
 optdepends=('git: Support for git repositories')
 #source=("git+${url}.git")
 #sha256sums=('SKIP')
@@ -23,33 +23,34 @@ pkgver() {
 }
 
 prepare() {
-    git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
 }
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/usr/share/"${pkgname:0:-4}"/
-    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname%-*}"
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # package files
-    rsync -rtl "${srcdir}"/"${pkgname}"/ \
-               "${pkgdir}"/usr/share/"${pkgname:0:-4}" \
-               --exclude=".git*" --exclude="cache" --exclude="log" \
-               --exclude="LICENSE.txt" --exclude="*.md"
-    cd "${pkgdir}"/usr/share/"${pkgname:0:-4}"/templates/
-    sed -i 's/$HOME\/\./\/usr\/share\//' zshrc.zsh-template
-    sed -i '/mode disabled/ s/^# //' zshrc.zsh-template
-    sed -i '/zsh.sh/i # Set cache directory.' zshrc.zsh-template
-    sed -i '/zsh.sh/i ZSH_CACHE_DIR="${HOME}"/.cache/oh-my-zsh' zshrc.zsh-template
-    sed -i '/zsh.sh/i if [[ ! -d "${ZSH_CACHE_DIR}" ]]; then' zshrc.zsh-template
-    sed -i '/zsh.sh/i\ \ \ \ mkdir -p "${ZSH_CACHE_DIR}"' zshrc.zsh-template
-    sed -i '/zsh.sh/i fi\n' zshrc.zsh-template
+    # pkg files
+    cp -a "${srcdir}"/"${pkgname}"/* \
+          "${pkgdir}"/usr/share/"${pkgname%-*}"/
+    UPDATE_TEMPLATE="${pkgdir}"/usr/share/"${pkgname%-*}"/templates/zshrc.zsh-template
+    #cp "$UPDATE_TEMPLATE" "$UPDATE_TEMPLATE".bak
+    sed -i 's/$HOME\/\./\/usr\/share\//'                        "$UPDATE_TEMPLATE"
+    sed -i '/mode disabled/ s/^# //'                            "$UPDATE_TEMPLATE"
+    sed -i '/zsh.sh/i # Set cache directory.'                   "$UPDATE_TEMPLATE"
+    sed -i '/zsh.sh/i ZSH_CACHE_DIR="${HOME}"/.cache/oh-my-zsh' "$UPDATE_TEMPLATE"
+    sed -i '/zsh.sh/i if [[ ! -d "${ZSH_CACHE_DIR}" ]]; then'   "$UPDATE_TEMPLATE"
+    sed -i '/zsh.sh/i\ \ \ \ mkdir -p "${ZSH_CACHE_DIR}"'       "$UPDATE_TEMPLATE"
+    sed -i '/zsh.sh/i fi\n'                                     "$UPDATE_TEMPLATE"
 
     # doc
-    install -Dm644 "${srcdir}"/"${pkgname}"/*.md \
-                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/*.md \
+       "${pkgdir}"/usr/share/doc/"${pkgname}"/
     # licenses
-    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE.txt \
-                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/LICENSE.txt \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

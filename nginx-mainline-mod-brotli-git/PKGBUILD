@@ -5,10 +5,10 @@ pkgver=r62.a71f9312c2
 pkgrel=3
 url="https://github.com/google/ngx_brotli"
 pkgdesc="NGINX module for Brotli compression (mainline)."
-arch=('any')
+arch=('x86_64')
 license=('BSD2')
-provides=("${pkgname}" "${pkgname:0:-4}")
-conflicts=("${pkgname}" "${pkgname:0:-4}")
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
 depends=('nginx-mainline=1.25.3' 'brotli')
 makedepends=('git' 'nginx-mainline-src=1.25.3')
 _modname="nginx-brotli-module"
@@ -23,25 +23,26 @@ pkgver() {
 }
 
 prepare() {
-    git clone --depth=1 "${url}" "${srcdir}"/"${_modname}"
-    cd "${srcdir}"/"${_modname}"
-    git submodule update --init
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --recursive --depth=1 "${url}" "${srcdir}"/"${_modname}"
+    fi
 }
 
 build() {
-    mkdir -p build; cd build
-    ln -sf /usr/src/nginx/auto
-    ln -sf /usr/src/nginx/src
+    mkdir -p build
+    cd build
+    ln -sf /usr/src/nginx/auto .
+    ln -sf /usr/src/nginx/src  .
     /usr/src/nginx/configure --with-compat --add-dynamic-module=../${_modname}
     make modules
 }
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/usr/lib/nginx/modules/
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/lib/nginx/modules
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # package files
+    # pkg files
     cd "${srcdir}"/build/objs
     for i in ngx_*.so; do
         install -Dm644 ${i} \

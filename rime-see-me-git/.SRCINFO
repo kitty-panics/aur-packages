@@ -6,7 +6,6 @@ pkgbase = rime-see-me-git
 	arch = any
 	license = UNLICENSE
 	makedepends = git
-	makedepends = rsync
 	provides = rime-see-me-git
 	provides = rime-see-me
 	conflicts = rime-see-me-git

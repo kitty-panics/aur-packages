@@ -1,7 +1,7 @@
 # Maintainer: Kitty Panics
 
 pkgname=tencent-qq
-pkgver=3.2.3_19189
+pkgver=3.2.5_20811
 pkgrel=1
 url="https://im.qq.com/rainbow/linuxQQDownload/"
 pkgdesc="An instant messaging software developed by Tencent."
@@ -9,35 +9,30 @@ arch=('x86_64')
 license=('unknown')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('nspr' 'nss' 'alsa-lib')
 optdepends=('libappindicator-gtk3: Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray')
-makedepends=('dpkg' 'imagemagick')
-source=("https://dldir1.qq.com/qqfile/qq/QQNT/06d558c3/linuxqq_${pkgver//_/-}_amd64.deb"
+makedepends=('imagemagick')
+source=("https://dldir1.qq.com/qqfile/qq/QQNT/d0154345/linuxqq_${pkgver/_/-}_amd64.deb"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
             'bb8ae7c08ce017d4703e3dc1968ccaa8f7db4296d600cbe67ab3edbd68dd544e')
-noextract=("linuxqq_${pkgver//_/-}_amd64.deb")
 
 prepare() {
-    dpkg -x "${srcdir}"/linuxqq_"${pkgver//_/-}"_amd64.deb "${srcdir}"/
-    for i in 16 32 64 128 256; do
-        convert -resize "${i}"x"${i}" "${srcdir}"/opt/QQ/resources/app/resource/512x512.png \
-                                      "${srcdir}"/"${i}"x"${i}".png
-    done
+    tar -xJf "${srcdir}"/data.tar.xz
 }
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/opt/"${pkgname}"/
-    install -dm755 "${pkgdir}"/usr/bin/
-    install -dm755 "${pkgdir}"/usr/share/applications/
-    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/opt/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/applications
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/512x512/apps
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # package files
-    rsync -rtl "${srcdir}"/opt/QQ/ "${pkgdir}"/opt/"${pkgname}"
-    # /usr/bin/
+    # pkg files
+    cp -a "${srcdir}"/opt/QQ/* \
+          "${pkgdir}"/opt/"${pkgname}"/
+    # bin
     ln -s "/opt/${pkgname}/qq" \
           "${pkgdir}/usr/bin/${pkgname}"
 
@@ -47,17 +42,12 @@ package() {
     # doc
     install -Dm644 "${srcdir}"/usr/share/doc/linuxqq/changelog.gz \
                    "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    # icons/hicolor
-    install -Dm644 "${srcdir}"/opt/QQ/resources/app/resource/512x512.png \
+    # icons
+    install -Dm644 "${srcdir}"/usr/share/icons/hicolor/512x512/apps/qq.png \
                    "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/"${pkgname}".png
-    for i in 16 32 64 128 256; do
-        install -Dm644 "${srcdir}"/"${i}"x"${i}".png \
-                       "${pkgdir}"/usr/share/icons/hicolor/"${i}"x"${i}"/apps/"${pkgname}".png
-    done
-
     # licenses
-    ln -s /opt/"${pkgname}"/LICENSE.electron.txt \
-          "${pkgdir}"/usr/share/licenses/"${pkgname}"/
-    ln -s /opt/"${pkgname}"/LICENSES.chromium.html \
-          "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    mv "${pkgdir}"/opt/"${pkgname}"/LICENSE.electron.txt \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    mv "${pkgdir}"/opt/"${pkgname}"/LICENSES.chromium.html \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

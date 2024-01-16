@@ -1,0 +1,43 @@
+# Maintainer: Kitty Panics
+
+pkgname=sdat2img-git
+pkgver=r43.b432c988a4
+pkgrel=1
+url="https://github.com/xpirt/sdat2img"
+pkgdesc="Convert sparse Android data image to filesystem ext4 image."
+arch=('x86_64')
+license=('unknown')
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+depends=('python')
+source=("${url}/raw/master/sdat2img.py"
+        "${url}/raw/master/LICENSE"
+        "${url}/raw/master/README.md")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+pkgver() {
+    _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
+    _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
+    _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/master" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
+    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files / bin
+    install -Dm755 "${srcdir}"/sdat2img.py \
+                   "${pkgdir}"/usr/bin/"${pkgname%-*}"
+
+    # doc
+    install -Dm644 "${srcdir}"/README.md \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    # licenses
+    install -Dm644 "${srcdir}"/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

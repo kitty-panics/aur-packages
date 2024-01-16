@@ -7,17 +7,21 @@ url="https://tieba.baidu.com/p/2491103778"
 pkgdesc="Skin editor for Weasel (Rime frontend on Windows)."
 arch=('any')
 license=('UNLICENSE')
-provides=("${pkgname}" "${pkgname:0:-4}")
-conflicts=("${pkgname}" "${pkgname:0:-4}" "${pkgname:0:-4}"-git)
-makedepends=('rsync')
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}" "${pkgname%-*}"-git)
 source=("Rime See Me.zip::https://pan.baidu.com/share/link?shareid=1116561757&uk=2635838991")
 sha256sums=('fe35c2bc8d8234c088b9c0d16f8e2d2a8caec43ce43837b835a732cac3da2635')
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/usr/share/"${pkgname:0:-4}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/opt/"${pkgname%-*}"
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
 
-    # package files
-    rsync -rtl "${srcdir}"/"Rime See Me"/ \
-               "${pkgdir}"/usr/share/"${pkgname:0:-4}"
+    # pkg files
+    cp -a "${srcdir}"/"Rime See Me"/* \
+          "${pkgdir}"/opt/"${pkgname%-*}"/
+
+    # doc
+    mv "${pkgdir}"/opt/"${pkgname%-*}"/"READ ME.txt" \
+       "${pkgdir}"/usr/share/doc/"${pkgname}"/README.txt
 }

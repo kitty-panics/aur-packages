@@ -3,7 +3,7 @@ pkgbase = nginx-mainline-mod-brotli-git
 	pkgver = r62.a71f9312c2
 	pkgrel = 3
 	url = https://github.com/google/ngx_brotli
-	arch = any
+	arch = x86_64
 	license = BSD2
 	makedepends = git
 	makedepends = nginx-mainline-src=1.25.3

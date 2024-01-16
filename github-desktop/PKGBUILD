@@ -30,10 +30,10 @@ package() {
     # pkg files
     cp -a "${srcdir}"/usr/lib/"${pkgname}"/* \
           "${pkgdir}"/opt/"${pkgname}"/
-
     # bin
     ln -s /opt/"${pkgname}"/"${pkgname}" \
           "${pkgdir}"/usr/bin/"${pkgname}"
+
     # .desktop
     install -Dm644 "${srcdir}"/usr/share/applications/"${pkgname}".desktop \
                    "${pkgdir}"/usr/share/applications/"${pkgname}".desktop

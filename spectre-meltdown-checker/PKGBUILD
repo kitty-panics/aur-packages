@@ -1,0 +1,39 @@
+# Maintainer: Kitty Panics
+
+pkgname=spectre-meltdown-checker
+pkgver=r554.0f2edb1a71
+pkgrel=1
+url="https://github.com/speed47/spectre-meltdown-checker"
+pkgdesc="Reptar, Downfall, Zenbleed, ZombieLoad, RIDL, Fallout, Foreshadow, Spectre, Meltdown vulnerability/mitigation checker for Linux & BSD."
+arch=('x86_64')
+license=('unknown')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+depends=('python')
+source=("${url}/raw/master/spectre-meltdown-checker.sh"
+        "${url}/raw/master/FAQ.md"
+        "${url}/raw/master/README.md")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+pkgver() {
+    _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
+    _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
+    _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/master" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
+    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+
+    # pkg files / bin
+    install -Dm755 "${srcdir}"/spectre-meltdown-checker.sh \
+                   "${pkgdir}"/usr/bin/"${pkgname}"
+
+    # doc
+    install -Dm644 "${srcdir}"/*.md \
+                -t "${pkgdir}"/usr/share/doc/"${pkgname}"/
+}

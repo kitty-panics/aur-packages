@@ -1,16 +1,16 @@
 # Maintainer: Kitty Panics
 
 pkgname=oh-my-bash-git
-pkgver=r516.d2163a6b49
+pkgver=r527.632fd71fc3
 pkgrel=1
 url="https://github.com/ohmybash/oh-my-bash"
 pkgdesc="A delightful community-driven framework for managing your bash configuration."
 arch=('any')
 license=('MIT')
-provides=("${pkgname}" "${pkgname:0:-4}")
-conflicts=("${pkgname}" "${pkgname:0:-4}")
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
 depends=('bash')
-makedepends=('git' 'rsync')
+makedepends=('git')
 optdepends=('git: Support for git repositories')
 #source=("git+${url}.git")
 #sha256sums=('SKIP')
@@ -23,34 +23,37 @@ pkgver() {
 }
 
 prepare() {
-    git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
 }
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/usr/share/"${pkgname:0:-4}"/
-    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname%-*}"
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # package files
-    rsync -rtl "${srcdir}"/"${pkgname}"/ \
-               "${pkgdir}"/usr/share/"${pkgname:0:-4}" \
-               --exclude=".git*" --exclude="cache" --exclude="log" \
-               --exclude="LICENSE.txt" --exclude="*.md"
-    cd "${pkgdir}"/usr/share/"${pkgname:0:-4}"/templates/
-    sed -i 's/OSH=~\/\./OSH=\/usr\/share\//' bashrc.osh-template
-    sed -i '/AUTO_UPDATE/ s/^# //' bashrc.osh-template
-    sed -i '/bash.sh/i # Set cache directory.' bashrc.osh-template
-    sed -i '/bash.sh/i BASH_CACHE_DIR="${HOME}"/.cache/oh-my-bash' bashrc.osh-template
-    sed -i '/bash.sh/i if [[ ! -d "${BASH_CACHE_DIR}" ]]; then' bashrc.osh-template
-    sed -i '/bash.sh/i\ \ \ \ mkdir -p "${BASH_CACHE_DIR}"' bashrc.osh-template
-    sed -i '/bash.sh/i fi\n' bashrc.osh-template
+    # pkg files
+    cp -a "${srcdir}"/"${pkgname}"/* \
+          "${pkgdir}"/usr/share/"${pkgname%-*}"/
+    UPDATE_TEMPLATE="${pkgdir}"/usr/share/"${pkgname%-*}"/templates/bashrc.osh-template
+    sed -i 's/OSH=~\/\./OSH=\/usr\/share\//'                       "$UPDATE_TEMPLATE"
+    sed -i '/AUTO_UPDATE/ s/^# //'                                 "$UPDATE_TEMPLATE"
+    sed -i '/bash.sh/i # Set cache directory.'                     "$UPDATE_TEMPLATE"
+    sed -i '/bash.sh/i BASH_CACHE_DIR="${HOME}"/.cache/oh-my-bash' "$UPDATE_TEMPLATE"
+    sed -i '/bash.sh/i if [[ ! -d "${BASH_CACHE_DIR}" ]]; then'    "$UPDATE_TEMPLATE"
+    sed -i '/bash.sh/i\ \ \ \ mkdir -p "${BASH_CACHE_DIR}"'        "$UPDATE_TEMPLATE"
+    sed -i '/bash.sh/i fi\n'                                       "$UPDATE_TEMPLATE"
 
     # doc
-    install -Dm644 "${srcdir}"/"${pkgname}"/*.md \
-                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    rm "${pkgdir}"/usr/share/doc/"${pkgname}"/LICENSE.md
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/CODE_OF_CONDUCT.md \
+       "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/CONTRIBUTING.md \
+       "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/README.md \
+       "${pkgdir}"/usr/share/doc/"${pkgname}"/
     # licenses
-    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE.md \
-                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/LICENSE.md \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

@@ -1,7 +1,7 @@
 pkgbase = rustdesk-server
 	pkgdesc = RustDesk Server Program.
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rustdesk/rustdesk-server/releases
 	arch = x86_64
 	license = AGPL3
@@ -10,6 +10,8 @@ pkgbase = rustdesk-server
 	source = https://github.com/rustdesk/rustdesk-server/releases/download/1.1.9/rustdesk-server-linux-amd64.zip
 	source = rustdesk-server-hbbr.service
 	source = rustdesk-server-hbbs.service
+	source = rustdesk-server.tmpfiles
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

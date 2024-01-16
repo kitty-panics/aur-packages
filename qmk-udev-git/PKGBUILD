@@ -1,16 +1,16 @@
 # Maintainer: Kitty Panics
 
 pkgname=qmk-udev-git
-pkgver=r25905.5b25a8aa32
+pkgver=r26504.dcc47ea31b
 pkgrel=1
 url="https://github.com/qmk/qmk_firmware"
 pkgdesc="Open-source keyboard firmware for Atmel AVR and Arm USB families - udev rules."
-arch=('any')
+arch=('x86_64')
 license=('GPL2')
-provides=("${pkgname}" "${pkgname:0:-4}")
-conflicts=("${pkgname}" "${pkgname:0:-4}")
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
 depends=('qmk')
-source=("${url}//raw/master/util/udev/50-qmk.rules")
+source=("${url}/raw/master/util/udev/50-qmk.rules")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,10 +21,10 @@ pkgver() {
 }
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/etc/udev/rules.d/
+    # mkdir
+    install -dm755 "${pkgdir}"/etc/udev/rules.d
 
-    # package files
+    # pkg files
     install -Dm644 "${srcdir}"/50-qmk.rules \
                    "${pkgdir}"/etc/udev/rules.d/50-qmk.rules
 }

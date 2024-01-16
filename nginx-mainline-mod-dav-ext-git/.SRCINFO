@@ -3,7 +3,7 @@ pkgbase = nginx-mainline-mod-dav-ext-git
 	pkgver = r122.f5e30888a2
 	pkgrel = 6
 	url = https://github.com/arut/nginx-dav-ext-module
-	arch = any
+	arch = x86_64
 	license = BSD2
 	makedepends = git
 	makedepends = nginx-mainline-src=1.25.3

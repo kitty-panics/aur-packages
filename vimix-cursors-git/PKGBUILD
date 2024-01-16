@@ -39,5 +39,5 @@ package() {
 
     # licenses
     install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE \
-                   "${pkgdir}"/usr/share/licenses/"${pkgname}"
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

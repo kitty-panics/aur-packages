@@ -26,10 +26,10 @@ package() {
     # pkg files
     install -Dm755 "${srcdir}"/usr/bin/gh \
                    "${pkgdir}"/opt/"${pkgname}"/gh-cli
-
     # bin
     ln -s /opt/"${pkgname}"/gh-cli \
           "${pkgdir}"/usr/bin/gh
+
     # bash, fish, zsh
     cp -a "${srcdir}"/usr/share/bash-completion \
           "${pkgdir}"/usr/share/

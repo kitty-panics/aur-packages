@@ -3,7 +3,7 @@ pkgbase = nginx-mainline-mod-fancyindex-git
 	pkgver = r255.cbc0d3fca4
 	pkgrel = 5
 	url = https://github.com/aperezdc/ngx-fancyindex
-	arch = any
+	arch = x86_64
 	license = custom
 	makedepends = git
 	makedepends = nginx-mainline-src=1.25.3

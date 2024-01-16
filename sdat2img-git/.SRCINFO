@@ -1,0 +1,20 @@
+pkgbase = sdat2img-git
+	pkgdesc = Convert sparse Android data image to filesystem ext4 image.
+	pkgver = r43.b432c988a4
+	pkgrel = 1
+	url = https://github.com/xpirt/sdat2img
+	arch = x86_64
+	license = unknown
+	depends = python
+	provides = sdat2img-git
+	provides = sdat2img
+	conflicts = sdat2img-git
+	conflicts = sdat2img
+	source = https://github.com/xpirt/sdat2img/raw/master/sdat2img.py
+	source = https://github.com/xpirt/sdat2img/raw/master/LICENSE
+	source = https://github.com/xpirt/sdat2img/raw/master/README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sdat2img-git

@@ -51,8 +51,10 @@ Personally maintained AUR packages.
 - [X] oh-my-zsh-git
 - [X] qmk-udev-git
 - [X] rime-see-me-git
-- [X] rime-see-me-old
+- [x] rime-see-me-old
 - [X] rustdesk-server
+- [X] sdat2img-git
+- [X] spectre-meltdown-checker
 - [ ] tencent-meeting
 - [X] tencent-qq
 - [X] tencent-qqmusic

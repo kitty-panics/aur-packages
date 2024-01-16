@@ -5,7 +5,6 @@ pkgbase = rime-see-me-old
 	url = https://tieba.baidu.com/p/2491103778
 	arch = any
 	license = UNLICENSE
-	makedepends = rsync
 	provides = rime-see-me-old
 	provides = rime-see-me
 	conflicts = rime-see-me-old

@@ -1,18 +1,32 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=oh-my-bash-git
+    #> Version
 pkgver=r527.632fd71fc3
 pkgrel=1
-url="https://github.com/ohmybash/oh-my-bash"
+#epoch=1
+    #> Generic
 pkgdesc="A delightful community-driven framework for managing your bash configuration."
-arch=('any')
+arch=('x86_64')
+url="https://github.com/ohmybash/oh-my-bash"
 license=('MIT')
-provides=("${pkgname}" "${pkgname%-*}")
-conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Dependencies
 depends=('bash')
 makedepends=('git')
 optdepends=('git: Support for git repositories')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 #source=("git+${url}.git")
+#noextract=("")
+    #> Integrity
 #sha256sums=('SKIP')
 
 pkgver() {

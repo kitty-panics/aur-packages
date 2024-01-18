@@ -1,16 +1,32 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=rime-see-me-git
+    #> Version
 pkgver=r23.7112285032
 pkgrel=1
-url="https://github.com/fxliang/RimeSeeMe"
+#epoch=1
+    #> Generic
 pkgdesc="Skin editor for Weasel (Rime frontend on Windows)."
 arch=('any')
-license=('UNLICENSE')
+url="https://github.com/fxliang/RimeSeeMe"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+makedepends=('git')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}" "${pkgname%-*}"-old)
-makedepends=('git')
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 #source=("git+${url}.git")
+#noextract=("")
+    #> Integrity
 #sha256sums=('SKIP')
 
 pkgver() {

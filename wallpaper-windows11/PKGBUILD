@@ -1,22 +1,38 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=wallpaper-windows11
+    #> Version
 pkgver=2023.09.22H2
 pkgrel=1
-url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=42e87ac8-9cd6-eb11-bdf8-e0d4e850c9c6"
+#epoch=1
+    #> Generic
 pkgdesc="MS Windows11 (22H2) wallpaper."
 arch=('x86_64')
+url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=42e87ac8-9cd6-eb11-bdf8-e0d4e850c9c6"
 license=('custom:FUMS')
+    #> Dependencies
+#depends=('')
+makedepends=("p7zip" "rsync")
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-makedepends=("p7zip" "rsync")
-_iso="$(ls -A | grep -i '.iso$')"
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
+_iso="$(ls *.iso)"
 source=("${_iso}")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP')
 
 prepare() {
     echo " - Extracting Windows installation image"
-    7z e -aos "${source}" sources/install.wim
+    7z e -aos "${_iso}" sources/install.wim
 
     echo " - Extracting files from local Windows installation image"
     7z x -aos install.wim 5/Windows/Web "${srcdir}"

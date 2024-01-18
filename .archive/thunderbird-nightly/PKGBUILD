@@ -1,22 +1,37 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=thunderbird-nightly
+    #> Version
 pkgver=117.0a1
 pkgrel=20230711
-url="https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/"
+#epoch=1
+    #> Generic
 pkgdesc='Standalone mail and news reader from mozilla.org (Nightly).'
 arch=('x86_64')
+url="https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n"
 license=('MPL' 'GPL' 'LGPL')
-provides=("${pkgname}" "thunderbird")
-conflicts=("${pkgname}" "thunderbird")
+    #> Dependencies
 depends=('nspr' 'nss' 'alsa-lib')
+#makedepends=('')
 optdepends=('libotr: OTR support for active one-to-one chats'
             'libnotify: Notification integration')
+    #> Package relations
+provides=("${pkgname}" "thunderbird")
+conflicts=("${pkgname}" "thunderbird")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 #source=("${url}thunderbird-${pkgver}.zh-CN.linux-x86_64.tar.bz2"
 source=("${url}thunderbird-${pkgver}.en-US.linux-x86_64.tar.bz2"
         'policies.json'
         "${pkgname}.desktop"
         'vendor-prefs.js')
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP'
             'cb75fbc7489904edf08041213b70c67c8dad3f54fdecdadd623fdb0f44cbaef6'
             '4b654ebed72754c7757b06e326da16c78fa4f24aebd9df384adbc8c00c8fee7f'

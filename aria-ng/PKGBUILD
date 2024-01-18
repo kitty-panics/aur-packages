@@ -1,13 +1,18 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
 pkgbase=aria-ng
-pkgname=(${pkgbase} ${pkgbase}-allinone)
+pkgname=("${pkgbase}" "${pkgbase}"-allinone)
+    #> Version
 pkgver=1.3.7
 pkgrel=1
-url="https://github.com/mayswind/AriaNg/releases"
+#epoch=1
+    #> Generic
 pkgdesc="A modern web frontend making aria2 easier to use."
 arch=('any')
+url="https://github.com/mayswind/AriaNg/releases"
 license=('MIT')
+    #> Dependencies
 depends=('aria2')
 makedepends=('unzip')
 optdepends=('apache: A supported application server'
@@ -15,13 +20,23 @@ optdepends=('apache: A supported application server'
             'nginx-mainline: A supported application server'
             'caddy: A supported application server'
             'lighttpd: A supported application server')
+    #> Package relations
+#provides=("${pkgname}")
+#conflicts=("${pkgname}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/download/${pkgver}/AriaNg-${pkgver}.zip"
         "${url}/download/${pkgver}/AriaNg-${pkgver}-AllInOne.zip")
+noextract=("AriaNg-${pkgver}.zip" "AriaNg-${pkgver}-AllInOne.zip")
+    #> Integrity
 sha256sums=('SKIP'
             'SKIP')
-noextract=("AriaNg-${pkgver}.zip" "AriaNg-${pkgver}-AllInOne.zip")
 
 package_aria-ng() {
+    #> Package relations
     provides=("${pkgname}")
     conflicts=("${pkgname}")
 
@@ -30,8 +45,8 @@ package_aria-ng() {
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
     # pkg files
-    unzip "${srcdir}"/AriaNg-"${pkgver}".zip \
-       -d "${pkgdir}"/usr/share/"${pkgname}"
+    unzip -q "${srcdir}"/AriaNg-"${pkgver}".zip \
+          -d "${pkgdir}"/usr/share/"${pkgname}"
 
     # licenses
     mv "${pkgdir}"/usr/share/"${pkgname}"/LICENSE \
@@ -39,6 +54,7 @@ package_aria-ng() {
 }
 
 package_aria-ng-allinone() {
+    #> Package relations
     provides=("${pkgname}")
     conflicts=("${pkgname}")
 
@@ -47,8 +63,8 @@ package_aria-ng-allinone() {
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
     # pkg files
-    unzip "${srcdir}"/AriaNg-"${pkgver}"-AllInOne.zip \
-       -d "${pkgdir}"/usr/share/"${pkgname}"
+    unzip -q "${srcdir}"/AriaNg-"${pkgver}"-AllInOne.zip \
+          -d "${pkgdir}"/usr/share/"${pkgname}"
 
     # licenses
     mv "${pkgdir}"/usr/share/"${pkgname}"/LICENSE \

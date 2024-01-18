@@ -1,15 +1,32 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=cloudflare-speedtest
+    #> Version
 pkgver=2.2.5
 pkgrel=1
-url="https://github.com/XIU2/CloudflareSpeedTest/releases"
+#epoch=1
+    #> Generic
 pkgdesc="自选优选 IP」测试 Cloudflare CDN 延迟和速度，获取最快 IP ！"
 arch=('x86_64')
+url="https://github.com/XIU2/CloudflareSpeedTest/releases"
 license=('GPL3')
-provides=("${pkgname}" "cloudflare-st" "cfst")
-conflicts=("${pkgname}" "cloudflare-st" "cfst")
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "cloudflare-st" "cf-st" "cfst")
+conflicts=("${pkgname}" "cloudflare-st" "cf-st" "cfst")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/download/v"${pkgver}"/CloudflareST_linux_amd64.tar.gz")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP')
 
 package() {

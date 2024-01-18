@@ -1,18 +1,33 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=nginx-mainline-mod-dav-ext-git
+    #> Version
 pkgver=r122.f5e30888a2
 pkgrel=6
-url="https://github.com/arut/nginx-dav-ext-module"
+#epoch=1
+    #> Generic
 pkgdesc='nginx WebDAV PROPFIND,OPTIONS,LOCK,UNLOCK support (mainline).'
 arch=('x86_64')
+url="https://github.com/arut/nginx-dav-ext-module"
 license=('BSD2')
-provides=("${pkgname}" "${pkgname%-*}")
-conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Dependencies
 depends=('nginx-mainline=1.25.3' 'libxml2' 'libxslt')
 makedepends=('git' 'nginx-mainline-src=1.25.3')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 _modname="nginx-dav-ext-module"
 #source=("${_modname}::git+${url}")
+#noextract=("")
+    #> Integrity
 #sha256sums=('SKIP')
 
 pkgver() {

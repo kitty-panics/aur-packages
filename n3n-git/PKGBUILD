@@ -1,23 +1,40 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=n3n-git
+    #> Version
 pkgver=r1562.cd23e54
 pkgrel=1
-url="https://github.com/hamishcoleman/n3n" # n42n/n3n
+#epoch=1
+    #> Generic
 pkgdesc="Peer-to-peer VPN."
 arch=('x86_64')
-license=('GPL')
-provides=("${pkgname}" "${pkgname%-*}" "n2n" "n2n-git")
-conflicts=("${pkgname}" "${pkgname%-*}" "n2n" "n2n-git")
+url="https://github.com/hamishcoleman/n3n" # n42n/n3n
+license=('GPL3')
+    #> Dependencies
 depends=('zstd' 'openssl' 'libcap' 'libpcap' 'libnatpmp' 'miniupnpc')
 optdepends=('python: for n2n-ctl, n2n-httpd')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}" "n2n-git" "n2n")
+conflicts=("${pkgname}" "${pkgname%-*}" "n2n-git" "n2n")
+    #> Others
 backup=('etc/n3n/edge.conf'
         'etc/n3n/supernode.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("git+${url}.git"
         'full-edge.conf'
         'full-supernode.conf'
         'version.sh')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
     cd "${srcdir}"/"${pkgname%-*}"

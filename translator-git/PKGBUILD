@@ -1,17 +1,33 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=translator-git
+    #> Version
 pkgver=r26.d079730096
 pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Command-line aggregation translation tool, support Google, Bing, Youdao, Baidu, Ciba, 360."
 url="https://github.com/skywind3000/translator"
-pkgdesc="命令行聚合翻译工具，支持谷歌，必应，有道，百度，词霸，360."
 arch=('x86_64')
 license=('unknown')
+    #> Dependencies
+depends=('python')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
-depends=('python')
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/raw/master/translator.py"
         "${url}/raw/master/README.md")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP'
             'SKIP')
 

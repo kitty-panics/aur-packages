@@ -1,17 +1,32 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=virtualbox-sup
+    #> Version
 pkgver=7.0.12
 pkgrel=1
-url="https://download.virtualbox.org/virtualbox/${pkgver}/"
+#epoch=1
+    #> Generic
 pkgdesc='Supplement the missing files of VirtualBox.'
 arch=('x86_64')
+url="https://download.virtualbox.org/virtualbox/${pkgver}"
 license=('GPL3')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+    #> Dependencies
 depends=('virtualbox')
 makedepends=('p7zip')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("vbox.run::${url}/VirtualBox-${pkgver}-159484-Linux_amd64.run")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP')
 
 prepare() {

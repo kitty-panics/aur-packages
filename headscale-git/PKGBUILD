@@ -4,23 +4,37 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Matt Harrison <matt@harrison.us.com>
 
+    #> Package name
+#pkgbase=
 pkgname=headscale-git
+    #> Version
 pkgver=r3028.054b06d4
 pkgrel=1
-url="https://github.com/juanfont/headscale"
+#epoch=1
+    #> Generic
 pkgdesc="An open source, self-hosted implementation of the Tailscale control server."
 arch=('x86_64')
+url="https://github.com/juanfont/headscale"
 license=('BSD')
-provides=("${pkgname}" "${pkgname%-*}")
-conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Dependencies
+#depends=('')
 makedepends=('go')
 optdepends=('wireguard-tools: CLI tools for generating keys'
             'postgresql: alternative database provider')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
 backup=("etc/${pkgname%-*}/config.yaml"
         "etc/${pkgname%-*}/derp.yaml")
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("git+${url}.git"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP'
             '059353f4843dec6eb447c567fac890ef63cc9c8acea18840fcfc3f4a76d596db'
             '8a22d7193ceeac0be32725cf8108f963be3a21855e6099de964f810094d0adc7')

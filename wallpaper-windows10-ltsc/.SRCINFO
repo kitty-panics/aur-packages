@@ -9,7 +9,7 @@ pkgbase = wallpaper-windows10-ltsc
 	makedepends = rsync
 	provides = wallpaper-windows10-ltsc
 	conflicts = wallpaper-windows10-ltsc
-	source = 
+	source = SW_DVD9_WIN_ENT_LTSC_2021_64BIT_ChnSimp_MLF_X22-84402.ISO
 	sha256sums = c117c5ddbc51f315c739f9321d4907fa50090ba7b48e7e9a2d173d49ef2f73a3
 
 pkgname = wallpaper-windows10-ltsc

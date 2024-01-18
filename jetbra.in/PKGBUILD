@@ -1,31 +1,46 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=jetbra.in
+    #> Version
 pkgver=2023.09.14
 pkgrel=1
-url="https://3.jetbra.in/"
+#epoch=1
+    #> Generic
 pkgdesc="A Java instrumentation framework for JetBrains IDE testing purposes only."
-arch=('any')
+arch=('x86_64')
+url="https://3.jetbra.in"
 license=('GPL3')
+    #> Dependencies
+depends=('java-environment')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}" "ja-netfilter")
 conflicts=("${pkgname}" "ja-netfilter")
-depends=('java-environment')
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
 install="${pkgname}.install"
-_zip="jetbra-ded4f9dc4fcb60294b21669dafa90330f2713ce4.zip"
+    #> Sources
+_url="https://ipfs.io/ipfs/${_code}" # the server may be unavailable
 _code="bafybeia4nrbuvpfd6k7lkorzgjw3t6totaoko7gmvq5pyuhl2eloxnfiri"
-_url="https://ipfs.io/ipfs/${_code}" # 不保证服务一直可用
+_zip="jetbra-ded4f9dc4fcb60294b21669dafa90330f2713ce4.zip"
 source=("${_url}/files/${_zip}"
         "${pkgname}.install")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP'
             '841ef4a86dae3f52656a4f3474d430be37760e1a38ec9ec585a38d0198458d5f')
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/etc/"${pkgname}"/
-    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    install -dm755 "${pkgdir}"/usr/share/java/"${pkgname}"/
+    # mkdir
+    install -dm755 "${pkgdir}"/etc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/java/"${pkgname}"
 
-    # package files
+    # pkg files
     bsdtar --strip-components 1 -xf "${srcdir}"/"${_zip}" \
                                  -C "${pkgdir}"/usr/share/java/"${pkgname}"/
     # etc

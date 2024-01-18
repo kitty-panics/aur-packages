@@ -3,24 +3,41 @@
 #
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
+    #> Package name
+#pkgbase=
 pkgname=n2n-git
+    #> Version
 pkgver=r1426.fff50a7
 pkgrel=6
-url="https://github.com/ntop/n2n"
+#epoch=1
+    #> Generic
 pkgdesc="Peer-to-peer VPN."
 arch=('x86_64')
-license=('GPL')
-provides=("${pkgname}" "${pkgname%-*}" "n3n" "n3n-git")
-conflicts=("${pkgname}" "${pkgname%-*}" "n3n" "n3n-git")
+url="https://github.com/ntop/n2n"
+license=('GPL3')
+    #> Dependencies
 depends=('zstd' 'openssl' 'libcap' 'libpcap' 'libnatpmp' 'miniupnpc')
-optdepends=('python: for n2n-ctl, n2n-httpd')
+optdepends=('python: for n2n-ctl, n2n-httpd command')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}" "n3n-git" "n3n")
+conflicts=("${pkgname}" "${pkgname%-*}" "n3n-git" "n3n")
+    #> Others
 backup=('etc/n2n/edge.conf'
         'etc/n2n/supernode.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("git+${url}.git"
-        'full-edge.conf'
-        'full-supernode.conf'
-        'version.sh')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+        "full-edge.conf"
+        "full-supernode.conf"
+        "version.sh")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
     cd "${srcdir}"/"${pkgname%-*}"

@@ -1,16 +1,32 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=github-cli
+    #> Version
 pkgver=2.42.0
 pkgrel=1
-url="https://github.com/cli/cli/releases"
+#epoch=1
+    #> Generic
 pkgdesc="GitHub’s official command line tool."
 arch=('x86_64')
+url="https://github.com/cli/cli/releases"
 license=('MIT')
-provides=("${pkgname}" "gh" "gh-cli")
-conflicts=("${pkgname}" "gh" "gh-cli")
+    #> Dependencies
 depends=('git')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "gh-cli" "gh")
+conflicts=("${pkgname}" "gh-cli" "gh")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/download/v${pkgver}/gh_${pkgver}_linux_amd64.deb")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP')
 
 prepare() {
@@ -30,7 +46,7 @@ package() {
     ln -s /opt/"${pkgname}"/gh-cli \
           "${pkgdir}"/usr/bin/gh
 
-    # bash, fish, zsh
+    # shell completion
     cp -a "${srcdir}"/usr/share/bash-completion \
           "${pkgdir}"/usr/share/
     cp -a "${srcdir}"/usr/share/fish \

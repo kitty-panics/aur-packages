@@ -9,7 +9,7 @@ pkgbase = wallpaper-windows10
 	makedepends = rsync
 	provides = wallpaper-windows10
 	conflicts = wallpaper-windows10
-	source = 
+	source = zh-cn_windows_10_business_editions_version_22h2_updated_dec_2023_x64_dvd_f23f78f9.iso
 	sha256sums = SKIP
 
 pkgname = wallpaper-windows10

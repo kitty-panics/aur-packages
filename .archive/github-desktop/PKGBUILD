@@ -1,20 +1,35 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=github-desktop
+    #> Version
 pkgver=3.3.6_RC3
 pkgrel=1
-url="https://github.com/shiftkey/desktop/releases" # desktop/desktop.git
+#epoch=1
+    #> Generic
 pkgdesc="Fork of GitHub Desktop to support various Linux distributions."
 arch=('x86_64')
+url="https://github.com/shiftkey/desktop/releases" # desktop/desktop.git
 license=('MIT')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+    #> Dependencies
+#depends=('')
 depends=('gtk3' 'libnotify' 'nss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libdrm' 'mesa'
          'libxcb' 'kde-cli-tools' 'trash-cli' 'glib2' 'gvfs' 'curl' 'libsecret' 'gnome-keyring')
 optdepends=('pulseaudio: A featureful, general-purpose sound server'
             'alsa-lib: An alternative implementation of Linux sound support'
             'lsb-release: LSB version query program')
+    #> Package relations
+provides=("${pkgname}" "gh-desktop")
+conflicts=("${pkgname}" "gh-desktop")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/download/release-3.3.6-linux3/GitHubDesktop-linux-amd64-3.3.6-linux3.deb")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP')
 
 prepare() {

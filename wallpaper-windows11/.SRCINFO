@@ -9,7 +9,7 @@ pkgbase = wallpaper-windows11
 	makedepends = rsync
 	provides = wallpaper-windows11
 	conflicts = wallpaper-windows11
-	source = 
+	source = zh-cn_windows_11_business_editions_version_23h2_updated_dec_2023_x64_dvd_9a37d106.iso
 	sha256sums = SKIP
 
 pkgname = wallpaper-windows11

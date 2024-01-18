@@ -1,18 +1,33 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=nginx-mainline-mod-brotli-git
+    #> Version
 pkgver=r62.a71f9312c2
 pkgrel=3
-url="https://github.com/google/ngx_brotli"
+#epoch=1
+    #> Generic
 pkgdesc="NGINX module for Brotli compression (mainline)."
 arch=('x86_64')
+url="https://github.com/google/ngx_brotli"
 license=('BSD2')
-provides=("${pkgname}" "${pkgname%-*}")
-conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Dependencies
 depends=('nginx-mainline=1.25.3' 'brotli')
 makedepends=('git' 'nginx-mainline-src=1.25.3')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 _modname="nginx-brotli-module"
 #source=("${_modname}::git+${url}")
+#noextract=("")
+    #> Integrity
 #sha256sums=('SKIP')
 
 pkgver() {

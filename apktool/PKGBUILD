@@ -1,20 +1,35 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=apktool
+    #> Version
 pkgver=2.9.2
 pkgrel=1
-url="https://github.com/iBotPeaches/Apktool/releases"
+#epoch=1
+    #> Generic
 pkgdesc="A tool for reverse engineering Android apk files."
 arch=('x86_64')
+url="https://github.com/iBotPeaches/Apktool/releases"
 license=('Apache')
+    #> Dependencies
+depends=('java-runtime')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('java-runtime')
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/download/v${pkgver}/apktool_${pkgver}.jar"
         "${pkgname}.sh")
+noextract=("apktool_${pkgver}.jar")
+    #> Integrity
 sha256sums=('SKIP'
             '9f2c14689381a117f8705753f318bfcb39ed357642f952d50d9864285b86666b')
-noextract=("apktool_${pkgver}.jar")
 
 package() {
     # mkdir

@@ -1,18 +1,34 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=dnscrypt-proxy-chinalist-git
+    #> Version
 pkgver=r164383.4cf73bbb00
 pkgrel=1
-url="https://github.com/felixonmars/dnsmasq-china-list"
+#epoch=1
+    #> Generic
 pkgdesc="Chinese-specific configuration to improve dnscrypt-proxy."
-arch=('any')
+arch=('x86_64')
+url="https://github.com/felixonmars/dnsmasq-china-list"
 license=('custom:DWTFYWT')
+    #> Dependencies
+depends=('dnscrypt-proxy')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
-depends=('dnscrypt-proxy')
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/raw/master/accelerated-domains.china.conf"
         "${url}/raw/master/LICENSE"
         'Makefile')
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP'
             'SKIP'
             '882a8d8c0db184be031ba59464fd8e3cd029d6e7af0c5fd99e276ce73a2bca03')

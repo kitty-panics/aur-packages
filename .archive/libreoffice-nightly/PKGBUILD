@@ -1,15 +1,20 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=libreoffice-nightly
+    #> Version
 pkgver=24.2.0.0.alpha0
 pkgrel=20230707
-url="https://dev-builds.libreoffice.org/daily/master/Linux-rpm_deb-x86_64@tb87-TDF/current/"
+#epoch=1
+    #> Generic
 pkgdesc="LibreOffice development branch"
 arch=('x86_64')
+url="https://dev-builds.libreoffice.org/daily/master/Linux-rpm_deb-x86_64@tb87-TDF/current/"
 license=('LGPL3')
-provides=("${pkgname}" "libreoffice")
-conflicts=("${pkgname}" "libreoffice" "libreoffice-fresh" "libreoffice-still")
+    #> Dependencies
 depends=('nspr' 'nss' 'gstreamer' 'kwindowsystem' 'orc' 'qt5-x11extras')
+makedepends=('dpkg')
 optdepends=('java-runtime:    adds java support'
             'pstoedit:        translates PostScript and PDF graphics into other vector formats'
             'libmythes:       for use in thesaurus'
@@ -26,11 +31,20 @@ optdepends=('java-runtime:    adds java support'
             'gtk4:            or GTK4 integration (experimental)'
             'kio:             for KF5 KDE desktop integration'
             'qt6-base:        for QT6 desktop integration')
-makedepends=('dpkg')
+    #> Package relations
+provides=("${pkgname}" "libreoffice")
+conflicts=("${pkgname}" "libreoffice" "libreoffice-fresh" "libreoffice-still")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/LibreOfficeDev_${pkgver}_Linux_x86-64_deb.tar.gz"
         "${url}/LibreOfficeDev_${pkgver}_Linux_x86-64_deb_helppack_en-US.tar.gz")
 #       "${url}/LibreOfficeDev_${pkgver}_Linux_x86-64_deb_helppack_zh-CN.tar.gz"
 #       "${url}/LibreOfficeDev_${pkgver}_Linux_x86-64_deb_langpack_zh-CN.tar.gz")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP'
             'SKIP')
 #           'SKIP'

@@ -1,18 +1,34 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=sdat2img-git
+    #> Version
 pkgver=r43.b432c988a4
 pkgrel=1
-url="https://github.com/xpirt/sdat2img"
+#epoch=1
+    #> Generic
 pkgdesc="Convert sparse Android data image to filesystem ext4 image."
 arch=('x86_64')
+url="https://github.com/xpirt/sdat2img"
 license=('unknown')
+    #> Dependencies
+depends=('python')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
-depends=('python')
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/raw/master/sdat2img.py"
         "${url}/raw/master/LICENSE"
         "${url}/raw/master/README.md")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')

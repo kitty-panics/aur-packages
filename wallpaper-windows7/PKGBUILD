@@ -1,22 +1,38 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=wallpaper-windows7
+    #> Version
 pkgver=2019.sp1.ultimate
 pkgrel=1
-url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=6f677346-0a09-43fa-b60d-e878ed7625a0"
+#epoch=1
+    #> Generic
 pkgdesc="MS Windows7 (2019) wallpaper."
 arch=('x86_64')
+url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=6f677346-0a09-43fa-b60d-e878ed7625a0"
 license=('custom:FUMS')
+    #> Dependencies
+#depends=('')
+makedepends=("p7zip" "rsync")
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-makedepends=("p7zip" "rsync")
-_iso="$(ls -A | grep -i '.iso$')"
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
+_iso="$(ls * .iso)"
 source=("${_iso}")
+#noextract=("")
+    #> Integrity
 sha256sums=('dec04cbd352b453e437b2fe9614b67f28f7c0b550d8351827bc1e9ef3f601389')
 
 prepare() {
     echo " - Extracting Windows installation image"
-    7z e -aos "${source}" sources/install.wim
+    7z e -aos "${_iso}" sources/install.wim
 
     echo " - Extracting files from local Windows installation image"
     7z x -aos install.wim Windows/Web "${srcdir}"

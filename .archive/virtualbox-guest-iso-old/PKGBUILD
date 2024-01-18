@@ -1,22 +1,37 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=virtualbox-guest-iso-old
+    #> Version
 pkgver=6.1.26
 pkgrel=5
-url="https://download.virtualbox.org/virtualbox/${pkgver}"
+#epoch=1
+    #> Generic
 pkgdesc='The official VirtualBox Guest Additions ISO image (v6.1.26).'
 arch=('x86_64')
+url="https://download.virtualbox.org/virtualbox/${pkgver}"
 license=('custom:PUEL')
+    #> Dependencies
+depends=('virtualbox')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
-depends=('virtualbox')
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/VBoxGuestAdditions_${pkgver}.iso"
         "${pkgname}.install"
         "LICENSE")
+noextract=("VBoxGuestAdditions_${pkgver}.iso")
+    #> Integrity
 sha256sums=('SKIP'
             'c7096ed2a9d30588d5fefb7bf5b5e4f0663ebd1b7524f466ec376b0789fc5946'
             '94a00067a248fd7d1d610fcd9094d50ce1b67e4200ade0b5f135392806d7e68b')
-noextract=("VBoxGuestAdditions_${pkgver}.iso")
 
 package() {
     # mkdir

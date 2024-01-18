@@ -1,18 +1,33 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=nginx-mainline-mod-headers-more-git
+    #> Version
 pkgver=r267.607d1b1f32
 pkgrel=4
-url="https://github.com/openresty/headers-more-nginx-module"
+#epoch=1
+    #> Generic
 pkgdesc="Set, add, and clear arbitrary output headers in NGINX http servers (mainline)."
 arch=('x86_64')
+url="https://github.com/openresty/headers-more-nginx-module"
 license=('BSD')
-provides=("${pkgname}" "${pkgname%-*}")
-conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Dependencies
 depends=('nginx-mainline=1.25.3')
 makedepends=('git' 'nginx-mainline-src=1.25.3')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 _modname="nginx-headers-more-module"
 #source=("${_modname}::git+${url}")
+#noextract=("")
+    #> Integrity
 #sha256sums=('SKIP')
 
 pkgver() {

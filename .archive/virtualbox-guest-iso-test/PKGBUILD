@@ -1,22 +1,37 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=virtualbox-guest-iso-test
+    #> Version
 pkgver=7.0.13_160984
 pkgrel=1
-url="https://www.virtualbox.org/wiki/Testbuilds"
+#epoch=1
+    #> Generic
 pkgdesc='The official VirtualBox Guest Additions ISO image (7.0.X test builds).'
 arch=('x86_64')
+url="https://www.virtualbox.org/wiki/Testbuilds"
 license=('custom:PUEL')
+    #> Dependencies
+depends=('virtualbox')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
-depends=('virtualbox')
-source=("https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_${pkgver//_/-}.iso"
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_${pkgver/_/-}.iso"
         "${pkgname}.install"
         'LICENSE')
+noextract=("VBoxGuestAdditions_${pkgver/_/-}.iso")
+    #> Integrity
 sha256sums=('SKIP'
             '656447f1b55cb8eb0a03d53a4709ed7b3806e3c004c1592e9e520d065a91a704'
             '94a00067a248fd7d1d610fcd9094d50ce1b67e4200ade0b5f135392806d7e68b')
-noextract=("VBoxGuestAdditions_${pkgver//_/-}.iso")
 
 package() {
     # mkdir

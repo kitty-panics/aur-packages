@@ -1,17 +1,36 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
 pkgbase=friend
-pkgname=(boy"${pkgbase}" girl"${pkgbase}")
+pkgname=(boy-"${pkgbase}" girl-"${pkgbase}")
+    #> Version
 pkgver=2024.02.14
 pkgrel=1
-url="https://b23.tv/ZEtwjPn"
+#epoch=1
+    #> Generic
 pkgdesc="Soft kitty, warm kitty, little ball of fur."
 arch=('x86_64')
+url="https://b23.tv/ZEtwjPn"
 license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+#provides=("${pkgname}")
+#conflicts=("${pkgname}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${pkgbase}")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP')
 
-package_boyfriend() {
+package_boy-friend() {
+    #> Package relations
     provides=("${pkgname}")
     conflicts=("${pkgname}")
 
@@ -25,7 +44,8 @@ package_boyfriend() {
            "${pkgdir}"/usr/bin/"${pkgname}"
 }
 
-package_girlfriend() {
+package_girl-friend() {
+    #> Package relations
     provides=("${pkgname}")
     conflicts=("${pkgname}")
 

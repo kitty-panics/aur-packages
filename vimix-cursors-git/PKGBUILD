@@ -1,16 +1,32 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=vimix-cursors-git
+    #> Version
 pkgver=r16.9bc292f409
 pkgrel=1
-url="https://github.com/vinceliuice/Vimix-cursors"
+#epoch=1
+    #> Generic
 pkgdesc="Vimix-cursors for linux desktop"
 arch=('x86_64')
+url="https://github.com/vinceliuice/Vimix-cursors"
 license=('GPL3')
+    #> Dependencies
+#depends=('')
 makedepends=('git')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 #source=("git+$url.git")
+#noextract=("")
+    #> Integrity
 #sha256sums=('SKIP')
 
 pkgver() {

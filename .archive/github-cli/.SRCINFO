@@ -7,11 +7,11 @@ pkgbase = github-cli
 	license = MIT
 	depends = git
 	provides = github-cli
-	provides = gh
 	provides = gh-cli
+	provides = gh
 	conflicts = github-cli
-	conflicts = gh
 	conflicts = gh-cli
+	conflicts = gh
 	source = https://github.com/cli/cli/releases/download/v2.42.0/gh_2.42.0_linux_amd64.deb
 	sha256sums = SKIP
 

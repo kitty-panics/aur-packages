@@ -25,7 +25,9 @@ pkgbase = github-desktop
 	optdepends = alsa-lib: An alternative implementation of Linux sound support
 	optdepends = lsb-release: LSB version query program
 	provides = github-desktop
+	provides = gh-desktop
 	conflicts = github-desktop
+	conflicts = gh-desktop
 	source = https://github.com/shiftkey/desktop/releases/download/release-3.3.6-linux3/GitHubDesktop-linux-amd64-3.3.6-linux3.deb
 	sha256sums = SKIP
 

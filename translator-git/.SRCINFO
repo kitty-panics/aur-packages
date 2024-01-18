@@ -1,5 +1,5 @@
 pkgbase = translator-git
-	pkgdesc = 命令行聚合翻译工具，支持谷歌，必应，有道，百度，词霸，360.
+	pkgdesc = Command-line aggregation translation tool, support Google, Bing, Youdao, Baidu, Ciba, 360.
 	pkgver = r26.d079730096
 	pkgrel = 1
 	url = https://github.com/skywind3000/translator

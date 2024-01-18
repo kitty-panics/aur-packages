@@ -1,14 +1,18 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=gsconnect
+    #> Version
 pkgver=56
 pkgrel=2
-url="https://github.com/GSConnect/gnome-shell-extension-gsconnect"
+#epoch=1
+    #> Generic
 pkgdesc="KDE Connect implementation for GNOME."
 arch=('x86_64')
-license=('GPL')
-provides=("${pkgname}" "gnome-shell-extension-${pkgname}")
-conflicts=("${pkgname}" "gnome-shell-extension-${pkgname}")
+url="https://github.com/GSConnect/gnome-shell-extension-gsconnect"
+license=('GPL2' 'MPL2')
+    #> Dependencies
 depends=('gjs')
 makedepends=('meson')
 optdepends=('gnome-shell: Get all the functions'
@@ -18,9 +22,19 @@ optdepends=('gnome-shell: Get all the functions'
             'libcanberra: Sound Effects'
             'ydotool: Generic command-line automation tool (Wayland)'
             'wl-clipboard: Command-line copy/paste utilities (Wayland)')
+    #> Package relations
+provides=("${pkgname}" "gnome-shell-extension-${pkgname}")
+conflicts=("${pkgname}" "gnome-shell-extension-${pkgname}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}-daemon.sh"
         "${pkgname}-preferences.sh")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')

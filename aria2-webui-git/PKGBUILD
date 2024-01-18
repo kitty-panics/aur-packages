@@ -1,14 +1,18 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=aria2-webui-git
+    #> Version
 pkgver=r705.109903f0e2
 pkgrel=1
-url="https://github.com/ziahamza/webui-aria2"
+#epoch=1
+    #> Generic
 pkgdesc="The aim for this project is to create the worlds best and hottest interface to interact with aria2."
 arch=('any')
+url="https://github.com/ziahamza/webui-aria2"
 license=('MIT')
-provides=("${pkgname}" "${pkgname%-*}")
-conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Dependencies
 depends=('aria2')
 makedepends=('git')
 optdepends=('apache: A supported application server'
@@ -16,7 +20,17 @@ optdepends=('apache: A supported application server'
             'nginx-mainline: A supported application server'
             'caddy: A supported application server'
             'lighttpd: A supported application server')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 #source=("git+${url}.git")
+#noextract=("")
+    #> Integrity
 #sha256sums=('SKIP')
 
 pkgver() {
@@ -45,7 +59,7 @@ package() {
           "${pkgdir}"/usr/share/"${pkgname%-*}"/
     sed -i 's/\.\.\/favicon.ico/favicon.ico/' \
            "${pkgdir}"/usr/share/"${pkgname%-*}"/index.html
-    # optimize for china network
+    # fix: optimize for china network
     sed -i 's/googleapis\.com/googleapis\.cn/' \
            "${pkgdir}"/usr/share/"${pkgname%-*}"/index.html
 

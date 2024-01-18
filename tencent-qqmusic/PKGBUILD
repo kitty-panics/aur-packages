@@ -1,17 +1,34 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=tencent-qqmusic
+    #> Version
 pkgver=1.1.5
 pkgrel=11
-url="https://y.qq.com/download/download.html"
+#epoch=1
+    #> Generic
 pkgdesc="A music platform of Tencent."
 arch=('x86_64')
+url="https://y.qq.com/download/download.html"
 license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}")
 conflicts=("${pkgname}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("https://dldir1.qq.com/music/clntupate/linux/deb/qqmusic_${pkgver}_amd64.deb"
         "${pkgname}.desktop"
         "${pkgname}.sh")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP'
             '0a5410f6ebbeb457c373338a1260f87a0b0da1969f77e23620aa0296361a5590'
             '4730edef46f8cfb87161fb860082fe7d423bb94dd70202c0cb07785af5e0441e')

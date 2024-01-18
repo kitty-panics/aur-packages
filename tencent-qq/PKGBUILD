@@ -1,18 +1,33 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=tencent-qq
+    #> Version
 pkgver=3.2.5_20811
 pkgrel=1
-url="https://im.qq.com/rainbow/linuxQQDownload/"
+#epoch=1
+    #> Generic
 pkgdesc="An instant messaging software developed by Tencent."
 arch=('x86_64')
+url="https://im.qq.com/rainbow/linuxQQDownload/"
 license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+optdepends=('libappindicator-gtk3: Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray')
+    #> Package relations
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-optdepends=('libappindicator-gtk3: Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray')
-makedepends=('imagemagick')
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("https://dldir1.qq.com/qqfile/qq/QQNT/d0154345/linuxqq_${pkgver/_/-}_amd64.deb"
         "${pkgname}.desktop")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP'
             'bb8ae7c08ce017d4703e3dc1968ccaa8f7db4296d600cbe67ab3edbd68dd544e')
 

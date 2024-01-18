@@ -8,10 +8,10 @@ pkgbase = friend
 	source = friend
 	sha256sums = SKIP
 
-pkgname = boyfriend
-	provides = boyfriend
-	conflicts = boyfriend
+pkgname = boy-friend
+	provides = boy-friend
+	conflicts = boy-friend
 
-pkgname = girlfriend
-	provides = girlfriend
-	conflicts = girlfriend
+pkgname = girl-friend
+	provides = girl-friend
+	conflicts = girl-friend

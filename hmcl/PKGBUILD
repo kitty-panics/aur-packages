@@ -1,22 +1,37 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=hmcl
+    #> Version
 pkgver=3.5.4.234
 pkgrel=1
-url="https://github.com/huanghongxun/HMCL/releases"
+#epoch=1
+    #> Generic
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
-arch=('any')
+arch=('x86_64')
+url="https://github.com/huanghongxun/HMCL/releases"
 license=('GPL3')
+    #> Dependencies
+depends=('java-runtime')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('java-runtime')
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/download/v${pkgver}/HMCL-${pkgver}.jar"
         "${pkgname}.desktop"
         "${pkgname}.sh")
+noextract=("HMCL-${pkgver}.jar")
+    #> Integrity
 sha256sums=('SKIP'
             '68360fe5d23bd50aa43e853b65932fa3784927fc357c85f1c70ae34302ff6c9e'
             '3dac6043ac66a25a990e681195660fa60f486786957280da7c71b284d33e78de')
-noextract=("HMCL-${pkgver}.jar")
 
 prepare() {
     bsdtar --strip-components 2 -xf "${srcdir}"/HMCL-"${pkgver}".jar assets/img/icon.png

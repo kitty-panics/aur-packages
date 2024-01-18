@@ -1,18 +1,35 @@
 # Maintainer: Kitty Panics
 
+    #> Package name
+#pkgbase=
 pkgname=rustdesk-server
+    #> Version
 pkgver=1.1.9
 pkgrel=2
-url="https://github.com/rustdesk/rustdesk-server/releases"
+#epoch=1
+    #> Generic
 pkgdesc="RustDesk Server Program."
 arch=('x86_64')
+url="https://github.com/rustdesk/rustdesk-server/releases"
 license=('AGPL3')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
 provides=("${pkgname}")
 conflicts=("${pkgname}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
 source=("${url}/download/${pkgver}/${pkgname}-linux-amd64.zip"
         "${pkgname}-hbbr.service"
         "${pkgname}-hbbs.service"
         "${pkgname}.tmpfiles")
+#noextract=("")
+    #> Integrity
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'

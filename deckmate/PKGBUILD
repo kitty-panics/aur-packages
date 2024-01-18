@@ -2,15 +2,15 @@
 
     #> Package name
 #pkgbase=
-pkgname=utfcheck
+pkgname=deckmate
     #> Version
 pkgver=1.2
 pkgrel=1
 #epoch=1
     #> Generic
-pkgdesc="Examine an input file and provide feedback on whether or not it consists of valid ASCII or UTF-8 text."
+pkgdesc="Convert a legacy program from an 80 column card deck to a PostScript file."
 arch=('x86_64')
-url="https://unifoundry.com/pub/utfcheck" # https://unifoundry.com/utfcheck/index.html
+url="https://unifoundry.com/pub/deckmate" # https://unifoundry.com/deckmate/index.html
 license=('GPL2')
     #> Dependencies
 #depends=('')

@@ -7,8 +7,11 @@ Personally maintained AUR packages.
 - [X] apktool
 - [X] aria-ng
 - [X] aria2-webui-git
+- [X] bdf2psf
 - [X] cloudflare-speedtest
+- [X] deckmate
 - [X] dnscrypt-proxy-chinalist-git
+- [X] fontx2bdf
 - [X] friend
 - [ ] -----------------------------------
 - [X] gsconnect
@@ -37,6 +40,7 @@ Personally maintained AUR packages.
 - [ ] -----------------------------------
 - [X] oh-my-bash-git
 - [X] oh-my-zsh-git
+- [X] olden
 - [X] qmk-udev-git
 - [X] rime-see-me-git
 - [X] rustdesk-server
@@ -45,6 +49,7 @@ Personally maintained AUR packages.
 - [X] tencent-qq
 - [X] tencent-qqmusic
 - [X] translator-git
+- [X] unibetacode
 - [X] utf8gen
 - [X] utfcheck
 - [X] vimix-cursors-git

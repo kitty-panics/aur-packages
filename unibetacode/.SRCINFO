@@ -1,0 +1,13 @@
+pkgbase = unibetacode
+	pkgdesc = Conversion of polytonic Greek between Beta Code and Unicode UTF-8 formats..
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://unifoundry.com/pub/unibetacode
+	arch = x86_64
+	license = GPL2
+	provides = unibetacode
+	conflicts = unibetacode
+	source = https://unifoundry.com/pub/unibetacode/unibetacode-2.3/unibetacode-2.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = unibetacode

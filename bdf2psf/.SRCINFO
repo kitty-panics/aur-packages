@@ -1,0 +1,13 @@
+pkgbase = bdf2psf
+	pkgdesc = Convert unicode BDF fonts to Linux console fonts.
+	pkgver = 1.104
+	pkgrel = 1
+	url = https://unifoundry.com/pub/bdf2psf
+	arch = x86_64
+	license = GPL2
+	provides = bdf2psf
+	conflicts = bdf2psf
+	source = https://unifoundry.com/pub/bdf2psf/bdf2psf-1.104.tar.gz
+	sha256sums = SKIP
+
+pkgname = bdf2psf

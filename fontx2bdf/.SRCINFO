@@ -1,0 +1,14 @@
+pkgbase = fontx2bdf
+	pkgdesc = Convert fontx to bdf.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://unifoundry.com/pub/japanese
+	arch = x86_64
+	license = GPL2
+	license = GFDL1.3
+	provides = fontx2bdf
+	conflicts = fontx2bdf
+	source = https://unifoundry.com/pub/japanese/fontx2bdf-1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = fontx2bdf

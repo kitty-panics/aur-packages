@@ -2,16 +2,16 @@
 
     #> Package name
 #pkgbase=
-pkgname=utfcheck
+pkgname=fontx2bdf
     #> Version
-pkgver=1.2
+pkgver=1.1
 pkgrel=1
 #epoch=1
     #> Generic
-pkgdesc="Examine an input file and provide feedback on whether or not it consists of valid ASCII or UTF-8 text."
+pkgdesc="Convert fontx to bdf."
 arch=('x86_64')
-url="https://unifoundry.com/pub/utfcheck" # https://unifoundry.com/utfcheck/index.html
-license=('GPL2')
+url="https://unifoundry.com/pub/japanese" # https://unifoundry.com/japanese/index.html
+license=('GPL2' 'GFDL1.3')
     #> Dependencies
 #depends=('')
 #makedepends=('')
@@ -24,15 +24,16 @@ conflicts=("${pkgname}")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("${url}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/${pkgname}-${pkgver}.tar.gz")
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-    ./configure --prefix=/usr
+    make distclean
     make
+    groff -man -Tutf8 "${pkgname}".1 | gzip -9 > "${pkgname}".1.gz
 }
 
 package() {
@@ -44,16 +45,16 @@ package() {
 
     # pkg files
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-    make DESTDIR="${pkgdir}"/ install
+    install -Dm755 fontx2bdf \
+                   "${pkgdir}"/usr/bin/
 
     # doc
-    install -Dm644 AUTHORS \
-                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
     install -Dm644 ChangeLog \
-                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    install -Dm644 NEWS \
                    "${pkgdir}"/usr/share/doc/"${pkgname}"/
     # licenses
     install -Dm644 COPYING \
                    "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    # man
+    install -Dm644 "${pkgname}".1.gz \
+                   "${pkgdir}"/usr/share/man/man1/"${pkgname}".1.gz
 }

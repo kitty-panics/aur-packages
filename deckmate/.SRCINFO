@@ -1,0 +1,13 @@
+pkgbase = deckmate
+	pkgdesc = Convert a legacy program from an 80 column card deck to a PostScript file.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://unifoundry.com/pub/deckmate
+	arch = x86_64
+	license = GPL2
+	provides = deckmate
+	conflicts = deckmate
+	source = https://unifoundry.com/pub/deckmate/deckmate-1.2/deckmate-1.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = deckmate

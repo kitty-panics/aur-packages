@@ -1,0 +1,13 @@
+pkgbase = olden
+	pkgdesc = Automatically convert modern English letters into archaic letters.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://unifoundry.com/pub/olden
+	arch = x86_64
+	license = GPL2
+	provides = olden
+	conflicts = olden
+	source = https://unifoundry.com/pub/olden/olden-1.1/olden-1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = olden

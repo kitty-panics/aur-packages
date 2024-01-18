@@ -1,0 +1,39 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=bdf2psf
+    #> Version
+pkgver=1.104
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Convert unicode BDF fonts to Linux console fonts."
+arch=('x86_64')
+url="https://unifoundry.com/pub/bdf2psf"
+license=('GPL2')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/${pkgname}-${pkgver}.tar.gz")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr
+
+    # pkg files
+    cp -a "${srcdir}"/usr/* \
+          "${pkgdir}"/usr/
+}

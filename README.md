@@ -9,6 +9,7 @@ Personally maintained AUR packages.
 - [X] aria2-webui-git
 - [X] bdf2psf
 - [X] cloudflare-speedtest
+- [X] cst-cad-navigator
 - [X] deckmate
 - [X] dnscrypt-proxy-chinalist-git
 - [X] fontx2bdf
@@ -48,7 +49,6 @@ Personally maintained AUR packages.
 - [X] sdat2img-git
 - [X] spectre-meltdown-checker-git
 - [X] tencent-qq
-- [X] tencent-qqmusic
 - [X] translator-git
 - [X] unibetacode
 - [X] utf8gen
@@ -59,6 +59,8 @@ Personally maintained AUR packages.
 - [X] wallpaper-windows10
 - [X] wallpaper-windows10-ltsc
 - [X] wallpaper-windows11
+- [X] wubi98-char
+- [X] wubi98-rimetool
 - [X] zile
 
 [jetbrains-clion]: https://github.com/kitty-panics/aur-jetbrains-ide/tree/master/jetbrains-clion
@@ -87,6 +89,7 @@ Personally maintained AUR packages.
 - [ ] [jetbrains-webstorm-old]
 - [x] libreoffice-nightly
 - [x] rime-see-me-old
+- [x] tencent-qqmusic
 - [x] thunderbird-nightly
 - [x] virtualbox-guest-iso-dev
 - [x] virtualbox-guest-iso-old

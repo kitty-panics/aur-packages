@@ -1,0 +1,14 @@
+pkgbase = wubi98-rimetools
+	pkgdesc = 中州韵五笔助手 (98 版)
+	pkgver = 2023.07.31
+	pkgrel = 1
+	url = http://98wb.ysepan.com
+	arch = x86_64
+	license = unknown
+	makedepends = imagemagick
+	provides = wubi98-rimetools
+	conflicts = wubi98-rimetools
+	source = rimetools-bin.tar.xz
+	sha256sums = SKIP
+
+pkgname = wubi98-rimetools

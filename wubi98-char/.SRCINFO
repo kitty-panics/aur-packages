@@ -1,0 +1,13 @@
+pkgbase = wubi98-char
+	pkgdesc = 五笔小精灵 (98 版)
+	pkgver = 2023.07.31
+	pkgrel = 1
+	url = http://98wb.ysepan.com
+	arch = x86_64
+	license = unknown
+	provides = wubi98-char
+	conflicts = wubi98-char
+	source = wubi98-char-bin.tar.xz
+	sha256sums = SKIP
+
+pkgname = wubi98-char

@@ -1,0 +1,15 @@
+pkgbase = cst-cad-navigator
+	pkgdesc = Quick viewing of 2D drawings and 3D models.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://cadsofttools.com/products/cst-cad-navigator
+	arch = x86_64
+	license = unknown
+	provides = cst-cad-navigator
+	conflicts = cst-cad-navigator
+	source = https://cadsofttools.com/download/cstcadnavigator_linux64.tar.gz
+	source = cst-cad-navigator.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cst-cad-navigator

@@ -1,0 +1,56 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=cst-cad-navigator
+    #> Version
+pkgver=1.2.1
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Quick viewing of 2D drawings and 3D models."
+arch=('x86_64')
+url="https://cadsofttools.com/products/cst-cad-navigator"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("https://cadsofttools.com/download/cstcadnavigator_linux64.tar.gz"
+        "${pkgname}.sh")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP'
+            'SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/opt/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files
+    install -Dm755 "${srcdir}"/Linux64/cstCadNavigator \
+                -t "${pkgdir}"/opt/"${pkgname}"/
+    install -Dm755 "${srcdir}"/Linux64/*.so \
+                -t "${pkgdir}"/opt/"${pkgname}"/
+    # bin
+    install -Dm755 "${srcdir}"/"${pkgname}".sh \
+                   "${pkgdir}"/usr/bin/"${pkgname}"
+
+    # doc
+    install -Dm644 "${srcdir}"/Linux64/"CST CAD Navigator User Guide".pdf \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    # licenses
+    install -Dm644 "${srcdir}"/Linux64/License.txt \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

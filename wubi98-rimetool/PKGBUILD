@@ -1,0 +1,55 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=wubi98-rimetools
+    #> Version
+pkgver=2023.07.31
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="中州韵五笔助手 (98 版)"
+arch=('x86_64')
+url="http://98wb.ysepan.com"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+makedepends=('imagemagick')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("rimetools-bin.tar.xz")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+prepare() {
+    convert "${srcdir}"/rimetools-bin/rimetools/executive/rimetool.ico \
+            "${srcdir}"/rimetools-bin/rimetools/executive/rimetool.png \
+
+}
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/opt/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/128x128/apps
+
+    # pkg files
+    cp -a "${srcdir}"/rimetools-bin/rimetools/* \
+          "${pkgdir}"/opt/"${pkgname}"/
+    rm -r "${pkgdir}"/opt/"${pkgname}"/executive
+    rm "${pkgdir}"/opt/"${pkgname}"/setup.sh
+    # bin
+    ln -s /opt/"${pkgname}"/newReader \
+          "${pkgdir}"/usr/bin/"${pkgname}"
+
+    # icons
+    install -Dm644 "${srcdir}"/rimetools-bin/rimetools/executive/rimetool.png \
+                   "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/"${pkgname}".png
+}

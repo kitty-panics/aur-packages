@@ -10,7 +10,7 @@ pkgrel=1
     #> Generic
 pkgdesc="Reading in hexadecimal numbers from an input source, one per line, and printing them as UTF-8 byte sequences."
 arch=('x86_64')
-url="https://unifoundry.com/pub/utf8gen" # https://unifoundry.com/utf8gen/index.html
+url="https://unifoundry.com/pub/${pkgname}" # https://unifoundry.com/${pkgname}/index.html
 license=('GPL2')
     #> Dependencies
 #depends=('')
@@ -43,7 +43,7 @@ package() {
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
     install -dm755 "${pkgdir}"/usr/share/man/man1
 
-    # pkg files
+    # pkg files, bin, man
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"
     make DESTDIR="${pkgdir}"/ install
 

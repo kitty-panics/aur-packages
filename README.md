@@ -13,11 +13,12 @@ Personally maintained AUR packages.
 - [X] dnscrypt-proxy-chinalist-git
 - [X] fontx2bdf
 - [X] friend
+- [X] gneuralnetwork
 - [ ] -----------------------------------
 - [X] gsconnect
 - [X] headscale-git
 - [X] hmcl
-- [ ] img2sdat-git
+- [X] img2sdat-git
 - [X] jetbra.in
 - [ ] [jetbrains-clion]
 - [ ] [jetbrains-datagrip]
@@ -58,6 +59,7 @@ Personally maintained AUR packages.
 - [X] wallpaper-windows10
 - [X] wallpaper-windows10-ltsc
 - [X] wallpaper-windows11
+- [X] zile
 
 [jetbrains-clion]: https://github.com/kitty-panics/aur-jetbrains-ide/tree/master/jetbrains-clion
 [jetbrains-datagrip]: https://github.com/kitty-panics/aur-jetbrains-ide/tree/master/jetbrains-datagrip

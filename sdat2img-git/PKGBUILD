@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="Convert sparse Android data image to filesystem ext4 image."
 arch=('x86_64')
 url="https://github.com/xpirt/sdat2img"
-license=('unknown')
+license=('MIT')
     #> Dependencies
 depends=('python')
 #makedepends=('')
@@ -46,7 +46,7 @@ package() {
     install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # pkg files / bin
+    # pkg files, bin
     install -Dm755 "${srcdir}"/sdat2img.py \
                    "${pkgdir}"/usr/bin/"${pkgname%-*}"
 

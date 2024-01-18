@@ -1,0 +1,13 @@
+pkgbase = gneuralnetwork
+	pkgdesc = Implements a programmable neural network.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://www.gnu.org/software/gneuralnetwork
+	arch = x86_64
+	license = GPL3
+	provides = gneuralnetwork
+	conflicts = gneuralnetwork
+	source = gneural_network-0.9.1.tar::https://cvs.savannah.gnu.org/viewvc/*checkout*/gneuralnetwork/gneural_network-0.9.1.tar.gz?revision=1.1&root=gneuralnetwork
+	sha256sums = SKIP
+
+pkgname = gneuralnetwork

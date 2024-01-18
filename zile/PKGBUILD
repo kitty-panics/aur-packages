@@ -2,19 +2,19 @@
 
     #> Package name
 #pkgbase=
-pkgname=utfcheck
+pkgname=zile
     #> Version
-pkgver=1.2
+pkgver=2.6.2
 pkgrel=1
 #epoch=1
     #> Generic
-pkgdesc="Examine an input file and provide feedback on whether or not it consists of valid ASCII or UTF-8 text."
+pkgdesc="A lightweight Emacs clone, every Emacs user should feel at home."
 arch=('x86_64')
-url="https://unifoundry.com/pub/${pkgname}" # https://unifoundry.com/${pkgname}/index.html
-license=('GPL2')
+url="https://ftp.gnu.org/gnu/zile" # https://www.gnu.org/software/zile
+license=('GPL3')
     #> Dependencies
-#depends=('')
-#makedepends=('')
+depends=('libgee')
+makedepends=('help2man')
 #optdepends=('')
     #> Package relations
 provides=("${pkgname}")
@@ -24,7 +24,7 @@ conflicts=("${pkgname}")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("${url}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/${pkgname}-${pkgver}.tar.gz")
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP')
@@ -51,9 +51,13 @@ package() {
                    "${pkgdir}"/usr/share/doc/"${pkgname}"/
     install -Dm644 ChangeLog \
                    "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 FAQ \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
     install -Dm644 NEWS \
                    "${pkgdir}"/usr/share/doc/"${pkgname}"/
     # licenses
     install -Dm644 COPYING \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -Dm644 THANKS \
                    "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

@@ -2,16 +2,17 @@
 
     #> Package name
 #pkgbase=
-pkgname=utfcheck
+pkgname=gneuralnetwork
+_pkgname=gneural_network
     #> Version
-pkgver=1.2
+pkgver=0.9.1
 pkgrel=1
 #epoch=1
     #> Generic
-pkgdesc="Examine an input file and provide feedback on whether or not it consists of valid ASCII or UTF-8 text."
+pkgdesc="Implements a programmable neural network."
 arch=('x86_64')
-url="https://unifoundry.com/pub/${pkgname}" # https://unifoundry.com/${pkgname}/index.html
-license=('GPL2')
+url="https://www.gnu.org/software/${pkgname}"
+license=('GPL3')
     #> Dependencies
 #depends=('')
 #makedepends=('')
@@ -24,13 +25,14 @@ conflicts=("${pkgname}")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("${url}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+_gnu_url="https://cvs.savannah.gnu.org/viewvc/*checkout*"
+source=("${_pkgname}-0.9.1.tar::${_gnu_url}/${pkgname}/${_pkgname}-${pkgver}.tar.gz?revision=1.1&root=${pkgname}")
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}"/"${pkgname}"-"${pkgver}"
+    cd "${srcdir}"/"${_pkgname}"-"${pkgver}"
     ./configure --prefix=/usr
     make
 }
@@ -40,20 +42,21 @@ package() {
     install -dm755 "${pkgdir}"/usr/bin
     install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
-    install -dm755 "${pkgdir}"/usr/share/man/man1
 
-    # pkg files, bin, man
-    cd "${srcdir}"/"${pkgname}"-"${pkgver}"
+    # pkg files, bin
+    cd "${srcdir}"/"${_pkgname}"-"${pkgver}"
     make DESTDIR="${pkgdir}"/ install
 
     # doc
     install -Dm644 AUTHORS \
                    "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    install -Dm644 ChangeLog \
-                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
     install -Dm644 NEWS \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 README \
                    "${pkgdir}"/usr/share/doc/"${pkgname}"/
     # licenses
     install -Dm644 COPYING \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -Dm644 THANKS \
                    "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

@@ -43,7 +43,7 @@ package() {
     install -dm755 "${pkgdir}"/usr/bin
     install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
 
-    # pkg files / bin
+    # pkg files, bin
     install -Dm755 "${srcdir}"/translator.py \
                    "${pkgdir}"/usr/bin/"${pkgname%-*}"
 

@@ -39,7 +39,7 @@ package() {
     install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # pkg files / bin
+    # pkg files, bin
     install -Dm755 "${srcdir}"/N_m3u8DL-RE_Beta_linux-x64/N_m3u8DL-RE \
                    "${pkgdir}"/usr/bin/"${pkgname}"
 

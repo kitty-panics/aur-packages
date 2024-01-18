@@ -1,0 +1,15 @@
+pkgbase = zile
+	pkgdesc = A lightweight Emacs clone, every Emacs user should feel at home.
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = https://ftp.gnu.org/gnu/zile
+	arch = x86_64
+	license = GPL3
+	makedepends = help2man
+	depends = libgee
+	provides = zile
+	conflicts = zile
+	source = https://ftp.gnu.org/gnu/zile/zile-2.6.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = zile

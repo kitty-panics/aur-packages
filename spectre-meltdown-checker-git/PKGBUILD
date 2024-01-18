@@ -45,7 +45,7 @@ package() {
     install -dm755 "${pkgdir}"/usr/bin
     install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
 
-    # pkg files / bin
+    # pkg files, bin
     install -Dm755 "${srcdir}"/spectre-meltdown-checker.sh \
                    "${pkgdir}"/usr/bin/"${pkgname%-*}"
 

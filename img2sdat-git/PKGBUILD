@@ -1,0 +1,65 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=img2sdat-git
+    #> Version
+pkgver=r29.811a96e30d
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Convert sparse EXT4 image to sparse Android data image."
+arch=('x86_64')
+url="https://github.com/xpirt/img2sdat"
+license=('MIT')
+    #> Dependencies
+depends=('python')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
+#source=("git+${url}.git")
+#noextract=("")
+    #> Integrity
+#sha256sums=('SKIP')
+
+pkgver() {
+  _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
+  _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
+  _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/master" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
+  printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+}
+
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname%-*}"
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files
+    install -Dm755 "${srcdir}"/"${pkgname}"/*.py \
+                -t "${pkgdir}"/usr/share/"${pkgname%-*}"
+    # bin
+    ln -s /usr/share/"${pkgname%-*}"/img2sdat.py \
+          "${pkgdir}"/usr/bin/"${pkgname%-*}"
+
+    # doc
+    install -Dm644 "${srcdir}"/"${pkgname}"/README.md \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    # licenses
+    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

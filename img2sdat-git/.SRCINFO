@@ -1,0 +1,14 @@
+pkgbase = img2sdat-git
+	pkgdesc = Convert sparse EXT4 image to sparse Android data image.
+	pkgver = r29.811a96e30d
+	pkgrel = 1
+	url = https://github.com/xpirt/img2sdat
+	arch = x86_64
+	license = MIT
+	depends = python
+	provides = img2sdat-git
+	provides = img2sdat
+	conflicts = img2sdat-git
+	conflicts = img2sdat
+
+pkgname = img2sdat-git

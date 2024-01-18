@@ -1,0 +1,5 @@
+# Docs:
+# https://man.archlinux.org/man/core/systemd/tmpfiles.d.5.en
+#
+# Type Path         Mode User   Group  Age Argument
+  d    /etc/n2n     0755 nobody nobody -   -

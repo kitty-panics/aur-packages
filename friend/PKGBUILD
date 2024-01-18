@@ -52,7 +52,7 @@ package_girl-friend() {
     # mkdir
     install -dm755 "${pkgdir}"/usr/bin
 
-    # pkg files / bin
+    # pkg files, bin
     install -Dm755 "${srcdir}"/"${pkgbase}" \
                    "${pkgdir}"/usr/bin/"${pkgname}"
     sed -i "s/${pkgbase}/${pkgname}/" \

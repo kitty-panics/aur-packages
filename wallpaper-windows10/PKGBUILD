@@ -19,7 +19,7 @@ prepare() {
     7z e -aos "${source}" sources/install.wim
 
     echo " - Extracting files from local Windows installation image"
-    7z x -aos install.wim 5/Windows/Web "${srcdir}"/
+    7z x -aos install.wim 5/Windows/Web "${srcdir}"
 
     # set the correct permissions
     find "${srcdir}"/5/Windows/Web -type d -exec chmod 755 {} \;

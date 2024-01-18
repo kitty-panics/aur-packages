@@ -6,7 +6,7 @@ pkgver=2024.02.14
 pkgrel=1
 url="https://b23.tv/ZEtwjPn"
 pkgdesc="Soft kitty, warm kitty, little ball of fur."
-arch=('any')
+arch=('x86_64')
 license=('unknown')
 source=("${pkgbase}")
 sha256sums=('SKIP')
@@ -16,9 +16,9 @@ package_boyfriend() {
     conflicts=("${pkgname}")
 
     # mkdir
-    install -dm755 "${pkgdir}"/usr/bin/
+    install -dm755 "${pkgdir}"/usr/bin
 
-    # bin
+    # pkg files / bin
     install -Dm755 "${srcdir}"/"${pkgbase}" \
                    "${pkgdir}"/usr/bin/"${pkgname}"
     sed -i "s/${pkgbase}/${pkgname}/" \
@@ -30,9 +30,9 @@ package_girlfriend() {
     conflicts=("${pkgname}")
 
     # mkdir
-    install -dm755 "${pkgdir}"/usr/bin/
+    install -dm755 "${pkgdir}"/usr/bin
 
-    # bin
+    # pkg files / bin
     install -Dm755 "${srcdir}"/"${pkgbase}" \
                    "${pkgdir}"/usr/bin/"${pkgname}"
     sed -i "s/${pkgbase}/${pkgname}/" \

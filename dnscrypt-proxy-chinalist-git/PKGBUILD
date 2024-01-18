@@ -10,13 +10,10 @@ license=('custom:DWTFYWT')
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
 depends=('dnscrypt-proxy')
-install="${pkgname}.install"
 source=("${url}/raw/master/accelerated-domains.china.conf"
-        "${pkgname}.install"
         "${url}/raw/master/LICENSE"
         'Makefile')
 sha256sums=('SKIP'
-            'bbcd9487612c36c2bdeb00db7413cb3367c8093a29d6e8e695953394060677d1'
             'SKIP'
             '882a8d8c0db184be031ba59464fd8e3cd029d6e7af0c5fd99e276ce73a2bca03')
 
@@ -28,7 +25,7 @@ pkgver() {
 }
 
 build() {
-    DEDICATED_SERVER='223.5.5.5'
+    DEDICATED_SERVER='223.6.6.6'
     make SERVER="$DEDICATED_SERVER" dnscrypt-proxy
 }
 

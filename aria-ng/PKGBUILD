@@ -29,13 +29,13 @@ package_aria-ng() {
     install -dm755 "${pkgdir}"/usr/share/"${pkgname}"
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # package files
+    # pkg files
     unzip "${srcdir}"/AriaNg-"${pkgver}".zip \
        -d "${pkgdir}"/usr/share/"${pkgname}"
 
     # licenses
     mv "${pkgdir}"/usr/share/"${pkgname}"/LICENSE \
-       "${pkgdir}"/usr/share/licenses/"${pkgname}"
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
 
 package_aria-ng-allinone() {
@@ -46,11 +46,11 @@ package_aria-ng-allinone() {
     install -dm755 "${pkgdir}"/usr/share/"${pkgname}"
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # package files
+    # pkg files
     unzip "${srcdir}"/AriaNg-"${pkgver}"-AllInOne.zip \
        -d "${pkgdir}"/usr/share/"${pkgname}"
 
     # licenses
     mv "${pkgdir}"/usr/share/"${pkgname}"/LICENSE \
-       "${pkgdir}"/usr/share/licenses/"${pkgname}"
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

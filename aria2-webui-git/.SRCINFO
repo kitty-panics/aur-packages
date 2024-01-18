@@ -6,7 +6,6 @@ pkgbase = aria2-webui-git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = rsync
 	depends = aria2
 	optdepends = apache: A supported application server
 	optdepends = nginx: A supported application server

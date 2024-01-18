@@ -46,14 +46,10 @@ package() {
     sed -i '/bash.sh/i\ \ \ \ mkdir -p "${BASH_CACHE_DIR}"'        "$UPDATE_TEMPLATE"
     sed -i '/bash.sh/i fi\n'                                       "$UPDATE_TEMPLATE"
 
-    # doc
-    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/CODE_OF_CONDUCT.md \
-       "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/CONTRIBUTING.md \
-       "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/README.md \
-       "${pkgdir}"/usr/share/doc/"${pkgname}"/
     # licenses
     mv "${pkgdir}"/usr/share/"${pkgname%-*}"/LICENSE.md \
        "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    # doc
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/*.md \
+       "${pkgdir}"/usr/share/doc/"${pkgname}"/
 }

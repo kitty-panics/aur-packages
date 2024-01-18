@@ -1,0 +1,18 @@
+pkgbase = translator-git
+	pkgdesc = 命令行聚合翻译工具，支持谷歌，必应，有道，百度，词霸，360.
+	pkgver = r26.d079730096
+	pkgrel = 1
+	url = https://github.com/skywind3000/translator
+	arch = x86_64
+	license = unknown
+	depends = python
+	provides = translator-git
+	provides = translator
+	conflicts = translator-git
+	conflicts = translator
+	source = https://github.com/skywind3000/translator/raw/master/translator.py
+	source = https://github.com/skywind3000/translator/raw/master/README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = translator-git

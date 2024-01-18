@@ -34,7 +34,6 @@ package() {
     # pkg files
     cp -a "${srcdir}"/"${pkgname}"/* \
           "${pkgdir}"/opt/"${pkgname%-*}"/
-    rm -rf "${pkgdir}"/opt/"${pkgname%-*}"/.git
 
     # doc
     mv "${pkgdir}"/opt/"${pkgname%-*}"/"READ ME.txt" \

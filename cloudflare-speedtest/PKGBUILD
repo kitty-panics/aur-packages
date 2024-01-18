@@ -5,10 +5,10 @@ pkgver=2.2.5
 pkgrel=1
 url="https://github.com/XIU2/CloudflareSpeedTest/releases"
 pkgdesc="自选优选 IP」测试 Cloudflare CDN 延迟和速度，获取最快 IP ！"
-arch=('any')
+arch=('x86_64')
 license=('GPL3')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${pkgname}" "cloudflare-st" "cfst")
+conflicts=("${pkgname}" "cloudflare-st" "cfst")
 source=("${url}/download/v"${pkgver}"/CloudflareST_linux_amd64.tar.gz")
 sha256sums=('SKIP')
 
@@ -24,13 +24,13 @@ package() {
                    "${pkgdir}"/usr/share/"${pkgname}"/"${pkgname}"
     install -Dm755 "${srcdir}"/cfst_hosts.sh \
                    "${pkgdir}"/usr/share/"${pkgname}"/
+    # bin
+    ln -s /usr/share/"${pkgname}"/"${pkgname}" \
+          "${pkgdir}"/usr/bin/"${pkgname}"
 
     # etc
     install -Dm644 "${srcdir}"/ip*.txt \
                 -t "${pkgdir}"/etc/"${pkgname}"/
-    # bin
-    ln -s /usr/share/"${pkgname}"/"${pkgname}" \
-          "${pkgdir}"/usr/bin/"${pkgname}"
     # doc
     install -Dm644 "${srcdir}"/使用+错误+反馈说明.txt \
                    "${pkgdir}"/usr/share/doc/"${pkgname}"/README.txt

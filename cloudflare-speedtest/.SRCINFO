@@ -3,10 +3,14 @@ pkgbase = cloudflare-speedtest
 	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://github.com/XIU2/CloudflareSpeedTest/releases
-	arch = any
+	arch = x86_64
 	license = GPL3
 	provides = cloudflare-speedtest
+	provides = cloudflare-st
+	provides = cfst
 	conflicts = cloudflare-speedtest
+	conflicts = cloudflare-st
+	conflicts = cfst
 	source = https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_amd64.tar.gz
 	sha256sums = SKIP
 

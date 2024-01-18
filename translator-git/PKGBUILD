@@ -1,0 +1,37 @@
+# Maintainer: Kitty Panics
+
+pkgname=translator-git
+pkgver=r26.d079730096
+pkgrel=1
+url="https://github.com/skywind3000/translator"
+pkgdesc="命令行聚合翻译工具，支持谷歌，必应，有道，百度，词霸，360."
+arch=('x86_64')
+license=('unknown')
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+depends=('python')
+source=("${url}/raw/master/translator.py"
+        "${url}/raw/master/README.md")
+sha256sums=('SKIP'
+            'SKIP')
+
+pkgver() {
+    _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
+    _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
+    _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/master" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
+    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+
+    # pkg files / bin
+    install -Dm755 "${srcdir}"/translator.py \
+                   "${pkgdir}"/usr/bin/"${pkgname%-*}"
+
+    # doc
+    install -Dm644 "${srcdir}"/README.md \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+}

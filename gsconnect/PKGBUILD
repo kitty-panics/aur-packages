@@ -5,10 +5,10 @@ pkgver=56
 pkgrel=2
 url="https://github.com/GSConnect/gnome-shell-extension-gsconnect"
 pkgdesc="KDE Connect implementation for GNOME."
-arch=('any')
+arch=('x86_64')
 license=('GPL')
-provides=("${pkgname}" "gnome-shell-extension-gsconnect")
-conflicts=("${pkgname}" "gnome-shell-extension-gsconnect")
+provides=("${pkgname}" "gnome-shell-extension-${pkgname}")
+conflicts=("${pkgname}" "gnome-shell-extension-${pkgname}")
 depends=('gjs')
 makedepends=('meson')
 optdepends=('gnome-shell: Get all the functions'
@@ -19,8 +19,8 @@ optdepends=('gnome-shell: Get all the functions'
             'ydotool: Generic command-line automation tool (Wayland)'
             'wl-clipboard: Command-line copy/paste utilities (Wayland)')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "gsconnect-daemon.sh"
-        "gsconnect-preferences.sh")
+        "${pkgname}-daemon.sh"
+        "${pkgname}-preferences.sh")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
@@ -32,11 +32,10 @@ build() {
 
 package() {
     # mkdir
-    install -dm755 "${pkgdir}"/usr/bin/
+    install -dm755 "${pkgdir}"/usr/bin
 
     # pkg files
     DESTDIR="${pkgdir}" meson install -C build
-
     # bin
     install -Dm755 "${srcdir}"/gsconnect-daemon.sh \
                    "${pkgdir}"/usr/bin/gsconnect-daemon

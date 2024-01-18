@@ -1,0 +1,13 @@
+pkgbase = utfcheck
+	pkgdesc = Examine an input file and provide feedback on whether or not it consists of valid ASCII or UTF-8 text.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://unifoundry.com/pub/utfcheck
+	arch = x86_64
+	license = GPL2
+	provides = utfcheck
+	conflicts = utfcheck
+	source = https://unifoundry.com/pub/utfcheck/utfcheck-1.2/utfcheck-1.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = utfcheck

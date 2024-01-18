@@ -45,6 +45,8 @@ Personally maintained AUR packages.
 - [X] tencent-qq
 - [X] tencent-qqmusic
 - [X] translator-git
+- [X] utf8gen
+- [X] utfcheck
 - [X] vimix-cursors-git
 - [X] virtualbox-sup
 - [X] wallpaper-windows7

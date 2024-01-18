@@ -1,0 +1,60 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=utf8gen
+    #> Version
+pkgver=1.1
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Reading in hexadecimal numbers from an input source, one per line, and printing them as UTF-8 byte sequences."
+arch=('x86_64')
+url="https://unifoundry.com/pub/utf8gen"
+license=('GPL2')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+build() {
+    cd "${srcdir}"/"${pkgname}"-"${pkgver}"
+    ./configure --prefix=/usr
+    make
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/info
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/man/man1
+
+    # pkg files
+    cd "${srcdir}"/"${pkgname}"-"${pkgver}"
+    make DESTDIR="${pkgdir}"/ install
+
+    # doc
+    install -Dm644 AUTHORS \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 ChangeLog \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 NEWS \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    # licenses
+    install -Dm644 COPYING \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

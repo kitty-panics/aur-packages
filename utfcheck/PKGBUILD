@@ -1,0 +1,59 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=utfcheck
+    #> Version
+pkgver=1.2
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Examine an input file and provide feedback on whether or not it consists of valid ASCII or UTF-8 text."
+arch=('x86_64')
+url="https://unifoundry.com/pub/utfcheck"
+license=('GPL2')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+build() {
+    cd "${srcdir}"/"${pkgname}"-"${pkgver}"
+    ./configure --prefix=/usr
+    make
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/man/man1
+
+    # pkg files
+    cd "${srcdir}"/"${pkgname}"-"${pkgver}"
+    make DESTDIR="${pkgdir}"/ install
+
+    # doc
+    install -Dm644 AUTHORS \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 ChangeLog \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 NEWS \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    # licenses
+    install -Dm644 COPYING \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

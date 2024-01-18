@@ -1,0 +1,13 @@
+pkgbase = utf8gen
+	pkgdesc = Reading in hexadecimal numbers from an input source, one per line, and printing them as UTF-8 byte sequences.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://unifoundry.com/pub/utf8gen
+	arch = x86_64
+	license = GPL2
+	provides = utf8gen
+	conflicts = utf8gen
+	source = https://unifoundry.com/pub/utf8gen/utf8gen-1.1/utf8gen-1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = utf8gen

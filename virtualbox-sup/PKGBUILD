@@ -8,7 +8,7 @@ pkgver=7.0.12
 pkgrel=1
 #epoch=1
     #> Generic
-pkgdesc='Supplement the missing files of VirtualBox.'
+pkgdesc="Supplement the missing files of VirtualBox."
 arch=('x86_64')
 url="https://download.virtualbox.org/virtualbox/${pkgver}"
 license=('GPL3')

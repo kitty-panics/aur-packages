@@ -14,7 +14,7 @@ url="https://next.itellyou.cn/Original/Index#cbp=Product?ID=42e87ac8-9cd6-eb11-b
 license=('custom:FUMS')
     #> Dependencies
 #depends=('')
-makedepends=("p7zip" "rsync")
+makedepends=('p7zip' 'rsync')
 #optdepends=('')
     #> Package relations
 provides=("${pkgname}")

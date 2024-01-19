@@ -1,0 +1,66 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=zeal-git
+    #> Version
+pkgver=r1865.9630cc94c1
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Offline documentation browser inspired by Dash."
+arch=('x86_64')
+url="https://github.com/zealdocs/zeal"
+license=('GPL3')
+    #> Dependencies
+#depends=('')
+#optdepends=('')
+makedepends=('git'
+             'libarchive'
+             'xcb-util-keysyms'
+             'cmake'
+             'extra-cmake-modules')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=('etc/xyz/xyz.conf')
+#options=('')
+#install=xyz.install
+    #> Sources
+#source=("git+${url}.git")
+#noextract=("")
+    #> Integrity
+#sha256sums=('SKIP')
+
+pkgver() {
+    _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
+    _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
+    _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/main" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
+    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+}
+
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+}
+
+build() {
+    cd "${srcdir}"/"${pkgname}"
+    mkdir build && cd build
+    cmake ..
+    make
+}
+
+package() {
+    # mkdir
+    install -dm755 "$pkgdir"/usr/bin
+    install -dm755 "$pkgdir"/usr/share/applications
+    install -dm755 "$pkgdir"/usr/share/icons
+    install -dm755 "$pkgdir"/usr/share/metainfo
+
+    # pkg files, bin, .desktop, icons, metainfo
+    cd "${srcdir}"/"${pkgname}"/build
+    make DESTDIR="${pkgdir}"/ install
+}

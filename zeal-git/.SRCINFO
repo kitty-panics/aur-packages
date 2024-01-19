@@ -1,0 +1,18 @@
+pkgbase = zeal-git
+	pkgdesc = Offline documentation browser inspired by Dash.
+	pkgver = r1865.9630cc94c1
+	pkgrel = 1
+	url = https://github.com/zealdocs/zeal
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = libarchive
+	makedepends = xcb-util-keysyms
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	provides = zeal-git
+	provides = zeal
+	conflicts = zeal-git
+	conflicts = zeal
+
+pkgname = zeal-git

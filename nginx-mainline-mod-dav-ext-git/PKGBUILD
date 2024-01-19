@@ -8,7 +8,7 @@ pkgver=r122.f5e30888a2
 pkgrel=6
 #epoch=1
     #> Generic
-pkgdesc='nginx WebDAV PROPFIND,OPTIONS,LOCK,UNLOCK support (mainline).'
+pkgdesc="nginx WebDAV PROPFIND,OPTIONS,LOCK,UNLOCK support (mainline)."
 arch=('x86_64')
 url="https://github.com/arut/nginx-dav-ext-module"
 license=('BSD2')

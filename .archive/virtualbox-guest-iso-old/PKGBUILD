@@ -8,7 +8,7 @@ pkgver=6.1.26
 pkgrel=5
 #epoch=1
     #> Generic
-pkgdesc='The official VirtualBox Guest Additions ISO image (v6.1.26).'
+pkgdesc="The official VirtualBox Guest Additions ISO image (v${pkgver})."
 arch=('x86_64')
 url="https://download.virtualbox.org/virtualbox/${pkgver}"
 license=('custom:PUEL')

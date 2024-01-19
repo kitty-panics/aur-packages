@@ -61,6 +61,7 @@ Personally maintained AUR packages.
 - [X] wallpaper-windows11
 - [X] wubi98-char
 - [X] wubi98-rimetool
+- [X] zeal-git
 - [X] zile
 
 [jetbrains-clion]: https://github.com/kitty-panics/aur-jetbrains-ide/tree/master/jetbrains-clion

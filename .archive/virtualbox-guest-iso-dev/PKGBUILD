@@ -8,7 +8,7 @@ pkgver=7.0.97_161018
 pkgrel=1
 #epoch=1
     #> Generic
-pkgdesc='The official VirtualBox Guest Additions ISO image (development snapshots).'
+pkgdesc="The official VirtualBox Guest Additions ISO image (development snapshots)."
 arch=('x86_64')
 url="https://www.virtualbox.org/wiki/Testbuilds"
 license=('custom:PUEL')

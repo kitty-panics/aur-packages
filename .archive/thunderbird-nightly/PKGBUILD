@@ -8,7 +8,7 @@ pkgver=117.0a1
 pkgrel=20230711
 #epoch=1
     #> Generic
-pkgdesc='Standalone mail and news reader from mozilla.org (Nightly).'
+pkgdesc="Standalone mail and news reader from mozilla.org (Nightly)."
 arch=('x86_64')
 url="https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n"
 license=('MPL' 'GPL' 'LGPL')

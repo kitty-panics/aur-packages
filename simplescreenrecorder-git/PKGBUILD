@@ -2,24 +2,21 @@
 
     #> Package name
 #pkgbase=
-pkgname=zeal-git
+pkgname=simplescreenrecorder-git
     #> Version
-pkgver=r1865.9630cc94c1
+pkgver=r909.c092f3ee35
 pkgrel=1
 #epoch=1
     #> Generic
-pkgdesc="Offline documentation browser inspired by Dash."
+pkgdesc="SimpleScreenRecorder, a screen recorder for Linux."
 arch=('x86_64')
-url="https://github.com/zealdocs/zeal"
+url="https://github.com/MaartenBaert/ssr"
 license=('GPL3')
     #> Dependencies
-#depends=('')
+depends=('pipewire-jack')
 #optdepends=('')
 makedepends=('git'
-             'libarchive'
-             'xcb-util-keysyms'
-             'cmake'
-             'extra-cmake-modules')
+             'cmake')
     #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
@@ -46,18 +43,23 @@ prepare() {
 build() {
     cd "${srcdir}"/"${pkgname}"
     mkdir build && cd build
-    cmake ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DWITH_QT5=TRUE ..
     make
 }
 
 package() {
     # mkdir
-    install -dm755 "$pkgdir"/usr/bin
-    install -dm755 "$pkgdir"/usr/share/applications
-    install -dm755 "$pkgdir"/usr/share/icons
-    install -dm755 "$pkgdir"/usr/share/metainfo
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/lib
+    install -dm755 "${pkgdir}"/usr/share/applications
+    install -dm755 "${pkgdir}"/usr/share/icons
+    install -dm755 "${pkgdir}"/usr/share/man
+    install -dm755 "${pkgdir}"/usr/share/metainfo
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname%-*}"
 
-    # pkg files, bin, .desktop, icons, metainfo
+    # pkg files, lib, bin, .desktop, icons, man, metainfo
     cd "${srcdir}"/"${pkgname}"/build
     make DESTDIR="${pkgdir}"/ install
 }

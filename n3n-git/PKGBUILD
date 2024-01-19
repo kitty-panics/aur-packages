@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=n3n-git
     #> Version
-pkgver=r1562.cd23e54
+pkgver=r1670.0cbe47108f
 pkgrel=1
 #epoch=1
     #> Generic
@@ -37,8 +37,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-    cd "${srcdir}"/"${pkgname%-*}"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    print-github-repo-version "${url}"
 }
 
 prepare() {

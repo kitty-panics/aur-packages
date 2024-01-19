@@ -47,6 +47,7 @@ Personally maintained AUR packages.
 - [X] rime-see-me-git
 - [X] rustdesk-server
 - [X] sdat2img-git
+- [X] simplescreenrecorder-git
 - [X] spectre-meltdown-checker-git
 - [X] tencent-qq
 - [X] translator-git

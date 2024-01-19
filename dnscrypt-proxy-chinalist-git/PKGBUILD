@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=dnscrypt-proxy-chinalist-git
     #> Version
-pkgver=r164383.4cf73bbb00
+pkgver=r165049.7eb2855f51
 pkgrel=1
 #epoch=1
     #> Generic
@@ -34,10 +34,7 @@ sha256sums=('SKIP'
             '882a8d8c0db184be031ba59464fd8e3cd029d6e7af0c5fd99e276ce73a2bca03')
 
 pkgver() {
-    _repo_url="https://api.github.com/repos/$(echo $url | cut -d'/' -f4,5)"
-    _commit_count=$(curl -sLI "${_repo_url}/commits?per_page=1" | grep '^link' | cut -d'=' -f6 | cut -d'>' -f1)
-    _last_commit=$(curl -sL "${_repo_url}/git/refs/heads/master" | grep 'sha' | cut -d'"' -f4 | cut -c 1-10)
-    printf "r%s.%s" "${_commit_count}" "${_last_commit}"
+    print-github-repo-version "${url}"
 }
 
 build() {

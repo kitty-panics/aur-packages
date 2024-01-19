@@ -8,7 +8,7 @@
 #pkgbase=
 pkgname=headscale-git
     #> Version
-pkgver=r3028.054b06d4
+pkgver=r3033.1e22f17f36
 pkgrel=1
 #epoch=1
     #> Generic
@@ -40,8 +40,7 @@ sha256sums=('SKIP'
             '8a22d7193ceeac0be32725cf8108f963be3a21855e6099de964f810094d0adc7')
 
 pkgver() {
-    cd "${srcdir}"/"${pkgname%-*}"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    print-github-repo-version "${url}"
 }
 
 build() {

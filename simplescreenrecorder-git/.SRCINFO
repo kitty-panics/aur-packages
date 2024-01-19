@@ -1,0 +1,16 @@
+pkgbase = simplescreenrecorder-git
+	pkgdesc = SimpleScreenRecorder, a screen recorder for Linux.
+	pkgver = r909.c092f3ee35
+	pkgrel = 1
+	url = https://github.com/MaartenBaert/ssr
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = pipewire-jack
+	provides = simplescreenrecorder-git
+	provides = simplescreenrecorder
+	conflicts = simplescreenrecorder-git
+	conflicts = simplescreenrecorder
+
+pkgname = simplescreenrecorder-git

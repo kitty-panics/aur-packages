@@ -7,8 +7,8 @@
 #pkgbase=
 pkgname=n2n-git
     #> Version
-pkgver=r1426.fff50a7
-pkgrel=6
+pkgver=r1426.fff50a7d80
+pkgrel=1
 #epoch=1
     #> Generic
 pkgdesc="Peer-to-peer VPN."
@@ -40,8 +40,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-    cd "${srcdir}"/"${pkgname%-*}"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    print-github-repo-version "${url}"
 }
 
 prepare() {

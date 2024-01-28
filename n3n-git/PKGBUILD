@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=n3n-git
     #> Version
-pkgver=r1670.0cbe47108f
+pkgver=r1729.752d6a8357
 pkgrel=1
 #epoch=1
     #> Generic
@@ -13,9 +13,9 @@ arch=('x86_64')
 url="https://github.com/hamishcoleman/n3n" # n42n/n3n
 license=('GPL3')
     #> Dependencies
-depends=('zstd' 'openssl' 'libcap' 'libpcap' 'libnatpmp' 'miniupnpc')
-optdepends=('python: for n2n-ctl, n2n-httpd')
-#optdepends=('')
+#depends=('')
+makedepends=('zstd' 'openssl' 'libcap' 'libpcap' 'libnatpmp' 'miniupnpc')
+optdepends=('python: for n3n-ctl, n3n-httpd command')
     #> Package relations
 provides=("${pkgname}" "${pkgname%-*}" "n2n-git" "n2n")
 conflicts=("${pkgname}" "${pkgname%-*}" "n2n-git" "n2n")
@@ -28,10 +28,12 @@ backup=('etc/n3n/edge.conf'
 source=("git+${url}.git"
         'full-edge.conf'
         'full-supernode.conf'
+        "n3n-git.tmpfiles"
         'version.sh')
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -57,21 +59,25 @@ build() {
     ./configure --with-zstd --with-openssl \
                 --enable-cap --enable-pcap \
                 --enable-natpmp --enable-miniupnp
-    make -j32
+    # fix: "src/management.c:317:27: error: expected ‘;’ before ‘}’ token"
+    sed -i '/200)$/s/$/;/' src/management.c
+    make
 }
 
 package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/lib/systemd/system
+    install -dm755 "${pkgdir}"/usr/share/man/man{1,7,8}
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files, bin, man
     cd "${srcdir}"/"${pkgname%-*}"
-
-    # /usr/bin/*, man-pages
-    DESTDIR="${pkgdir}" SBINDIR="${pkgdir}"/usr/bin make install
-
-    # utilities
-    install -Dm644 scripts/n3n-ctl   "${pkgdir}"/usr/bin
-    install -Dm644 scripts/n3n-httpd "${pkgdir}"/usr/bin
-    chmod +x "${pkgdir}"/usr/bin/n3n-*
-
-    # /etc/n3n/*.conf
+    DESTDIR="${pkgdir}" make install
+    install -Dm755 scripts/n3n-{ctl,httpd} \
+                -t "${pkgdir}"/usr/bin
+    # etc
     install -Dm644 "${srcdir}"/full-edge.conf \
                    "${pkgdir}"/etc/n3n/edge.conf
     install -Dm644 "${srcdir}"/full-supernode.conf \
@@ -83,4 +89,10 @@ package() {
     find "${pkgdir}"/usr/lib/systemd/system/ -type f -exec sed -i 's|/sbin|/bin|g' {} \;
     sed -i '/User=/c\User=nobody'   "${pkgdir}"/usr/lib/systemd/system/supernode.service
     sed -i '/Group=/c\Group=nobody' "${pkgdir}"/usr/lib/systemd/system/supernode.service
+    # doc
+    install -Dm644 doc/*.md \
+                -t "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    # licenses
+    install -Dm644 LICENSES/preferred/* \
+                -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

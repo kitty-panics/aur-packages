@@ -5,10 +5,10 @@
 pkgname=nginx-mainline-mod-brotli-git
     #> Version
 pkgver=r62.a71f9312c2
-pkgrel=3
+pkgrel=4
 #epoch=1
     #> Generic
-pkgdesc="NGINX module for Brotli compression (mainline)."
+pkgdesc="Nginx module for Brotli compression (mainline)."
 arch=('x86_64')
 url="https://github.com/google/ngx_brotli"
 license=('BSD2')
@@ -20,11 +20,10 @@ makedepends=('git' 'nginx-mainline-src=1.25.3')
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources
-_modname="nginx-brotli-module"
 #source=("${_modname}::git+${url}")
 #noextract=("")
     #> Integrity
@@ -35,33 +34,33 @@ pkgver() {
 }
 
 prepare() {
-    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
-        git clone --recursive --depth=1 "${url}" "${srcdir}"/"${_modname}"
+    if [[ ! -d "${srcdir}"/"${pkgname%-*}" ]]; then
+        git clone --recursive --depth=1 "${url}" "${srcdir}"/"${pkgname%-*}"
     fi
 }
 
 build() {
-    mkdir -p build
-    cd build
-    ln -sf /usr/src/nginx/auto .
-    ln -sf /usr/src/nginx/src  .
-    /usr/src/nginx/configure --with-compat --add-dynamic-module=../${_modname}
+    mkdir build && cd build
+    ln -s /usr/src/nginx/auto .
+    ln -s /usr/src/nginx/src  .
+    /usr/src/nginx/configure --with-compat --add-dynamic-module=../"${pkgname%-*}"
     make modules
 }
 
 package() {
     # mkdir
     install -dm755 "${pkgdir}"/usr/lib/nginx/modules
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
     # pkg files
-    cd "${srcdir}"/build/objs
-    for i in ngx_*.so; do
-        install -Dm644 ${i} \
-                       "${pkgdir}"/usr/lib/nginx/modules/${i}
-    done
+    install -Dm644 "${srcdir}"/build/objs/*.so \
+                -t "${pkgdir}"/usr/lib/nginx/modules/
 
+    # doc
+    install -Dm644 "${srcdir}"/${pkgname%-*}/README.md \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
     # licenses
-    install -Dm644 "${srcdir}"/${_modname}/LICENSE \
-                   "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 "${srcdir}"/${pkgname%-*}/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

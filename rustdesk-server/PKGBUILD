@@ -5,7 +5,7 @@
 pkgname=rustdesk-server
     #> Version
 pkgver=1.1.9
-pkgrel=2
+pkgrel=1
 #epoch=1
     #> Generic
 pkgdesc="RustDesk Server Program."
@@ -20,7 +20,7 @@ license=('AGPL3')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

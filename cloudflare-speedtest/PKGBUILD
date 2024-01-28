@@ -5,7 +5,7 @@
 pkgname=cloudflare-speedtest
     #> Version
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 #epoch=1
     #> Generic
 pkgdesc="自选优选 IP」测试 Cloudflare CDN 延迟和速度，获取最快 IP ！"
@@ -20,7 +20,8 @@ license=('GPL3')
 provides=("${pkgname}" "cloudflare-st" "cf-st" "cfst")
 conflicts=("${pkgname}" "cloudflare-st" "cf-st" "cfst")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+backup=("etc/${pkgname}/ip.txt"
+        "etc/${pkgname}/ipv6.txt")
 #options=('')
 #install=xyz.install
     #> Sources
@@ -44,10 +45,10 @@ package() {
     # bin
     ln -s /usr/share/"${pkgname}"/"${pkgname}" \
           "${pkgdir}"/usr/bin/"${pkgname}"
-
     # etc
     install -Dm644 "${srcdir}"/ip*.txt \
                 -t "${pkgdir}"/etc/"${pkgname}"/
+
     # doc
     install -Dm644 "${srcdir}"/使用+错误+反馈说明.txt \
                    "${pkgdir}"/usr/share/doc/"${pkgname}"/README.txt

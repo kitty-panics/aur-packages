@@ -1,0 +1,14 @@
+pkgbase = musl-cross-x86_64-w64-mingw32
+	pkgdesc = Static cross- musl-based toolchains (x86_64-w64-mingw32).
+	pkgver = 2023.02.06
+	pkgrel = 1
+	url = http://musl.cc
+	arch = x86_64
+	license = unknown
+	provides = musl-cross-x86_64-w64-mingw32
+	conflicts = musl-cross-x86_64-w64-mingw32
+	noextract = x86_64-w64-mingw32-cross.tgz
+	source = http://musl.cc/x86_64-w64-mingw32-cross.tgz
+	sha256sums = 6130e6b463742bdabe1ea53f7267c1cfb0f2902f50774b6c766d19776c419488
+
+pkgname = musl-cross-x86_64-w64-mingw32

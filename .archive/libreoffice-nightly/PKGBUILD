@@ -35,7 +35,7 @@ optdepends=('java-runtime:    adds java support'
 provides=("${pkgname}" "libreoffice")
 conflicts=("${pkgname}" "libreoffice" "libreoffice-fresh" "libreoffice-still")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

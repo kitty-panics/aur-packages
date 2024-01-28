@@ -20,7 +20,7 @@ license=('GPL2' 'GFDL1.3')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

@@ -8,9 +8,9 @@ pkgver=0.0.0.20220409
 pkgrel=1
 #epoch=1
     #> Generic
-pkgdesc="Placeholder of preset librime data."
+pkgdesc="Meta package of preset librime data."
 arch=('x86_64')
-url="https://github.com/rime"
+url="https://github.com/rime/rime-prelude"
 license=('LGPL')
     #> Dependencies
 depends=('librime')
@@ -20,7 +20,7 @@ depends=('librime')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

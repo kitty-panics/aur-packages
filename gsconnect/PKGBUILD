@@ -26,7 +26,7 @@ optdepends=('gnome-shell: Get all the functions'
 provides=("${pkgname}" "gnome-shell-extension-${pkgname}")
 conflicts=("${pkgname}" "gnome-shell-extension-${pkgname}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources
@@ -40,16 +40,22 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-    arch-meson -Dinstalled_tests=false -Dfirewalld=true "gnome-shell-extension-${pkgname}-${pkgver}" build
-    meson compile -C build
+    cd "${srcdir}"/gnome-shell-extension-"${pkgname}"-"${pkgver}"
+    mkdir build && cd build
+    meson --prefix=/usr \
+          -Dinstalled_tests=false \
+          -Dfirewalld=false \
+          -Dwebextension=false ..
+    meson compile
 }
 
 package() {
     # mkdir
-    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr
 
     # pkg files
-    DESTDIR="${pkgdir}" meson install -C build
+    cd "${srcdir}"/gnome-shell-extension-"${pkgname}"-"${pkgver}"/build
+    DESTDIR="${pkgdir}"/ meson install
     # bin
     install -Dm755 "${srcdir}"/gsconnect-daemon.sh \
                    "${pkgdir}"/usr/bin/gsconnect-daemon

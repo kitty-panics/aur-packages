@@ -21,7 +21,7 @@ optdepends=('libotr: OTR support for active one-to-one chats'
 provides=("${pkgname}" "thunderbird")
 conflicts=("${pkgname}" "thunderbird")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

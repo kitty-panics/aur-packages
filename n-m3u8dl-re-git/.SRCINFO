@@ -1,18 +1,20 @@
-pkgbase = n_m3u8dl-re
+pkgbase = n-m3u8dl-re-git
 	pkgdesc = Cross-Platform, modern and powerful stream downloader for MPD/M3U8/ISM.
-	pkgver = 0.2.0_beta
+	pkgver = r445.8fdb6bc90b
 	pkgrel = 1
 	url = https://github.com/nilaoda/N_m3u8DL-RE
 	arch = x86_64
 	license = MIT
 	depends = ffmpeg
-	provides = n_m3u8dl-re
-	conflicts = n_m3u8dl-re
-	source = https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v0.2.0-beta/N_m3u8DL-RE_Beta_linux-x64_20230628.tar.gz
+	provides = n-m3u8dl-re-git
+	provides = n-m3u8dl-re
+	conflicts = n-m3u8dl-re-git
+	conflicts = n-m3u8dl-re
+	source = N_m3u8DL-RE_Beta_linux-x64.zip::https://github.com/nilaoda/N_m3u8DL-RE/actions/runs/6851479504/artifacts/1046259226
 	source = https://github.com/nilaoda/N_m3u8DL-RE/raw/main/README.md
 	source = https://github.com/nilaoda/N_m3u8DL-RE/raw/main/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = n_m3u8dl-re
+pkgname = n-m3u8dl-re-git

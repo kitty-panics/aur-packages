@@ -1,8 +1,4 @@
 # Maintainer: Kitty Panics
-# Upstream: https://gitlab.archlinux.org/archlinux/packaging/packages/headscale
-#
-# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
-# Contributor: Matt Harrison <matt@harrison.us.com>
 
     #> Package name
 #pkgbase=
@@ -30,49 +26,54 @@ backup=("etc/${pkgname%-*}/config.yaml"
 #options=('')
 #install=xyz.install
     #> Sources
-source=("git+${url}.git"
-        "${pkgname}.sysusers"
-        "${pkgname}.tmpfiles")
+#source=("git+${url}.git")
+source=("${pkgname}.tmpfiles")
 #noextract=("")
     #> Integrity
-sha256sums=('SKIP'
-            '059353f4843dec6eb447c567fac890ef63cc9c8acea18840fcfc3f4a76d596db'
-            '8a22d7193ceeac0be32725cf8108f963be3a21855e6099de964f810094d0adc7')
+sha256sums=('SKIP')
 
 pkgver() {
     print-github-repo-version "${url}"
 }
 
-build() {
-    cd "${srcdir}"/"${pkgname%-*}"
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+}
 
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -tags="ts2021" -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -s -w" ./cmd/headscale
+build() {
+    cd "${srcdir}"/"${pkgname}"
+    go build -tags="ts2021" ./cmd/headscale
 }
 
 package() {
-    cd "${srcdir}"/"${pkgname%-*}"
+    # mkdir
+    install -dm755 "${pkgdir}"/etc/"${pkgname%-*}"
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/lib/systemd/system
+    install -dm755 "${pkgdir}"/usr/lib/tmpfiles.d
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -dm755 "${pkgdir}"/var/lib/"${pkgname%-*}"
 
-    # /usr/bin/
-    install -Dm755 "${pkgname%-*}" "${pkgdir}/usr/bin/${pkgname%-*}"
+    # pkg files, bin
+    install -Dm755 "${srcdir}"/"${pkgname}"/"${pkgname%-*}" \
+                   "${pkgdir}"/usr/bin/"${pkgname%-*}"
+    # etc
+    install -Dm644 "${srcdir}"/"${pkgname}"/config-example.yaml \
+                   "${pkgdir}"/etc/"${pkgname%-*}"/config.yaml
+    install -Dm644 "${srcdir}"/"${pkgname}"/derp-example.yaml \
+                   "${pkgdir}"/etc/"${pkgname%-*}"/derp.yaml
 
-    # config files
-    install -Dm644 "config-example.yaml" "${pkgdir}/etc/${pkgname%-*}/config.yaml"
-    install -Dm644 "derp-example.yaml"   "${pkgdir}/etc/${pkgname%-*}/derp.yaml"
-    install -Dm644 "config-example.yaml" "${pkgdir}/usr/share/${pkgname}/config-example.yaml"
-    install -Dm644 "derp-example.yaml"   "${pkgdir}/usr/share/${pkgname}/derp-example.yaml"
-
-    # /usr/lib/
-    install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-
-    # systemd .service
-    install -Dm644 "docs/packaging/headscale.systemd.service" "${pkgdir}/usr/lib/systemd/system/${pkgname%-*}.service"
-
+    # .service
+    install -Dm644 "${srcdir}"/"${pkgname}"/docs/packaging/headscale.systemd.service \
+                   "${pkgdir}"/usr/lib/systemd/system/"${pkgname%-*}".service
+    sed -i '/^User=/s/headscale/nobody/'  "${pkgdir}"/usr/lib/systemd/system/"${pkgname%-*}".service
+    sed -i '/^Group=/s/headscale/nobody/' "${pkgdir}"/usr/lib/systemd/system/"${pkgname%-*}".service
+    # .tmpfiles
+    install -Dm644 "${srcdir}"/"${pkgname}".tmpfiles \
+                   "${pkgdir}"/usr/lib/tmpfiles.d/"${pkgname}".conf
     # licenses
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

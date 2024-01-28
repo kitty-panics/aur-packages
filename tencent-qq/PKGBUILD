@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=tencent-qq
     #> Version
-pkgver=3.2.5_20811
+pkgver=3.2.5_21159
 pkgrel=1
 #epoch=1
     #> Generic
@@ -20,11 +20,11 @@ optdepends=('libappindicator-gtk3: Allow applications to extend a menu via Ayata
 provides=("${pkgname}")
 conflicts=("${pkgname}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("https://dldir1.qq.com/qqfile/qq/QQNT/d0154345/linuxqq_${pkgver/_/-}_amd64.deb"
+source=("https://dldir1.qq.com/qqfile/qq/QQNT/feb78c41/linuxqq_${pkgver/_/-}_amd64.deb"
         "${pkgname}.desktop")
 #noextract=("")
     #> Integrity

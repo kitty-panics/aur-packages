@@ -1,10 +1,10 @@
 pkgbase = nginx-mainline-mod-fancyindex-git
 	pkgdesc = Fancy indexes module for the Nginx web server (mainline).
 	pkgver = r255.cbc0d3fca4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/aperezdc/ngx-fancyindex
 	arch = x86_64
-	license = custom
+	license = unknown
 	makedepends = git
 	makedepends = nginx-mainline-src=1.25.3
 	depends = nginx-mainline=1.25.3

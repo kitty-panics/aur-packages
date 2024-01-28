@@ -13,14 +13,14 @@ arch=('x86_64')
 url="https://unifoundry.com/pub/${pkgname}"
 license=('GPL2')
     #> Dependencies
-#depends=('')
+depends=('perl')
 #makedepends=('')
 #optdepends=('')
     #> Package relations
 provides=("${pkgname}")
 conflicts=("${pkgname}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

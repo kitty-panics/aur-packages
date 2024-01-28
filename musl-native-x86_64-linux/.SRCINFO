@@ -1,0 +1,14 @@
+pkgbase = musl-native-x86_64-linux
+	pkgdesc = Static native- musl-based toolchains (x86_64-linux).
+	pkgver = 2021.11.23
+	pkgrel = 1
+	url = http://musl.cc
+	arch = x86_64
+	license = unknown
+	provides = musl-native-x86_64-linux
+	conflicts = musl-native-x86_64-linux
+	noextract = x86_64-linux-musl-native.tgz
+	source = http://musl.cc/x86_64-linux-musl-native.tgz
+	sha256sums = eb1db6f0f3c2bdbdbfb993d7ef7e2eeef82ac1259f6a6e1757c33a97dbcef3ad
+
+pkgname = musl-native-x86_64-linux

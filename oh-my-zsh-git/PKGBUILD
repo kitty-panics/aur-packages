@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=oh-my-zsh-git
     #> Version
-pkgver=r7095.8be4789bbb
+pkgver=r7108.80c114cb3a
 pkgrel=1
 #epoch=1
     #> Generic
@@ -20,7 +20,7 @@ optdepends=('git: Support for git repositories')
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

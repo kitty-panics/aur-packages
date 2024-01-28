@@ -1,8 +1,8 @@
 pkgbase = librime-data
-	pkgdesc = Placeholder of preset librime data.
+	pkgdesc = Meta package of preset librime data.
 	pkgver = 0.0.0.20220409
 	pkgrel = 1
-	url = https://github.com/rime
+	url = https://github.com/rime/rime-prelude
 	arch = x86_64
 	license = LGPL
 	depends = librime

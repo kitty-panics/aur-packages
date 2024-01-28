@@ -13,14 +13,30 @@ arch=('x86_64')
 url="https://3.jetbra.in"
 license=('GPL3')
     #> Dependencies
-depends=('java-environment')
+depends=('java-runtime')
 #makedepends=('')
 #optdepends=('')
     #> Package relations
 provides=("${pkgname}" "ja-netfilter")
 conflicts=("${pkgname}" "ja-netfilter")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+backup=("etc/jetbra.in/vmoptions/appcode.vmoptions"
+        "etc/jetbra.in/vmoptions/clion.vmoptions"
+        "etc/jetbra.in/vmoptions/datagrip.vmoptions"
+        "etc/jetbra.in/vmoptions/dataspell.vmoptions"
+        "etc/jetbra.in/vmoptions/devecostudio.vmoptions"
+        "etc/jetbra.in/vmoptions/gateway.vmoptions"
+        "etc/jetbra.in/vmoptions/goland.vmoptions"
+        "etc/jetbra.in/vmoptions/idea.vmoptions"
+        "etc/jetbra.in/vmoptions/jetbrains_client.vmoptions"
+        "etc/jetbra.in/vmoptions/jetbrainsclient.vmoptions"
+        "etc/jetbra.in/vmoptions/phpstorm.vmoptions"
+        "etc/jetbra.in/vmoptions/pycharm.vmoptions"
+        "etc/jetbra.in/vmoptions/rider.vmoptions"
+        "etc/jetbra.in/vmoptions/rubymine.vmoptions"
+        "etc/jetbra.in/vmoptions/studio.vmoptions"
+        "etc/jetbra.in/vmoptions/webide.vmoptions"
+        "etc/jetbra.in/vmoptions/webstorm.vmoptions")
 #options=('')
 install="${pkgname}.install"
     #> Sources
@@ -31,7 +47,7 @@ source=("${_url}/files/${_zip}"
         "${pkgname}.install")
 #noextract=("")
     #> Integrity
-sha256sums=('SKIP'
+sha256sums=('39de7a0306419aadc8d125d6e20ce7e6b812fe855c7c8b7313e7ba6605844098'
             '841ef4a86dae3f52656a4f3474d430be37760e1a38ec9ec585a38d0198458d5f')
 
 package() {
@@ -41,8 +57,9 @@ package() {
     install -dm755 "${pkgdir}"/usr/share/java/"${pkgname}"
 
     # pkg files
-    bsdtar --strip-components 1 -xf "${srcdir}"/"${_zip}" \
-                                 -C "${pkgdir}"/usr/share/java/"${pkgname}"/
+    cp -a "${srcdir}"/jetbra/* \
+          "${pkgdir}"/usr/share/java/"${pkgname}"/
+    rm -r "${pkgdir}"/usr/share/java/"${pkgname}"/scripts
     # etc
     mv "${pkgdir}"/usr/share/java/"${pkgname}"/vmoptions \
        "${pkgdir}"/etc/"${pkgname}"/
@@ -51,11 +68,8 @@ package() {
     done
 
     # doc
-    ln -s /usr/share/java/"${pkgname}"/README.pdf \
-          "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    ln -s /usr/share/java/"${pkgname}"/readme.txt \
-          "${pkgdir}"/usr/share/doc/"${pkgname}"/
-
-    # useless files
-    rm -r "${pkgdir}"/usr/share/java/"${pkgname}"/{scripts,sha1sum.txt}
+    mv "${pkgdir}"/usr/share/java/"${pkgname}"/README.pdf \
+       "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    mv "${pkgdir}"/usr/share/java/"${pkgname}"/*.txt \
+       "${pkgdir}"/usr/share/doc/"${pkgname}"/
 }

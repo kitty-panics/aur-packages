@@ -20,7 +20,7 @@ depends=('git')
 provides=("${pkgname}" "gh-cli" "gh")
 conflicts=("${pkgname}" "gh-cli" "gh")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

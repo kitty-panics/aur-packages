@@ -1,0 +1,41 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=musl-cross-x86_64-w64-mingw32
+    #> Version
+pkgver=2023.02.06
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Static cross- musl-based toolchains (x86_64-w64-mingw32)."
+arch=('x86_64')
+url="http://musl.cc"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/${arch}-w64-mingw32-cross.tgz")
+noextract=("${arch}-w64-mingw32-cross.tgz")
+    #> Integrity
+sha256sums=('6130e6b463742bdabe1ea53f7267c1cfb0f2902f50774b6c766d19776c419488')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/opt/"${pkgname}"/usr
+
+    # pkg files
+    tar -xzf "${srcdir}"/${arch}-w64-mingw32-cross.tgz \
+          -C "${pkgdir}"/opt/"${pkgname}"/usr \
+        --strip-components=1
+    rm -r "${pkgdir}"/opt/"${pkgname}"/usr/usr
+}

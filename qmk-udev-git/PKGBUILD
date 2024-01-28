@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=qmk-udev-git
     #> Version
-pkgver=r26504.dcc47ea31b
+pkgver=r26512.b7468f4785
 pkgrel=1
 #epoch=1
     #> Generic
@@ -20,7 +20,7 @@ depends=('qmk')
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

@@ -4,11 +4,11 @@
 #pkgbase=
 pkgname=nginx-mainline-mod-headers-more-git
     #> Version
-pkgver=r267.607d1b1f32
-pkgrel=4
+pkgver=r273.06dc0be56e
+pkgrel=2
 #epoch=1
     #> Generic
-pkgdesc="Set, add, and clear arbitrary output headers in NGINX http servers (mainline)."
+pkgdesc="Set, add, and clear arbitrary output headers in Nginx http servers (mainline)."
 arch=('x86_64')
 url="https://github.com/openresty/headers-more-nginx-module"
 license=('BSD')
@@ -20,11 +20,10 @@ makedepends=('git' 'nginx-mainline-src=1.25.3')
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources
-_modname="nginx-headers-more-module"
 #source=("${_modname}::git+${url}")
 #noextract=("")
     #> Integrity
@@ -35,35 +34,35 @@ pkgver() {
 }
 
 prepare() {
-    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
-        git clone --depth=1 "${url}" "${srcdir}"/"${_modname}"
+    if [[ ! -d "${srcdir}"/"${pkgname%-*}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname%-*}"
     fi
 }
 
 build() {
-    mkdir -p build
-    cd build
+    mkdir build && cd build
     ln -s /usr/src/nginx/auto .
     ln -s /usr/src/nginx/src  .
-    /usr/src/nginx/configure --with-compat --add-dynamic-module=../${_modname}
+    /usr/src/nginx/configure --with-compat --add-dynamic-module=../"${pkgname%-*}"
     make modules
 }
 
 package() {
     # mkdir
     install -dm755 "${pkgdir}"/usr/lib/nginx/modules
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
     # pkg files
-    cd "${srcdir}"/build/objs
-    for i in ngx_*.so; do
-        install -Dm644 ${i} \
-                       "${pkgdir}"/usr/lib/nginx/modules/${i}
-    done
+    install -Dm644 "${srcdir}"/build/objs/*.so \
+                -t "${pkgdir}"/usr/lib/nginx/modules/
 
+    # doc
+    install -Dm644 "${srcdir}"/${pkgname%-*}/README.markdown \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
     # licenses
-    cd "${srcdir}"/${_modname}
-    sed -n '/^The code base/,/^SOFTWARE, EVEN/p' README.markdown > LICENSE
-    install -Dm644 "${srcdir}"/${_modname}/LICENSE \
-                   "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    sed -n '/^The code base/,/^SOFTWARE, EVEN/p' \
+           "${srcdir}"/"${pkgname%-*}"/README.markdown > LICENSE
+    install -Dm644 "${srcdir}"/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

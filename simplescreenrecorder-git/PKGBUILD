@@ -13,15 +13,17 @@ arch=('x86_64')
 url="https://github.com/MaartenBaert/ssr"
 license=('GPL3')
     #> Dependencies
-depends=('pipewire-jack')
-#optdepends=('')
+#depends=('')
 makedepends=('git'
-             'cmake')
+             'cmake'
+             'qt5-base'
+             'ffmpeg')
+#optdepends=('')
     #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

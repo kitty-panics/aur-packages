@@ -2,9 +2,9 @@
 
     #> Package name
 #pkgbase=
-pkgname=n_m3u8dl-re
+pkgname=n-m3u8dl-re-git
     #> Version
-pkgver=0.2.0_beta
+pkgver=r445.8fdb6bc90b
 pkgrel=1
 #epoch=1
     #> Generic
@@ -17,14 +17,15 @@ depends=('ffmpeg')
 #makedepends=('')
 #optdepends=('')
     #> Package relations
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("${url}/releases/download/v${pkgver/_/-}/N_m3u8DL-RE_Beta_linux-x64_20230628.tar.gz"
+_actions="${url}/actions/runs/6851479504"
+source=("N_m3u8DL-RE_Beta_linux-x64.zip::${_actions}/artifacts/1046259226"
         "${url}/raw/main/README.md"
         "${url}/raw/main/LICENSE")
 #noextract=("")
@@ -33,6 +34,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
+pkgver() {
+    print-github-repo-version "${url}"
+}
+
 package() {
     # mkdir
     install -dm755 "${pkgdir}"/usr/bin
@@ -40,13 +45,13 @@ package() {
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
     # pkg files, bin
-    install -Dm755 "${srcdir}"/N_m3u8DL-RE_Beta_linux-x64/N_m3u8DL-RE \
-                   "${pkgdir}"/usr/bin/"${pkgname}"
+    install -Dm755 "${srcdir}"/N_m3u8DL-RE \
+                   "${pkgdir}"/usr/bin/"${pkgname%-*}"
 
     # doc
     install -Dm644 "${srcdir}"/README.md \
-                   "${pkgdir}"/usr/share/doc/"${pkgname}"
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"/
     # licenses
     install -Dm644 "${srcdir}"/LICENSE \
-                   "${pkgdir}"/usr/share/licenses/"${pkgname}"
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

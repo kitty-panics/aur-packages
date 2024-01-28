@@ -14,11 +14,7 @@ pkgbase = headscale-git
 	conflicts = headscale
 	backup = etc/headscale/config.yaml
 	backup = etc/headscale/derp.yaml
-	source = git+https://github.com/juanfont/headscale.git
-	source = headscale-git.sysusers
 	source = headscale-git.tmpfiles
 	sha256sums = SKIP
-	sha256sums = 059353f4843dec6eb447c567fac890ef63cc9c8acea18840fcfc3f4a76d596db
-	sha256sums = 8a22d7193ceeac0be32725cf8108f963be3a21855e6099de964f810094d0adc7
 
 pkgname = headscale-git

@@ -24,7 +24,7 @@ optdepends=('apache: A supported application server'
 #provides=("${pkgname}")
 #conflicts=("${pkgname}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

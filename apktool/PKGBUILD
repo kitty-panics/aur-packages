@@ -10,7 +10,7 @@ pkgrel=1
     #> Generic
 pkgdesc="A tool for reverse engineering Android apk files."
 arch=('x86_64')
-url="https://github.com/iBotPeaches/Apktool/releases"
+url="https://github.com/iBotPeaches/Apktool"
 license=('Apache')
     #> Dependencies
 depends=('java-runtime')
@@ -20,21 +20,26 @@ depends=('java-runtime')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("${url}/download/v${pkgver}/apktool_${pkgver}.jar"
+source=("${url}/releases/download/v${pkgver}/apktool_${pkgver}.jar"
+        "${url}/raw/master/CONTRIBUTORS.md"
+        "${url}/raw/master/LICENSE.md"
         "${pkgname}.sh")
 noextract=("apktool_${pkgver}.jar")
     #> Integrity
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             '9f2c14689381a117f8705753f318bfcb39ed357642f952d50d9864285b86666b')
 
 package() {
     # mkdir
     install -dm755 "${pkgdir}"/usr/bin
     install -dm755 "${pkgdir}"/usr/share/java/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
     # pkg files
     install -Dm644 "${srcdir}"/apktool_"${pkgver}".jar \
@@ -42,4 +47,8 @@ package() {
     # bin
     install -Dm755 "${srcdir}"/apktool.sh \
                    "${pkgdir}"/usr/bin/apktool
+
+    # licenses
+    install -Dm644 "${srcdir}"/*.md \
+                -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

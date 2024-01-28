@@ -1,7 +1,4 @@
 # Maintainer: Kitty Panics
-# Upstream: https://gitlab.archlinux.org/archlinux/packaging/packages/n2n
-#
-# Contributor: Felix Yan <felixonmars@archlinux.org>
 
     #> Package name
 #pkgbase=
@@ -16,25 +13,27 @@ arch=('x86_64')
 url="https://github.com/ntop/n2n"
 license=('GPL3')
     #> Dependencies
-depends=('zstd' 'openssl' 'libcap' 'libpcap' 'libnatpmp' 'miniupnpc')
+#depends=('')
+makedepends=('zstd' 'openssl' 'libcap' 'libpcap' 'libnatpmp' 'miniupnpc')
 optdepends=('python: for n2n-ctl, n2n-httpd command')
-#optdepends=('')
     #> Package relations
 provides=("${pkgname}" "${pkgname%-*}" "n3n-git" "n3n")
 conflicts=("${pkgname}" "${pkgname%-*}" "n3n-git" "n3n")
     #> Others
-backup=('etc/n2n/edge.conf'
-        'etc/n2n/supernode.conf')
+backup=("etc/${pkgname%-*}/edge.conf"
+        "etc/${pkgname%-*}/supernode.conf")
 #options=('')
 #install=xyz.install
     #> Sources
 source=("git+${url}.git"
         "full-edge.conf"
         "full-supernode.conf"
+        "n2n-git.tmpfiles"
         "version.sh")
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -60,30 +59,27 @@ build() {
     ./configure --with-zstd --with-openssl \
                 --enable-cap --enable-pcap \
                 --enable-natpmp --enable-miniupnp
-    make -j32
+    make
 }
 
 package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/lib/systemd/system
+    install -dm755 "${pkgdir}"/usr/share/man/man{1,7,8}
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files, bin, man
     cd "${srcdir}"/"${pkgname%-*}"
-
-    # /usr/bin/*, man-pages
-    DESTDIR="${pkgdir}" SBINDIR="${pkgdir}"/usr/bin make install
-
-    # utilities
-    install -Dm644 scripts/n2n-ctl   "${pkgdir}"/usr/bin
-    install -Dm644 scripts/n2n-httpd "${pkgdir}"/usr/bin
-    chmod +x "${pkgdir}"/usr/bin/n2n-*
-
-    # /etc/n2n/*.conf
+    DESTDIR="${pkgdir}"/ make install
+    install -Dm755 scripts/n2n-{ctl,httpd} \
+                -t "${pkgdir}"/usr/bin
+    # etc
     install -Dm644 "${srcdir}"/full-edge.conf \
                    "${pkgdir}"/etc/n2n/edge.conf
     install -Dm644 "${srcdir}"/full-supernode.conf \
                    "${pkgdir}"/etc/n2n/supernode.conf
-
-    install -Dm644 packages/etc/n2n/edge.conf.sample \
-                   "${pkgdir}/usr/share/${pkgname}/edge-sample.conf"
-    install -Dm644 packages/etc/n2n/supernode.conf.sample \
-                   "${pkgdir}/usr/share/${pkgname}/supernode-sample.conf"
 
     # .service
     install -Dm644 packages/etc/systemd/system/* \
@@ -91,4 +87,10 @@ package() {
     find "${pkgdir}"/usr/lib/systemd/system/ -type f -exec sed -i 's|/sbin|/bin|g' {} \;
     sed -i '/User=/c\User=nobody'   "${pkgdir}"/usr/lib/systemd/system/supernode.service
     sed -i '/Group=/c\Group=nobody' "${pkgdir}"/usr/lib/systemd/system/supernode.service
+    # doc
+    install -Dm644 doc/*.md \
+                -t "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    # licenses
+    install -Dm644 LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

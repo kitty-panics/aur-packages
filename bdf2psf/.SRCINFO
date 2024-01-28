@@ -5,6 +5,7 @@ pkgbase = bdf2psf
 	url = https://unifoundry.com/pub/bdf2psf
 	arch = x86_64
 	license = GPL2
+	depends = perl
 	provides = bdf2psf
 	conflicts = bdf2psf
 	source = https://unifoundry.com/pub/bdf2psf/bdf2psf-1.104.tar.gz

@@ -24,7 +24,7 @@ optdepends=('apache: A supported application server'
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources
@@ -52,8 +52,9 @@ package() {
     # pkg files
     cp -a "${srcdir}"/"${pkgname}"/docs/* \
           "${pkgdir}"/usr/share/"${pkgname%-*}"/
-    cp -a "${srcdir}"/"${pkgname}"/favicon.ico \
-          "${pkgdir}"/usr/share/"${pkgname%-*}"/
+    cp "${srcdir}"/"${pkgname}"/favicon.ico \
+       "${pkgdir}"/usr/share/"${pkgname%-*}"/
+    # fix: favicon.ico
     sed -i 's/\.\.\/favicon.ico/favicon.ico/' \
            "${pkgdir}"/usr/share/"${pkgname%-*}"/index.html
     # fix: optimize for china network

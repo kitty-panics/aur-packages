@@ -10,21 +10,21 @@ pkgrel=1
     #> Generic
 pkgdesc="Offline documentation browser inspired by Dash."
 arch=('x86_64')
-url="https://github.com/zealdocs/zeal"
+url="https://github.com/zealdocs/${pkgname%-*}"
 license=('GPL3')
     #> Dependencies
 #depends=('')
-#optdepends=('')
 makedepends=('git'
              'libarchive'
              'xcb-util-keysyms'
              'cmake'
              'extra-cmake-modules')
+#optdepends=('')
     #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")
 conflicts=("${pkgname}" "${pkgname%-*}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources
@@ -54,7 +54,7 @@ package() {
     # mkdir
     install -dm755 "$pkgdir"/usr/bin
     install -dm755 "$pkgdir"/usr/share/applications
-    install -dm755 "$pkgdir"/usr/share/icons
+    install -dm755 "$pkgdir"/usr/share/icons/hicolor/{16x16,24x24,32x32,64x64,128x128}/apps
     install -dm755 "$pkgdir"/usr/share/metainfo
 
     # pkg files, bin, .desktop, icons, metainfo

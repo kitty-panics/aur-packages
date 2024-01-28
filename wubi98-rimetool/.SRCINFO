@@ -6,6 +6,7 @@ pkgbase = wubi98-rimetools
 	arch = x86_64
 	license = unknown
 	makedepends = imagemagick
+	depends = libb2
 	provides = wubi98-rimetools
 	conflicts = wubi98-rimetools
 	source = rimetools-bin.tar.xz

@@ -23,7 +23,7 @@ optdepends=('pulseaudio: A featureful, general-purpose sound server'
 provides=("${pkgname}" "gh-desktop")
 conflicts=("${pkgname}" "gh-desktop")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

@@ -1,0 +1,14 @@
+pkgbase = musl-cross-x86_64-linux
+	pkgdesc = Static cross- musl-based toolchains (x86_64-linux).
+	pkgver = 2021.11.23
+	pkgrel = 1
+	url = http://musl.cc
+	arch = x86_64
+	license = unknown
+	provides = musl-cross-x86_64-linux
+	conflicts = musl-cross-x86_64-linux
+	noextract = x86_64-linux-musl-cross.tgz
+	source = http://musl.cc/x86_64-linux-musl-cross.tgz
+	sha256sums = c5d410d9f82a4f24c549fe5d24f988f85b2679b452413a9f7e5f7b956f2fe7ea
+
+pkgname = musl-cross-x86_64-linux

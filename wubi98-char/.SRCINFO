@@ -5,6 +5,7 @@ pkgbase = wubi98-char
 	url = http://98wb.ysepan.com
 	arch = x86_64
 	license = unknown
+	depends = libb2
 	provides = wubi98-char
 	conflicts = wubi98-char
 	source = wubi98-char-bin.tar.xz

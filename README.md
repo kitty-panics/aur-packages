@@ -15,7 +15,6 @@ Personally maintained AUR packages.
 - [X] fontx2bdf
 - [X] friend
 - [X] gneuralnetwork
-- [ ] -----------------------------------
 - [X] gsconnect
 - [X] headscale-git
 - [X] hmcl
@@ -32,14 +31,16 @@ Personally maintained AUR packages.
 - [ ] [jetbrains-rubymine]
 - [ ] [jetbrains-webstorm]
 - [X] librime-data
+- [X] musl-cross-x86_64-linux
+- [X] musl-cross-x86_64-w64-mingw32
+- [X] musl-native-x86_64-linux
+- [X] n-m3u8dl-re-git
 - [X] n2n-git
 - [X] n3n-git
-- [X] n_m3u8dl-re
 - [X] nginx-mainline-mod-brotli-git
 - [X] nginx-mainline-mod-dav-ext-git
 - [X] nginx-mainline-mod-fancyindex-git
 - [X] nginx-mainline-mod-headers-more-git
-- [ ] -----------------------------------
 - [X] oh-my-bash-git
 - [X] oh-my-zsh-git
 - [X] olden

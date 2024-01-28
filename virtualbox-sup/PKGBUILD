@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=virtualbox-sup
     #> Version
-pkgver=7.0.12
+pkgver=7.0.14
 pkgrel=1
 #epoch=1
     #> Generic
@@ -20,7 +20,7 @@ makedepends=('p7zip')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

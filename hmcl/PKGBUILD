@@ -10,7 +10,7 @@ pkgrel=1
     #> Generic
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('x86_64')
-url="https://github.com/huanghongxun/HMCL/releases"
+url="https://github.com/huanghongxun/HMCL"
 license=('GPL3')
     #> Dependencies
 depends=('java-runtime')
@@ -20,18 +20,22 @@ depends=('java-runtime')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("${url}/download/v${pkgver}/HMCL-${pkgver}.jar"
-        "${pkgname}.desktop"
-        "${pkgname}.sh")
+source=("${url}/releases/download/v${pkgver}/HMCL-${pkgver}.jar"
+        "${pkgname}.sh"
+        "${url}/raw/javafx/LICENSE"
+        "${url}/raw/javafx/PLATFORM.md"
+        "${url}/raw/javafx/PLATFORM_cn.md")
 noextract=("HMCL-${pkgver}.jar")
     #> Integrity
 sha256sums=('SKIP'
-            '68360fe5d23bd50aa43e853b65932fa3784927fc357c85f1c70ae34302ff6c9e'
-            '3dac6043ac66a25a990e681195660fa60f486786957280da7c71b284d33e78de')
+            '3dac6043ac66a25a990e681195660fa60f486786957280da7c71b284d33e78de'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
     bsdtar --strip-components 2 -xf "${srcdir}"/HMCL-"${pkgver}".jar assets/img/icon.png
@@ -40,27 +44,31 @@ prepare() {
 }
 
 package() {
-    # create dir
-    install -dm755 "${pkgdir}"/usr/bin/
-    install -dm755 "${pkgdir}"/usr/share/applications/
-    install -dm755 "${pkgdir}"/usr/share/java/"${pkgname}"/
-    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/{32x32,64x64,256x256}/apps/
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/java/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/{32x32,64x64,256x256}/apps
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
-    # package files
+    # pkg files
     install -Dm644 "${srcdir}"/HMCL-${pkgver}.jar \
                    "${pkgdir}"/usr/share/java/"${pkgname}"/hmcl.jar
-    # /usr/bin/
+    # bin
     install -Dm755 "${srcdir}"/hmcl.sh \
                    "${pkgdir}"/usr/bin/hmcl
 
-    # .desktop
-    install -Dm644 "${srcdir}/${pkgname}.desktop" \
-                   "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    # icons/hicolor
-    install -Dm644 "${srcdir}/icon.png" \
-                   "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
-    install -Dm644 "${srcdir}/icon@2x.png" \
-                   "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
-    install -Dm644 "${srcdir}/icon@8x.png" \
-                   "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+    # doc
+    install -Dm644 "${srcdir}"/PLATFORM*.md \
+                -t "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    # icons
+    install -Dm644 "${srcdir}"/icon.png \
+                   "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/"${pkgname}".png
+    install -Dm644 "${srcdir}"/icon@2x.png \
+                   "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/"${pkgname}".png
+    install -Dm644 "${srcdir}"/icon@8x.png \
+                   "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/"${pkgname}".png
+    # licenses
+    install -Dm644 "${srcdir}"/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

@@ -10,17 +10,17 @@ pkgrel=1
     #> Generic
 pkgdesc="A lightweight Emacs clone, every Emacs user should feel at home."
 arch=('x86_64')
-url="https://ftp.gnu.org/gnu/zile" # https://www.gnu.org/software/zile
+url="https://ftp.gnu.org/gnu/${pkgname}" # https://www.gnu.org/software/${pkgname}
 license=('GPL3')
     #> Dependencies
-depends=('libgee')
-makedepends=('help2man')
+#depends=('')
+makedepends=('libgee' 'help2man')
 #optdepends=('')
     #> Package relations
 provides=("${pkgname}")
 conflicts=("${pkgname}")
     #> Others
-#backup=('etc/xyz/xyz.conf')
+#backup=("")
 #options=('')
 #install=xyz.install
     #> Sources

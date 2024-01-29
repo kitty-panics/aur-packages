@@ -102,6 +102,9 @@ Personally maintained AUR packages.
 - [x] rime-see-me-old
 - [x] tencent-qqmusic
 - [x] thunderbird-nightly
+- [x] ttf-nko
+- [x] ttf-rupakara
+- [x] ttf-unicode-ranges
 - [x] virtualbox-guest-iso-dev
 - [x] virtualbox-guest-iso-old
 - [x] virtualbox-guest-iso-test

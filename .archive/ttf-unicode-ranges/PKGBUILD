@@ -1,0 +1,62 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=ttf-unicode-ranges-git
+    #> Version
+pkgver=r9.78d4ef956b
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Displays ttf, otf, ttc font information and unicode ranges covering."
+arch=('x86_64')
+url="https://github.com/biodranik/ttf-unicode-ranges"
+license=('unknown')
+    #> Dependencies
+depends=('freetype2' 'graphite' 'harfbuzz' 'libpng')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+backup=("etc/${pkgname%-*}/Blocks.txt")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("https://www.unicode.org/Public/15.1.0/ucd/Blocks.txt")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+pkgver() {
+    print-github-repo-version "${url}"
+}
+
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+}
+
+build() {
+    cd "${srcdir}"/"${pkgname}"
+
+    # fix: "error: ‘uint32_t’ does not name a type"
+    sed -i '/^#include <string>/i#include <cstdint>' print_ranges_for_file.cc
+    make
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/etc/"${pkgname%-*}"
+    install -dm755 "${pkgdir}"/usr/bin
+
+    # pkg files, bin
+    cd "${srcdir}"/"${pkgname}"
+    install -Dm755 build/* \
+                -t "${pkgdir}"/usr/bin/
+    # etc
+    install -Dm644 "${srcdir}"/Blocks.txt \
+                   "${pkgdir}"/etc/"${pkgname%-*}"/
+}

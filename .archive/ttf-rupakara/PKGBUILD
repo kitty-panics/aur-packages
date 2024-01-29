@@ -1,0 +1,46 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=ttf-rupakara
+    #> Version
+pkgver=1.0.4 # 2012.05.16
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="A sans-serif font created primarily to give support to the newly-invented INDIAN RUPEE SIGN ₹."
+arch=('any')
+url="https://www.evertype.com/fonts/rupakara"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/rupakara.zip"
+        "${url}/rupakara-licence.html")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP'
+            'SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/fonts/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files
+    install -Dm644 "${srcdir}"/rupakara-"${pkgver}"/*.ttf \
+                -t "${pkgdir}"/usr/share/fonts/"${pkgname}"/
+
+    # licenses
+    install -Dm644 "${srcdir}"/rupakara-licence.html \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/licence.html
+}

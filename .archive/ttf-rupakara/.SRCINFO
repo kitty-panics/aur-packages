@@ -1,0 +1,15 @@
+pkgbase = ttf-rupakara
+	pkgdesc = A sans-serif font created primarily to give support to the newly-invented INDIAN RUPEE SIGN ₹.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://www.evertype.com/fonts/rupakara
+	arch = any
+	license = unknown
+	provides = ttf-rupakara
+	conflicts = ttf-rupakara
+	source = https://www.evertype.com/fonts/rupakara/rupakara.zip
+	source = https://www.evertype.com/fonts/rupakara/rupakara-licence.html
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ttf-rupakara

@@ -1,0 +1,20 @@
+pkgbase = ttf-unicode-ranges-git
+	pkgdesc = Displays ttf, otf, ttc font information and unicode ranges covering.
+	pkgver = r9.78d4ef956b
+	pkgrel = 1
+	url = https://github.com/biodranik/ttf-unicode-ranges
+	arch = x86_64
+	license = unknown
+	depends = freetype2
+	depends = graphite
+	depends = harfbuzz
+	depends = libpng
+	provides = ttf-unicode-ranges-git
+	provides = ttf-unicode-ranges
+	conflicts = ttf-unicode-ranges-git
+	conflicts = ttf-unicode-ranges
+	backup = etc/ttf-unicode-ranges/Blocks.txt
+	source = https://www.unicode.org/Public/15.1.0/ucd/Blocks.txt
+	sha256sums = SKIP
+
+pkgname = ttf-unicode-ranges-git

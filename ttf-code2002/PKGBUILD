@@ -1,0 +1,39 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=ttf-code2002
+    #> Version
+pkgver=0.922
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="A Plane 2 Unicode-based font."
+arch=('any')
+url="https://code2001.com/Code2002_page.htm"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("https://www.code2001.com/CODE2002.ZIP")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/fonts/"${pkgname}"
+
+    # pkg files
+    install -Dm644 "${srcdir}"/CODE2002.TTF \
+                   "${pkgdir}"/usr/share/fonts/"${pkgname}"/
+}

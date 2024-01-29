@@ -1,0 +1,13 @@
+pkgbase = ttf-code2001
+	pkgdesc = A Plane 1 Unicode-based font.
+	pkgver = 0.922
+	pkgrel = 1
+	url = https://code2001.com/code2001.htm
+	arch = any
+	license = unknown
+	provides = ttf-code2001
+	conflicts = ttf-code2001
+	source = http://www.code2001.com/CODE2001.ZIP
+	sha256sums = SKIP
+
+pkgname = ttf-code2001

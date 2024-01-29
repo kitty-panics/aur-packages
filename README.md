@@ -55,6 +55,10 @@ Personally maintained AUR packages.
 - [X] spectre-meltdown-checker-git
 - [X] tencent-qq
 - [X] translator-git
+- [X] ttf-code20x3
+- [X] ttf-code2000
+- [X] ttf-code2001
+- [X] ttf-code2002
 - [X] unibetacode
 - [X] utf8gen
 - [X] utfcheck

@@ -1,0 +1,39 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=ttf-code20x3
+    #> Version
+pkgver=0.904
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="A Plane 3 Unicode-based font."
+arch=('any')
+url="https://code2001.com/Code20X3_page.htm"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("https://www.code2001.com/CODE20X3.ZIP")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/fonts/"${pkgname}"
+
+    # pkg files
+    install -Dm644 "${srcdir}"/CODE20X3.TTF \
+                   "${pkgdir}"/usr/share/fonts/"${pkgname}"/
+}

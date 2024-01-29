@@ -48,8 +48,8 @@ package() {
     cp -a "${srcdir}"/opt/QQ/* \
           "${pkgdir}"/opt/"${pkgname}"/
     # bin
-    ln -s "/opt/${pkgname}/qq" \
-          "${pkgdir}/usr/bin/${pkgname}"
+    ln -s /opt/"${pkgname}"/qq \
+          "${pkgdir}"/usr/bin/"${pkgname}"
 
     # .desktop
     install -Dm644 "${srcdir}"/"${pkgname}".desktop \

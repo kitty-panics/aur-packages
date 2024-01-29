@@ -1,0 +1,15 @@
+pkgbase = zwsoft-zwcad2024
+	pkgdesc = 基于自主内核的国产二维 CAD 平台.
+	pkgver = 24.1.3.4
+	pkgrel = 1
+	url = https://www.zwsoft.cn/product/zwcad/linux
+	arch = x86_64
+	license = unknown
+	provides = zwsoft-zwcad2024
+	provides = zwcad2024
+	conflicts = zwsoft-zwcad2024
+	conflicts = zwcad2024
+	source = zwcad2024_24.1.3.4_amd64.deb::https://downloads.zwsoft.cn/zwcad/cad_linux/2024/SP/zwsoft-zwcad2024_24.1.3.4_amd64.deb?auth_key=1706461475-0-0-d54c058cfa01eca3640e8c4f7fc3fb0d
+	sha256sums = SKIP
+
+pkgname = zwsoft-zwcad2024

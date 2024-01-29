@@ -1,0 +1,60 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=appimagetool-git
+    #> Version
+pkgver=r30.bfe6e0c1c6
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="A low-level tool to generate an AppImage from an existing AppDir."
+arch=('x86_64')
+url="https://github.com/AppImage/appimagetool"
+license=('unknown')
+    #> Dependencies
+depends=('squashfs-tools' 'zsync')
+makedepends=('git'
+             'cmake')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+#source=("git+${url}.git")
+#noextract=("")
+    #> Integrity
+#sha256sums=('SKIP')
+
+pkgver() {
+    print-github-repo-version "${url}"
+}
+
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+}
+
+build() {
+    cd "${srcdir}"/"${pkgname}"
+    mkdir build && cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    make
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/applications
+    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/128x128/apps
+    install -dm755 "${pkgdir}"/usr/share/metainfo
+
+    # pkg files, bin, .desktop, icons, metainfo
+    cd "${srcdir}"/"${pkgname}"/build
+    make DESTDIR="${pkgdir}"/ install
+}

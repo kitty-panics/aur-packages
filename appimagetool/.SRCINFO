@@ -1,0 +1,17 @@
+pkgbase = appimagetool-git
+	pkgdesc = A low-level tool to generate an AppImage from an existing AppDir.
+	pkgver = r30.bfe6e0c1c6
+	pkgrel = 1
+	url = https://github.com/AppImage/appimagetool
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	depends = squashfs-tools
+	depends = zsync
+	provides = appimagetool-git
+	provides = appimagetool
+	conflicts = appimagetool-git
+	conflicts = appimagetool
+
+pkgname = appimagetool-git

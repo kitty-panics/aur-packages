@@ -6,6 +6,7 @@ Personally maintained AUR packages.
 
 - [X] apktool
 - [X] aria-ng
+- [X] appimagetool
 - [X] aria2-webui-git
 - [X] bdf2psf
 - [X] cloudflare-speedtest
@@ -97,6 +98,7 @@ Personally maintained AUR packages.
 - [x] virtualbox-guest-iso-dev
 - [x] virtualbox-guest-iso-old
 - [x] virtualbox-guest-iso-test
+- [x] zwsoft-zwcad2024
 
 [jetbrains-clion-old]: https://github.com/kitty-panics/aur-jetbrains-ide/tree/master/jetbrains-clion-old
 [jetbrains-datagrip-old]: https://github.com/kitty-panics/aur-jetbrains-ide/tree/master/jetbrains-datagrip-old

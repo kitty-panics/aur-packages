@@ -1,0 +1,15 @@
+pkgbase = jsshell
+	pkgdesc = Mozilla JS Shell.
+	pkgver = 123.0b3
+	pkgrel = 1
+	url = https://ftp.mozilla.org/pub/firefox/releases
+	arch = x86_64
+	license = unknown
+	depends = nspr
+	provides = jsshell
+	conflicts = jsshell
+	conflicts = jsshell-nightly
+	source = https://ftp.mozilla.org/pub/firefox/releases/123.0b3/jsshell/jsshell-linux-x86_64.zip
+	sha256sums = SKIP
+
+pkgname = jsshell

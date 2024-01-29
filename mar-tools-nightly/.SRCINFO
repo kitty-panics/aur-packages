@@ -1,0 +1,17 @@
+pkgbase = mar-tools-nightly
+	pkgdesc = Mozilla MAR Tools (Nightly).
+	pkgver = 2024.01.29
+	pkgrel = 1
+	url = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central
+	arch = x86_64
+	license = unknown
+	provides = mar-tools-nightly
+	provides = mar-tools
+	conflicts = mar-tools-nightly
+	conflicts = mar-tools
+	source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/mar-tools/linux64/mar
+	source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/mar-tools/linux64/mbsdiff
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mar-tools-nightly

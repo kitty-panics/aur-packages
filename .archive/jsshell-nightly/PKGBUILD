@@ -1,0 +1,39 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=jsshell-nightly
+    #> Version
+pkgver=2024.01.29
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Mozilla JS Shell (Nightly)."
+arch=('x86_64')
+url="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
+license=('unknown')
+    #> Dependencies
+depends=('nspr')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/${pkgname%-*}-linux-${arch}.zip")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+
+    # pkg files
+    install -Dm755 "${srcdir}"/js \
+                   "${pkgdir}"/usr/bin/js
+}

@@ -21,6 +21,7 @@ Personally maintained AUR packages.
 - [X] hmcl
 - [X] img2sdat-git
 - [X] jetbra.in
+- [X] jsshell
 - [ ] [jetbrains-clion]
 - [ ] [jetbrains-datagrip]
 - [ ] [jetbrains-dataspell]
@@ -32,6 +33,7 @@ Personally maintained AUR packages.
 - [ ] [jetbrains-rubymine]
 - [ ] [jetbrains-webstorm]
 - [X] librime-data
+- [X] mar-tools-nightly
 - [X] musl-cross-x86_64-linux
 - [X] musl-cross-x86_64-w64-mingw32
 - [X] musl-native-x86_64-linux
@@ -91,6 +93,7 @@ Personally maintained AUR packages.
 - [ ] [jetbrains-rider-old]
 - [ ] [jetbrains-rubymine-old]
 - [ ] [jetbrains-webstorm-old]
+- [x] jsshell-nightly
 - [x] libreoffice-nightly
 - [x] rime-see-me-old
 - [x] tencent-qqmusic

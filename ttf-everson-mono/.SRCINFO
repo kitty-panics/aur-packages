@@ -1,0 +1,17 @@
+pkgbase = ttf-everson-mono
+	pkgdesc = A simple, elegant, monowidth font.
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://www.evertype.com/emono
+	arch = any
+	license = unknown
+	provides = ttf-everson-mono
+	provides = ttf-everson-mono-beta
+	conflicts = ttf-everson-mono
+	conflicts = ttf-everson-mono-beta
+	source = https://www.evertype.com/emono/evermono.zip
+	source = https://www.evertype.com/emono/licence.html
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ttf-everson-mono

@@ -6,7 +6,9 @@ pkgbase = ttf-code2002
 	arch = any
 	license = unknown
 	provides = ttf-code2002
+	provides = ttf-code2002-old
 	conflicts = ttf-code2002
+	conflicts = ttf-code2002-old
 	source = https://www.code2001.com/CODE2002.ZIP
 	sha256sums = SKIP
 

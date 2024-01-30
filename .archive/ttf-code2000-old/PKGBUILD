@@ -1,0 +1,44 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=ttf-code2000-old
+    #> Version
+pkgver=2010.11.22
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="A Unicode-based proportional font."
+arch=('any')
+url="https://web.archive.org/web/20101122142710/http://code2000.net/CODE2000.ZIP"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/fonts/"${pkgname%-*}"
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+
+    # pkg files
+    install -Dm644 "${srcdir}"/CODE2000.TTF \
+                   "${pkgdir}"/usr/share/fonts/"${pkgname%-*}"/
+
+    # doc
+    install -Dm644 "${srcdir}"/CODE2000.HTM \
+                   "${pkgdir}"/usr/share/doc/"${pkgname}"
+}

@@ -17,8 +17,8 @@ license=('unknown')
 #makedepends=('')
 #optdepends=('')
     #> Package relations
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${pkgname}" "${pkgname}-old")
+conflicts=("${pkgname}" "${pkgname}-old")
     #> Others
 #backup=("")
 #options=('')

@@ -1,0 +1,13 @@
+pkgbase = ttf-sadagoltina
+	pkgdesc = An elegant font for Gothic.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://www.evertype.com/fonts/gothic
+	arch = any
+	license = unknown
+	provides = ttf-sadagoltina
+	conflicts = ttf-sadagoltina
+	source = https://www.evertype.com/fonts/gothic/sadagolthina.zip
+	sha256sums = SKIP
+
+pkgname = ttf-sadagoltina

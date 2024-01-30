@@ -1,12 +1,14 @@
 pkgbase = ttf-code2000
-	pkgdesc = A unicode-based proportional font.
+	pkgdesc = A Unicode-based proportional font.
 	pkgver = 1.176
 	pkgrel = 1
 	url = https://code2001.com/code2000_page.htm
 	arch = any
 	license = unknown
 	provides = ttf-code2000
+	provides = ttf-code2000-old
 	conflicts = ttf-code2000
+	conflicts = ttf-code2000-old
 	source = https://code2001.com/CODE2000.ZIP
 	sha256sums = SKIP
 

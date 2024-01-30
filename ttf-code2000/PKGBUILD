@@ -8,7 +8,7 @@ pkgver=1.176
 pkgrel=1
 #epoch=1
     #> Generic
-pkgdesc="A unicode-based proportional font."
+pkgdesc="A Unicode-based proportional font."
 arch=('any')
 url="https://code2001.com/code2000_page.htm"
 license=('unknown')
@@ -17,8 +17,8 @@ license=('unknown')
 #makedepends=('')
 #optdepends=('')
     #> Package relations
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${pkgname}" "${pkgname}-old")
+conflicts=("${pkgname}" "${pkgname}-old")
     #> Others
 #backup=("")
 #options=('')

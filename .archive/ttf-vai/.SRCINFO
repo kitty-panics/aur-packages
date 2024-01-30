@@ -1,0 +1,25 @@
+pkgbase = ttf-vai
+	pkgdesc = Vai fonts,
+	pkgver = 2010.09.20
+	pkgrel = 1
+	url = https://www.evertype.com/fonts/vai
+	arch = any
+	license = OFL
+	source = https://www.evertype.com/fonts/vai/dukorfont.zip
+	source = https://www.evertype.com/fonts/vai/dukor-licence.html
+	source = https://www.evertype.com/fonts/vai/wakorfont.zip
+	source = https://www.evertype.com/fonts/vai/wakor-licence.html
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ttf-vai-wakor
+	pkgdesc = Vai fonts, based on the SIL Vai font.
+	provides = ttf-vai-wakor
+	conflicts = ttf-vai-wakor
+
+pkgname = ttf-vai-dukor
+	pkgdesc = Vai fonts, based on glyphs drawn originally by calligrapher Jason Glavy.
+	provides = ttf-vai-dukor
+	conflicts = ttf-vai-dukor

@@ -21,7 +21,6 @@ Personally maintained AUR packages.
 - [X] hmcl
 - [X] img2sdat-git
 - [X] jetbra.in
-- [X] jsshell
 - [ ] [jetbrains-clion]
 - [ ] [jetbrains-datagrip]
 - [ ] [jetbrains-dataspell]
@@ -32,7 +31,9 @@ Personally maintained AUR packages.
 - [ ] [jetbrains-rider]
 - [ ] [jetbrains-rubymine]
 - [ ] [jetbrains-webstorm]
+- [X] jsshell
 - [X] librime-data
+- [X] maconv-git
 - [X] mar-tools-nightly
 - [X] musl-cross-x86_64-linux
 - [X] musl-cross-x86_64-w64-mingw32
@@ -59,6 +60,7 @@ Personally maintained AUR packages.
 - [X] ttf-code2000
 - [X] ttf-code2001
 - [X] ttf-code2002
+- [X] ttf-everson-mono
 - [X] unibetacode
 - [X] utf8gen
 - [X] utfcheck
@@ -102,9 +104,16 @@ Personally maintained AUR packages.
 - [x] rime-see-me-old
 - [x] tencent-qqmusic
 - [x] thunderbird-nightly
+- [x] ttf-antinoou
+- [x] ttf-code2000-old
+- [x] ttf-code2001-old
+- [x] ttf-code2002-old
+- [x] ttf-everson-mono-beta
 - [x] ttf-nko
 - [x] ttf-rupakara
+- [x] ttf-sadagoltina
 - [x] ttf-unicode-ranges
+- [x] ttf-vai
 - [x] virtualbox-guest-iso-dev
 - [x] virtualbox-guest-iso-old
 - [x] virtualbox-guest-iso-test

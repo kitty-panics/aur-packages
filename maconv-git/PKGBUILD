@@ -1,0 +1,65 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=maconv-git
+    #> Version
+pkgver=r2.e54e2f5b5e
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Old Macintosh format converter."
+arch=('x86_64')
+url="https://github.com/ParksProjets/Maconv"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+makedepends=('git'
+             'cmake')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+#source=("git+${url}.git")
+#noextract=("")
+    #> Integrity
+#sha256sums=('SKIP')
+
+pkgver() {
+    print-github-repo-version "${url}"
+}
+
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+}
+
+build() {
+    cd "${srcdir}"/"${pkgname}"
+    mkdir build && cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+
+    # fix: "error: field ‘filename’ has incomplete type ‘std::string’ {aka ‘std::__cxx11::basic_string<char>’}"
+    sed -i '/#include <memory>/i#include <string>' ../src/fs/file.h
+    # fix: "error: ‘uint8_t’ has not been declared"
+    sed -i '/#include <ostream>/i#include <cstdint>' ../src/fs/file_writer.h
+    # fix: "error: aggregate ‘std::array<char, 128> buffer’ has incomplete type and cannot be defined"
+    sed -i '/#include <memory>/i#include <array>' ../src/formats/file_signature.cc
+    make
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/man/man1
+
+    # pkg files, bin, man
+    cd "${srcdir}"/"${pkgname}"/build
+    make DESTDIR="${pkgdir}"/ install
+}

@@ -1,0 +1,80 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+pkgbase=ttf-vai
+pkgname=("${pkgbase}"-wakor "${pkgbase}"-dukor)
+    #> Version
+pkgver=2010.09.20
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Vai fonts, "
+arch=('any')
+url="https://www.evertype.com/fonts/vai"
+license=('OFL')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+#provides=("${pkgname}")
+#conflicts=("${pkgname}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/dukorfont.zip"
+        "${url}/dukor-licence.html"
+        "${url}/wakorfont.zip"
+        "${url}/wakor-licence.html")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
+package_ttf-vai-dukor() {
+    #> Generic
+    pkgdesc+="based on glyphs drawn originally by calligrapher Jason Glavy."
+    #> Package relations
+    provides=("${pkgname}")
+    conflicts=("${pkgname}")
+
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/fonts/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files
+    install -Dm644 "${srcdir}"/Dukor-1.0.7/*.ttf \
+                -t "${pkgdir}"/usr/share/fonts/"${pkgname}"/
+
+    # licenses
+    install -Dm644 "${srcdir}"/Dukor-1.0.7/dukor-licence.txt \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -Dm644 "${srcdir}"/dukor-licence.html \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}
+
+package_ttf-vai-wakor() {
+    #> Generic
+    pkgdesc+="based on the SIL Vai font."
+    #> Package relations
+    provides=("${pkgname}")
+    conflicts=("${pkgname}")
+
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/fonts/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files
+    install -Dm644 "${srcdir}"/Wakor-4.0.7/*.ttf \
+                -t "${pkgdir}"/usr/share/fonts/"${pkgname}"/
+
+    # licenses
+    install -Dm644 "${srcdir}"/Wakor-4.0.7/wakor-licence.txt \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -Dm644 "${srcdir}"/wakor-licence.html \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

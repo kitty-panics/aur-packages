@@ -6,7 +6,9 @@ pkgbase = ttf-code2001
 	arch = any
 	license = unknown
 	provides = ttf-code2001
+	provides = ttf-code2001-old
 	conflicts = ttf-code2001
+	conflicts = ttf-code2001-old
 	source = http://www.code2001.com/CODE2001.ZIP
 	sha256sums = SKIP
 

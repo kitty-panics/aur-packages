@@ -1,0 +1,39 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=ttf-code2001-old
+    #> Version
+pkgver=2010.11.22
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="A Plane 1 Unicode-based font."
+arch=('any')
+url="https://web.archive.org/web/20101122142330/http://code2000.net/CODE2001.ZIP"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/fonts/"${pkgname%-*}"
+
+    # pkg files
+    install -Dm644 "${srcdir}"/CODE2001.TTF \
+                   "${pkgdir}"/usr/share/fonts/"${pkgname%-*}"/
+}

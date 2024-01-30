@@ -1,0 +1,46 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=ttf-everson-mono
+    #> Version
+pkgver=7.0.0
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="A simple, elegant, monowidth font."
+arch=('any')
+url="https://www.evertype.com/emono"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname}-beta")
+conflicts=("${pkgname}" "${pkgname}-beta")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/evermono.zip"
+        "${url}/licence.html")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP'
+            'SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/fonts/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files
+    install -Dm644 "${srcdir}"/evermono-"${pkgver}"/*.ttf \
+                -t "${pkgdir}"/usr/share/fonts/"${pkgname}"/
+
+    # licenses
+    install -Dm644 "${srcdir}"/evermono-"${pkgver}"/emono-licence.txt \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/licence.txt
+}

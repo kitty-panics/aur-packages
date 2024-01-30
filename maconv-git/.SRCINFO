@@ -1,0 +1,15 @@
+pkgbase = maconv-git
+	pkgdesc = Old Macintosh format converter.
+	pkgver = r2.e54e2f5b5e
+	pkgrel = 1
+	url = https://github.com/ParksProjets/Maconv
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	provides = maconv-git
+	provides = maconv
+	conflicts = maconv-git
+	conflicts = maconv
+
+pkgname = maconv-git

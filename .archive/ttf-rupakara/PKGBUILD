@@ -42,5 +42,5 @@ package() {
 
     # licenses
     install -Dm644 "${srcdir}"/rupakara-licence.html \
-                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/licence.html
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }

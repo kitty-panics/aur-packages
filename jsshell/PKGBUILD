@@ -10,7 +10,7 @@ pkgrel=1
     #> Generic
 pkgdesc="Mozilla JS Shell."
 arch=('x86_64')
-url="https://ftp.mozilla.org/pub/firefox/releases"
+url="https://ftp.mozilla.org/pub/firefox/releases/"
 license=('unknown')
     #> Dependencies
 depends=('nspr')
@@ -24,7 +24,7 @@ conflicts=("${pkgname}" "${pkgname}-nightly")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("${url}/${pkgver}/${pkgname}/${pkgname}-linux-${arch}.zip")
+source=("${url}${pkgver}/${pkgname}/${pkgname}-linux-${arch}.zip")
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP')

@@ -88,6 +88,7 @@ Personally maintained AUR packages.
 
 ### Archive
 
+- [x] firefox-nightly
 - [x] github-cli
 - [x] github-desktop
 - [ ] [jetbrains-clion-old]

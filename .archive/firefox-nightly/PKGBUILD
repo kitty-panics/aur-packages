@@ -1,0 +1,67 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=firefox-nightly
+    #> Version
+pkgver=124.0a1
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Mozilla Firefox (Nightly)."
+arch=('x86_64')
+url="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}${pkgname%-*}-${pkgver}.en-US.linux-${arch}.tar.bz2")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+pkgver() {
+    _url="https://download.mozilla.org/?product=firefox-nightly-latest-ssl&os=linux64&lang=en-US"
+    # Python
+#    python -c "import requests, re;
+#_dl_url = requests.get('${_url}', allow_redirects=True).url;
+#ver = re.search(r'(\d+\.\d+[a-z]+\d+)', _dl_url).group(0);
+#print(ver)"
+    # Bash
+    _dl_url=$(curl -sI "${_url}" | grep '^Location' | awk '{print $2}')
+    ver=$(echo "${_dl_url}" | grep -oP '\d+\.\d+[a-z]+\d+')
+    echo "${ver}"
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/opt/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128}/apps
+
+    # pkg files
+    cp -a "${srcdir}"/"${pkgname%-*}"/* \
+          "${pkgdir}"/opt/"${pkgname}"/
+    rm "${pkgdir}"/opt/"${pkgname}"/precomplete
+    rm "${pkgdir}"/opt/"${pkgname}"/removed-files
+    rm "${pkgdir}"/opt/"${pkgname}"/updater
+    rm "${pkgdir}"/opt/"${pkgname}"/updater.ini
+    # bin
+    ln -s /opt/"${pkgname}"/firefox \
+          "${pkgdir}"/usr/bin/"${pkgname}"
+
+    # icons
+    for i in {16,32,48,64,128}; do
+        install -Dm644 "${srcdir}"/"${pkgname%-*}"/browser/chrome/icons/default/default"${i}".png \
+                       "${pkgdir}"/usr/share/icons/hicolor/"${i}"x"${i}"/apps/"${pkgname}".png
+    done
+}

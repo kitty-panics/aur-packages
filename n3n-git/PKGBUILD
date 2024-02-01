@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=n3n-git
     #> Version
-pkgver=r1729.752d6a8357
+pkgver=r1755.aff8362070
 pkgrel=1
 #epoch=1
     #> Generic
@@ -59,8 +59,6 @@ build() {
     ./configure --with-zstd --with-openssl \
                 --enable-cap --enable-pcap \
                 --enable-natpmp --enable-miniupnp
-    # fix: "src/management.c:317:27: error: expected ‘;’ before ‘}’ token"
-    sed -i '/200)$/s/$/;/' src/management.c
     make
 }
 

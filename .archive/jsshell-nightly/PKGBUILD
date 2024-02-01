@@ -10,7 +10,7 @@ pkgrel=1
     #> Generic
 pkgdesc="Mozilla JS Shell (Nightly)."
 arch=('x86_64')
-url="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
+url="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/"
 license=('unknown')
     #> Dependencies
 depends=('nspr')
@@ -24,7 +24,7 @@ conflicts=("${pkgname}" "${pkgname%-*}")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("${url}/${pkgname%-*}-linux-${arch}.zip")
+source=("${url}${pkgname%-*}-linux-${arch}.zip")
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP')

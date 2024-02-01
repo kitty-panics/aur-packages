@@ -10,7 +10,7 @@ pkgrel=1
     #> Generic
 pkgdesc="Mozilla MAR Tools (Nightly)."
 arch=('x86_64')
-url="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
+url="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/"
 license=('unknown')
     #> Dependencies
 #depends=('')
@@ -24,8 +24,8 @@ conflicts=("${pkgname}" "${pkgname%-*}")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("${url}/${pkgname%-*}/linux64/mar"
-        "${url}/${pkgname%-*}/linux64/mbsdiff")
+source=("${url}${pkgname%-*}/linux64/mar"
+        "${url}${pkgname%-*}/linux64/mbsdiff")
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP'

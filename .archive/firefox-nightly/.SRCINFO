@@ -1,0 +1,15 @@
+pkgbase = firefox-nightly
+	pkgdesc = Mozilla Firefox (Nightly).
+	pkgver = 124.0a1
+	pkgrel = 1
+	url = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/
+	arch = x86_64
+	license = unknown
+	provides = firefox-nightly
+	provides = firefox
+	conflicts = firefox-nightly
+	conflicts = firefox
+	source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central/firefox-124.0a1.en-US.linux-x86_64.tar.bz2
+	sha256sums = SKIP
+
+pkgname = firefox-nightly

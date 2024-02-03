@@ -70,8 +70,6 @@ Personally maintained AUR packages.
 - [X] wallpaper-windows10
 - [X] wallpaper-windows10-ltsc
 - [X] wallpaper-windows11
-- [X] wubi98-char
-- [X] wubi98-rimetool
 - [X] zeal-git
 - [X] zile
 
@@ -105,6 +103,7 @@ Personally maintained AUR packages.
 - [x] rime-see-me-old
 - [x] tencent-qqmusic
 - [x] thunderbird-nightly
+- [x] toybox-git
 - [x] ttf-antinoou
 - [x] ttf-code2000-old
 - [x] ttf-code2001-old
@@ -118,6 +117,8 @@ Personally maintained AUR packages.
 - [x] virtualbox-guest-iso-dev
 - [x] virtualbox-guest-iso-old
 - [x] virtualbox-guest-iso-test
+- [X] wubi98-char
+- [X] wubi98-rimetool
 - [x] zwsoft-zwcad2024
 
 [jetbrains-clion-old]: https://github.com/kitty-panics/aur-jetbrains-ide/tree/master/jetbrains-clion-old

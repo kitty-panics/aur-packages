@@ -1,0 +1,14 @@
+pkgbase = toybox-git
+	pkgdesc = Implementation of over 200 Unix command line utilities.
+	pkgver = r5251.6d9a752ac5
+	pkgrel = 1
+	url = https://github.com/landley/toybox
+	arch = x86_64
+	license = 0BSD
+	makedepends = git
+	provides = toybox-git
+	provides = toybox
+	conflicts = toybox-git
+	conflicts = toybox
+
+pkgname = toybox-git

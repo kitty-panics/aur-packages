@@ -1,0 +1,58 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=toybox-git
+    #> Version
+pkgver=r5251.6d9a752ac5
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Implementation of over 200 Unix command line utilities."
+arch=('x86_64')
+url="https://github.com/landley/toybox"
+license=('0BSD')
+    #> Dependencies
+#depends=('')
+makedepends=('git')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+#source=("git+${url}.git")
+#noextract=("")
+    #> Integrity
+#sha256sums=('SKIP')
+
+pkgver() {
+    print-github-repo-version "${url}"
+}
+
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+}
+
+build() {
+    cd "${srcdir}"/"${pkgname}"
+    make defconfig
+    make
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+
+    # pkg files, bin
+    cd "${srcdir}"/"${pkgname}"
+    PREFIX="${pkgdir}"/usr/ make install
+    find "${pkgdir}"/usr/bin -type l -exec rm {} \;
+    rm -r "${pkgdir}"/usr/sbin
+    rm -r "${pkgdir}"/usr/usr
+}

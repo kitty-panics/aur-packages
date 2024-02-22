@@ -33,6 +33,7 @@ Personally maintained AUR packages.
 - [ ] [jetbrains-webstorm]
 - [X] jsshell
 - [X] librime-data
+- [X] libxfce4util-git
 - [X] maconv-git
 - [X] mar-tools-nightly
 - [X] musl-cross-x86_64-linux
@@ -48,12 +49,14 @@ Personally maintained AUR packages.
 - [X] oh-my-bash-git
 - [X] oh-my-zsh-git
 - [X] olden
+- [X] pandoc
 - [X] qmk-udev-git
 - [X] rime-see-me-git
 - [X] rustdesk-server
 - [X] sdat2img-git
 - [X] simplescreenrecorder-git
 - [X] spectre-meltdown-checker-git
+- [X] steam-ge-proton
 - [X] tencent-qq
 - [X] translator-git
 - [X] ttf-code20x3
@@ -70,6 +73,7 @@ Personally maintained AUR packages.
 - [X] wallpaper-windows10
 - [X] wallpaper-windows10-ltsc
 - [X] wallpaper-windows11
+- [X] xfce4-dev-tools-git
 - [X] zeal-git
 - [X] zile
 
@@ -117,8 +121,8 @@ Personally maintained AUR packages.
 - [x] virtualbox-guest-iso-dev
 - [x] virtualbox-guest-iso-old
 - [x] virtualbox-guest-iso-test
-- [X] wubi98-char
-- [X] wubi98-rimetool
+- [x] wubi98-char
+- [x] wubi98-rimetool
 - [x] zwsoft-zwcad2024
 
 [jetbrains-clion-old]: https://github.com/kitty-panics/aur-jetbrains-ide/tree/master/jetbrains-clion-old

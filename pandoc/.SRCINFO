@@ -1,0 +1,17 @@
+pkgbase = pandoc
+	pkgdesc = Universal markup converter.
+	pkgver = 3.1.11.1
+	pkgrel = 1
+	url = https://github.com/jgm/pandoc
+	arch = x86_64
+	license = MIT
+	provides = pandoc
+	conflicts = pandoc
+	source = https://github.com/jgm/pandoc/releases/download/3.1.11.1/pandoc-3.1.11.1-linux-amd64.tar.gz
+	source = https://github.com/jgm/pandoc/raw/main/COPYING.md
+	source = https://github.com/jgm/pandoc/raw/main/COPYRIGHT
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pandoc

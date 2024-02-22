@@ -1,0 +1,16 @@
+pkgbase = xfce4-dev-tools-git
+	pkgdesc = Xfce developer tools (Git Ver).
+	pkgver = r336.b65a49af27
+	pkgrel = 1
+	url = https://gitlab.xfce.org/xfce/xfce4-dev-tools
+	arch = x86_64
+	license = GPL2
+	makedepends = gtk-doc
+	provides = xfce4-dev-tools-git
+	provides = xfce4-dev-tools
+	conflicts = xfce4-dev-tools-git
+	conflicts = xfce4-dev-tools
+	source = https://gitlab.xfce.org/xfce/xfce4-dev-tools/-/archive/master/xfce4-dev-tools-master.tar.gz
+	sha256sums = SKIP
+
+pkgname = xfce4-dev-tools-git

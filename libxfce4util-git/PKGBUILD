@@ -1,0 +1,48 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=libxfce4util-git
+    #> Version
+pkgver=r967
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Basic utility non-GUI functions for Xfce (Git Ver)."
+arch=('x86_64')
+url="https://gitlab.xfce.org/xfce/libxfce4util"
+license=('GPL2')
+    #> Dependencies
+#depends=('')
+makedepends=('xfce4-dev-tools-git' 'gtk-doc' 'gobject-introspection')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/-/archive/master/"${pkgname%-*}"-master.tar.gz")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+pkgver() {
+    print-gitlab-repo-version "${url}"
+}
+
+build() {
+    cd "${srcdir}"/"${pkgname%-*}"-master
+    ./autogen.sh --disable-debug \
+                 --prefix=/usr \
+                 --sbindir=/usr/bin
+    make
+}
+
+package() {
+    # pkg files, bin, aclocal, man
+    cd "${srcdir}"/"${pkgname%-*}"-master
+    make DESTDIR="${pkgdir}"/ install
+}

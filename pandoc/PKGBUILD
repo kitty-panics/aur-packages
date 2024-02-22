@@ -1,0 +1,49 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=pandoc
+    #> Version
+pkgver=3.1.11.1
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Universal markup converter."
+arch=('x86_64')
+url="https://github.com/jgm/pandoc"
+license=('MIT')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-linux-amd64.tar.gz"
+        "${url}/raw/main/COPYING.md"
+        "${url}/raw/main/COPYRIGHT")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/man/man1
+
+    # pkg files, bin, man
+    cp -a "${srcdir}"/"${pkgname}"-"${pkgver}"/* \
+          "${pkgdir}"/usr/
+
+    # licenses
+    install -Dm644 "${srcdir}"/COPY* \
+                -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

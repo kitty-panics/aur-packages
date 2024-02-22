@@ -1,0 +1,48 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=steam-ge-proton
+    #> Version
+pkgver=8.32
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Compatibility tool for Steam Play based on Wine and additional components."
+arch=('x86_64')
+url="https://github.com/GloriousEggroll/proton-ge-custom/releases"
+license=('BSD')
+    #> Dependencies
+depends=('blas' 'gst-plugins-bad-libs')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/download/GE-Proton8-32/GE-Proton8-32.tar.gz")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/steam/compatibilitytools.d/ge-proton
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/protonfixes
+
+    # pkg files
+    cp -a "${srcdir}"/GE-Proton8-32/* \
+       -t "${pkgdir}"/usr/share/steam/compatibilitytools.d/ge-proton/
+
+    # licenses
+    mv "${pkgdir}"/usr/share/steam/compatibilitytools.d/ge-proton/LICENSE* \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    mv "${pkgdir}"/usr/share/steam/compatibilitytools.d/ge-proton/PATENTS.AV1 \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    mv "${pkgdir}"/usr/share/steam/compatibilitytools.d/ge-proton/protonfixes/LICENSE \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/protonfixes/
+}

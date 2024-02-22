@@ -1,0 +1,18 @@
+pkgbase = libxfce4util-git
+	pkgdesc = Basic utility non-GUI functions for Xfce (Git Ver).
+	pkgver = r967
+	pkgrel = 1
+	url = https://gitlab.xfce.org/xfce/libxfce4util
+	arch = x86_64
+	license = GPL2
+	makedepends = xfce4-dev-tools-git
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	provides = libxfce4util-git
+	provides = libxfce4util
+	conflicts = libxfce4util-git
+	conflicts = libxfce4util
+	source = https://gitlab.xfce.org/xfce/libxfce4util/-/archive/master/libxfce4util-master.tar.gz
+	sha256sums = SKIP
+
+pkgname = libxfce4util-git

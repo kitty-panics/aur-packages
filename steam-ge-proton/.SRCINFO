@@ -1,0 +1,15 @@
+pkgbase = steam-ge-proton
+	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components.
+	pkgver = 8.32
+	pkgrel = 1
+	url = https://github.com/GloriousEggroll/proton-ge-custom/releases
+	arch = x86_64
+	license = BSD
+	depends = blas
+	depends = gst-plugins-bad-libs
+	provides = steam-ge-proton
+	conflicts = steam-ge-proton
+	source = https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-32/GE-Proton8-32.tar.gz
+	sha256sums = SKIP
+
+pkgname = steam-ge-proton

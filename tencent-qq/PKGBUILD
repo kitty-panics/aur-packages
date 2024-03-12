@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=tencent-qq
     #> Version
-pkgver=3.2.5_21159
+pkgver=3.2.5_240305
 pkgrel=1
 #epoch=1
     #> Generic
@@ -24,7 +24,7 @@ conflicts=("${pkgname}")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("https://dldir1.qq.com/qqfile/qq/QQNT/feb78c41/linuxqq_${pkgver/_/-}_amd64.deb"
+source=("https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.5_240305_amd64_01.deb"
         "${pkgname}.desktop")
 #noextract=("")
     #> Integrity

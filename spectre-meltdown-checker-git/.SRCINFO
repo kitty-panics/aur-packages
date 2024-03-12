@@ -1,6 +1,6 @@
 pkgbase = spectre-meltdown-checker-git
 	pkgdesc = Reptar, Downfall, Zenbleed, ZombieLoad, RIDL, Fallout, Foreshadow, Spectre, Meltdown vulnerability/mitigation checker for Linux & BSD.
-	pkgver = r554.0f2edb1a71
+	pkgver = r555.4e29fb5a21
 	pkgrel = 1
 	url = https://github.com/speed47/spectre-meltdown-checker
 	arch = x86_64

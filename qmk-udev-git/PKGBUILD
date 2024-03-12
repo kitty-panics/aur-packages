@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=qmk-udev-git
     #> Version
-pkgver=r26512.b7468f4785
+pkgver=r26930.900e79febe
 pkgrel=1
 #epoch=1
     #> Generic
@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://github.com/qmk/qmk_firmware"
 license=('GPL2')
     #> Dependencies
-depends=('qmk')
+depends=('qmk' 'qmk-firmware')
 #makedepends=('')
 #optdepends=('')
     #> Package relations

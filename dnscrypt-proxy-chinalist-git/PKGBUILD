@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=dnscrypt-proxy-chinalist-git
     #> Version
-pkgver=r165463.29433e7215
+pkgver=r175374.0f46d0fc55
 pkgrel=1
 #epoch=1
     #> Generic

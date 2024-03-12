@@ -3,12 +3,13 @@ Description=Rustdesk Relay Server
 Wants=network-online.target
 
 [Service]
-Type=simple
+DynamicUser=yes
+StateDirectory=rustdesk-server
+
 WorkingDirectory=/var/lib/rustdesk-server/
-ExecStart=rustdesk-server-hbbr -k _
+Type=simple
+ExecStart=/usr/bin/rustdesk-server-hbbr -k _
 Restart=always
-User=nobody
-Group=nobody
 
 [Install]
 WantedBy=multi-user.target

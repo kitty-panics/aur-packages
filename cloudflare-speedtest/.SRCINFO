@@ -1,7 +1,7 @@
 pkgbase = cloudflare-speedtest
 	pkgdesc = 自选优选 IP」测试 Cloudflare CDN 延迟和速度，获取最快 IP ！
 	pkgver = 2.2.5
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/XIU2/CloudflareSpeedTest/releases
 	arch = x86_64
 	license = GPL3
@@ -15,7 +15,13 @@ pkgbase = cloudflare-speedtest
 	conflicts = cfst
 	backup = etc/cloudflare-speedtest/ip.txt
 	backup = etc/cloudflare-speedtest/ipv6.txt
+	backup = etc/cloudflare-speedtest/IPv4.original
+	backup = etc/cloudflare-speedtest/IPv6.original
 	source = https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_amd64.tar.gz
+	source = IPv4.original
+	source = IPv6.original
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = cloudflare-speedtest

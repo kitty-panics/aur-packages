@@ -1,6 +1,6 @@
 pkgbase = oh-my-bash-git
 	pkgdesc = A delightful community-driven framework for managing your bash configuration.
-	pkgver = r529.ed5fddd2bc
+	pkgver = r533.d55683133b
 	pkgrel = 1
 	url = https://github.com/ohmybash/oh-my-bash
 	arch = x86_64

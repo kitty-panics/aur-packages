@@ -1,6 +1,6 @@
 pkgbase = n3n-git
 	pkgdesc = Peer-to-peer VPN.
-	pkgver = r1755.aff8362070
+	pkgver = r2031.8cc64b32b2
 	pkgrel = 1
 	url = https://github.com/hamishcoleman/n3n
 	arch = x86_64
@@ -25,9 +25,7 @@ pkgbase = n3n-git
 	source = git+https://github.com/hamishcoleman/n3n.git
 	source = full-edge.conf
 	source = full-supernode.conf
-	source = n3n-git.tmpfiles
 	source = version.sh
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

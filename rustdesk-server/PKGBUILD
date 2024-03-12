@@ -4,8 +4,8 @@
 #pkgbase=
 pkgname=rustdesk-server
     #> Version
-pkgver=1.1.9
-pkgrel=1
+pkgver=1.1.10_3
+pkgrel=5
 #epoch=1
     #> Generic
 pkgdesc="RustDesk Server Program."
@@ -24,14 +24,12 @@ conflicts=("${pkgname}")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("${url}/download/${pkgver}/${pkgname}-linux-amd64.zip"
+source=("${url}/download/${pkgver/_/-}/${pkgname}-linux-amd64.zip"
         "${pkgname}-hbbr.service"
-        "${pkgname}-hbbs.service"
-        "${pkgname}.tmpfiles")
+        "${pkgname}-hbbs.service")
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -39,7 +37,6 @@ package() {
     # mkdir
     install -dm755 "${pkgdir}"/opt/rustdesk-server
     install -dm755 "${pkgdir}"/usr/bin
-    install -dm755 "${pkgdir}"/var/lib/rustdesk-server
 
     # pkg files
     install -Dm755 "${srcdir}"/amd64/* \
@@ -55,7 +52,4 @@ package() {
     # .service
     install -Dm644 "${pkgname}"-hbb*.service \
                 -t "${pkgdir}"/usr/lib/systemd/system/
-    # .tmpfiles
-    install -Dm644 "${srcdir}"/"${pkgname}".tmpfiles \
-                   "${pkgdir}"/usr/lib/tmpfiles.d/"${pkgname}".conf
 }

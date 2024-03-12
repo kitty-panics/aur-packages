@@ -103,7 +103,7 @@ Personally maintained AUR packages.
 - [ ] [jetbrains-rubymine-old]
 - [ ] [jetbrains-webstorm-old]
 - [x] jsshell-nightly
-- [x] libreoffice-nightly
+- [ ] libreoffice-nightly
 - [x] rime-see-me-old
 - [x] tencent-qqmusic
 - [x] thunderbird-nightly

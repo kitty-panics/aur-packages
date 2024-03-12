@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=spectre-meltdown-checker-git
     #> Version
-pkgver=r554.0f2edb1a71
+pkgver=r555.4e29fb5a21
 pkgrel=1
 #epoch=1
     #> Generic

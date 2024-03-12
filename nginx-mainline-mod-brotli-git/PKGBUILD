@@ -5,7 +5,7 @@
 pkgname=nginx-mainline-mod-brotli-git
     #> Version
 pkgver=r62.a71f9312c2
-pkgrel=4
+pkgrel=5
 #epoch=1
     #> Generic
 pkgdesc="Nginx module for Brotli compression (mainline)."
@@ -13,8 +13,8 @@ arch=('x86_64')
 url="https://github.com/google/ngx_brotli"
 license=('BSD2')
     #> Dependencies
-depends=('nginx-mainline=1.25.3' 'brotli')
-makedepends=('git' 'nginx-mainline-src=1.25.3')
+depends=('nginx-mainline=1.25.4' 'brotli')
+makedepends=('git' 'nginx-mainline-src=1.25.4')
 #optdepends=('')
     #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")

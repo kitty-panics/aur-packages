@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=n3n-git
     #> Version
-pkgver=r1755.aff8362070
+pkgver=r2031.8cc64b32b2
 pkgrel=1
 #epoch=1
     #> Generic
@@ -28,12 +28,10 @@ backup=('etc/n3n/edge.conf'
 source=("git+${url}.git"
         'full-edge.conf'
         'full-supernode.conf'
-        "n3n-git.tmpfiles"
         'version.sh')
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -56,7 +54,8 @@ prepare() {
 build() {
     cd "${srcdir}"/"${pkgname%-*}"
     ./autogen.sh
-    ./configure --with-zstd --with-openssl \
+    ./configure --prefix=/usr --libdir=/usr/lib \
+                --with-zstd --with-openssl \
                 --enable-cap --enable-pcap \
                 --enable-natpmp --enable-miniupnp
     make
@@ -67,14 +66,15 @@ package() {
     install -dm755 "${pkgdir}"/usr/bin
     install -dm755 "${pkgdir}"/usr/lib/systemd/system
     install -dm755 "${pkgdir}"/usr/share/man/man{1,7,8}
-    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    #install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
     # pkg files, bin, man
     cd "${srcdir}"/"${pkgname%-*}"
     DESTDIR="${pkgdir}" make install
-    install -Dm755 scripts/n3n-{ctl,httpd} \
-                -t "${pkgdir}"/usr/bin
+    # bin
+    mv "${pkgdir}"/usr/bin/n3nctl \
+       "${pkgdir}"/usr/bin/n3n-ctl
     # etc
     install -Dm644 "${srcdir}"/full-edge.conf \
                    "${pkgdir}"/etc/n3n/edge.conf
@@ -82,14 +82,16 @@ package() {
                    "${pkgdir}"/etc/n3n/supernode.conf
 
     # .service
+    rm -r "${pkgdir}"/lib
     install -Dm644 packages/lib/systemd/system/* \
                 -t "${pkgdir}"/usr/lib/systemd/system/
     find "${pkgdir}"/usr/lib/systemd/system/ -type f -exec sed -i 's|/sbin|/bin|g' {} \;
-    sed -i '/User=/c\User=nobody'   "${pkgdir}"/usr/lib/systemd/system/supernode.service
-    sed -i '/Group=/c\Group=nobody' "${pkgdir}"/usr/lib/systemd/system/supernode.service
+    sed -i '/^User=/d'  "${pkgdir}"/usr/lib/systemd/system/supernode.service
+    sed -i '/^Group=/d' "${pkgdir}"/usr/lib/systemd/system/supernode.service
     # doc
     install -Dm644 doc/*.md \
                 -t "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    rm -r "${pkgdir}"/usr/share/doc/"${pkgname%-*}"
     # licenses
     install -Dm644 LICENSES/preferred/* \
                 -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/

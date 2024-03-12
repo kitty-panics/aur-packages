@@ -1,11 +1,12 @@
 pkgbase = qmk-udev-git
 	pkgdesc = Open-source keyboard firmware for Atmel AVR and Arm USB families - udev rules.
-	pkgver = r26512.b7468f4785
+	pkgver = r26930.900e79febe
 	pkgrel = 1
 	url = https://github.com/qmk/qmk_firmware
 	arch = x86_64
 	license = GPL2
 	depends = qmk
+	depends = qmk-firmware
 	provides = qmk-udev-git
 	provides = qmk-udev
 	conflicts = qmk-udev-git

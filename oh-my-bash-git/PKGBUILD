@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=oh-my-bash-git
     #> Version
-pkgver=r529.ed5fddd2bc
+pkgver=r533.d55683133b
 pkgrel=1
 #epoch=1
     #> Generic

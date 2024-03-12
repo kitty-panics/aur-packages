@@ -5,7 +5,7 @@
 pkgname=n2n-git
     #> Version
 pkgver=r1426.fff50a7d80
-pkgrel=1
+pkgrel=3
 #epoch=1
     #> Generic
 pkgdesc="Peer-to-peer VPN."
@@ -28,12 +28,10 @@ backup=("etc/${pkgname%-*}/edge.conf"
 source=("git+${url}.git"
         "full-edge.conf"
         "full-supernode.conf"
-        "n2n-git.tmpfiles"
         "version.sh")
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -85,8 +83,8 @@ package() {
     install -Dm644 packages/etc/systemd/system/* \
                 -t "${pkgdir}"/usr/lib/systemd/system/
     find "${pkgdir}"/usr/lib/systemd/system/ -type f -exec sed -i 's|/sbin|/bin|g' {} \;
-    sed -i '/User=/c\User=nobody'   "${pkgdir}"/usr/lib/systemd/system/supernode.service
-    sed -i '/Group=/c\Group=nobody' "${pkgdir}"/usr/lib/systemd/system/supernode.service
+    sed -i '/^User=/d'  "${pkgdir}"/usr/lib/systemd/system/supernode.service
+    sed -i '/^Group=/d' "${pkgdir}"/usr/lib/systemd/system/supernode.service
     # doc
     install -Dm644 doc/*.md \
                 -t "${pkgdir}"/usr/share/doc/"${pkgname}"/

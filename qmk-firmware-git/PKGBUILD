@@ -1,0 +1,62 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=qmk-firmware-git
+    #> Version
+pkgver=r26930.900e79febe
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Open-source keyboard firmware for Atmel AVR and Arm USB families."
+arch=('x86_64')
+url="https://github.com/qmk/qmk_firmware"
+license=('GPL2')
+    #> Dependencies
+depends=('qmk')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+options=('!strip')
+#install=xyz.install
+    #> Sources
+#source=("git+${url}.git")
+#noextract=("")
+    #> Integrity
+#sha256sums=('SKIP')
+
+pkgver() {
+    print-github-repo-version "${url}"
+}
+
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --recursive --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname%-*}"
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files
+    cp -a "${srcdir}"/"${pkgname}"/* \
+          "${pkgdir}"/usr/share/"${pkgname%-*}"
+
+    # doc
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/docs \
+       "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/readme.md \
+       "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    # licenses
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/license_*.md \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/LICENSE \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

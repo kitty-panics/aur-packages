@@ -1,0 +1,14 @@
+pkgbase = region-restriction-check-git
+	pkgdesc = A bash script to check the status of your IP on various geo-restricted services..
+	pkgver = r524.a23e6687ad
+	pkgrel = 1
+	url = https://github.com/lmc999/RegionRestrictionCheck
+	arch = any
+	license = AGPL
+	makedepends = git
+	provides = region-restriction-check-git
+	provides = region-restriction-check
+	conflicts = region-restriction-check-git
+	conflicts = region-restriction-check
+
+pkgname = region-restriction-check-git

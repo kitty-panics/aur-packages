@@ -1,0 +1,46 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=picoshare
+    #> Version
+pkgver=1.4.2
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="A minimalist, easy-to-host service for sharing images and other files."
+arch=('x86_64')
+url="https://github.com/mtlynch/picoshare"
+license=('AGPL')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+source=("${url}/releases/download/${pkgver}/${pkgname}-v${pkgver}-linux-amd64.tar.gz"
+        "${url}/raw/master/LICENSE")
+#noextract=("")
+    #> Integrity
+sha256sums=('SKIP'
+            'SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files, bin
+    cp -a "${srcdir}"/"${pkgname}" \
+          "${pkgdir}"/usr/bin/
+
+    # licenses
+    install -Dm644 "${srcdir}"/LICENSE \
+                -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

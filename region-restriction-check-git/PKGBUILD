@@ -1,0 +1,64 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=region-restriction-check-git
+    #> Version
+pkgver=r524.a23e6687ad
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="A bash script to check the status of your IP on various geo-restricted services.."
+arch=('any')
+url="https://github.com/lmc999/RegionRestrictionCheck"
+license=('AGPL')
+    #> Dependencies
+#depends=('')
+makedepends=('git')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+#source=("git+${url}.git")
+#noextract=("")
+    #> Integrity
+#sha256sums=('SKIP')
+
+pkgver() {
+    print-github-repo-version "${url}"
+}
+
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/share/"${pkgname%-*}"
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files
+    cp -a "${srcdir}"/"${pkgname}"/* \
+          "${pkgdir}"/usr/share/"${pkgname%-*}"/
+    rm "${pkgdir}"/usr/share/"${pkgname%-*}"/Dockerfile
+    # bin
+    ln -s /usr/share/"${pkgname%-*}"/check.sh \
+          "${pkgdir}"/usr/bin/"${pkgname%-*}"
+    chmod +x "${pkgdir}"/usr/share/"${pkgname%-*}"/check.sh
+
+    # doc
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/README* \
+       "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    # licenses
+    mv "${pkgdir}"/usr/share/"${pkgname%-*}"/LICENSE \
+       "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=n3n-git
     #> Version
-pkgver=r2031.8cc64b32b2
+pkgver=r2043.ceb46d944c
 pkgrel=1
 #epoch=1
     #> Generic
@@ -46,15 +46,18 @@ prepare() {
     # fix: sbin -> bin
     sed -i 's|/sbin|/bin|' Makefile
     # fix: Error: VERSION file does not match tag version (3.1.1 != )
+    cp -f scripts/version.sh scripts/version.sh.bak
     cp -f "${srcdir}"/version.sh scripts/version.sh
     # fix: Welcome to n3n v.
-    sed -i '/Welcome to n3n/ s| v| |' src/n2n.c
+    sed -i '/n3n v/ s| v| |' src/n2n.c
 }
 
 build() {
     cd "${srcdir}"/"${pkgname%-*}"
     ./autogen.sh
-    ./configure --prefix=/usr --libdir=/usr/lib \
+    ./configure --prefix=/usr \
+                --with-systemddir=/usr/lib/systemd/system \
+                --docdir=/usr/share/doc/"${pkgname}" \
                 --with-zstd --with-openssl \
                 --enable-cap --enable-pcap \
                 --enable-natpmp --enable-miniupnp
@@ -63,10 +66,11 @@ build() {
 
 package() {
     # mkdir
+    install -dm755 "${pkgdir}"/etc/"${pkgname%-*}"
     install -dm755 "${pkgdir}"/usr/bin
     install -dm755 "${pkgdir}"/usr/lib/systemd/system
-    install -dm755 "${pkgdir}"/usr/share/man/man{1,7,8}
-    #install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/doc/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/man/man{7,8}
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
 
     # pkg files, bin, man
@@ -82,16 +86,9 @@ package() {
                    "${pkgdir}"/etc/n3n/supernode.conf
 
     # .service
-    rm -r "${pkgdir}"/lib
-    install -Dm644 packages/lib/systemd/system/* \
-                -t "${pkgdir}"/usr/lib/systemd/system/
     find "${pkgdir}"/usr/lib/systemd/system/ -type f -exec sed -i 's|/sbin|/bin|g' {} \;
     sed -i '/^User=/d'  "${pkgdir}"/usr/lib/systemd/system/supernode.service
     sed -i '/^Group=/d' "${pkgdir}"/usr/lib/systemd/system/supernode.service
-    # doc
-    install -Dm644 doc/*.md \
-                -t "${pkgdir}"/usr/share/doc/"${pkgname}"/
-    rm -r "${pkgdir}"/usr/share/doc/"${pkgname%-*}"
     # licenses
     install -Dm644 LICENSES/preferred/* \
                 -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/

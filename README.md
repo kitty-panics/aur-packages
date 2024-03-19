@@ -5,8 +5,8 @@ Personally maintained AUR packages.
 ## List
 
 - [X] apktool
-- [X] aria-ng
 - [X] appimagetool
+- [X] aria-ng
 - [X] aria2-webui-git
 - [X] bdf2psf
 - [X] cloudflare-speedtest
@@ -50,7 +50,10 @@ Personally maintained AUR packages.
 - [X] oh-my-zsh-git
 - [X] olden
 - [X] pandoc
+- [X] picoshare
+- [X] qmk-firmware-git
 - [X] qmk-udev-git
+- [X] region-restriction-check-git
 - [X] rime-see-me-git
 - [X] rustdesk-server
 - [X] sdat2img-git

@@ -1,0 +1,15 @@
+pkgbase = qmk-firmware-git
+	pkgdesc = Open-source keyboard firmware for Atmel AVR and Arm USB families.
+	pkgver = r26930.900e79febe
+	pkgrel = 1
+	url = https://github.com/qmk/qmk_firmware
+	arch = x86_64
+	license = GPL2
+	depends = qmk
+	provides = qmk-firmware-git
+	provides = qmk-firmware
+	conflicts = qmk-firmware-git
+	conflicts = qmk-firmware
+	options = !strip
+
+pkgname = qmk-firmware-git

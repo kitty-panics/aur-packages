@@ -1,6 +1,6 @@
 pkgbase = n3n-git
 	pkgdesc = Peer-to-peer VPN.
-	pkgver = r2031.8cc64b32b2
+	pkgver = r2043.ceb46d944c
 	pkgrel = 1
 	url = https://github.com/hamishcoleman/n3n
 	arch = x86_64

@@ -46,6 +46,8 @@ Personally maintained AUR packages.
 - [X] nginx-mainline-mod-dav-ext-git
 - [X] nginx-mainline-mod-fancyindex-git
 - [X] nginx-mainline-mod-headers-more-git
+- [X] noto-fonts-en
+- [X] noto-fonts-sc
 - [X] oh-my-bash-git
 - [X] oh-my-zsh-git
 - [X] olden

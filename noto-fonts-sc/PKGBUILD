@@ -1,0 +1,45 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=noto-fonts-sc
+    #> Version
+pkgver=2023.08.31
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Noto CJK fonts (Simplified Chinese)."
+arch=('any')
+url="https://github.com/notofonts/noto-cjk"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+_url="https://github.com/googlefonts/noto-cjk/raw/727f898acdf7b100d308af8edf63c3953b626a1b"
+_serif="${_url}/Serif/OTF/SimplifiedChinese/NotoSerifCJKsc"
+_sans="${_url}/Sans/OTF/SimplifiedChinese/NotoSansCJKsc"
+_mono="${_url}/Sans/Mono/NotoSansMonoCJKsc"
+source=("${_serif}"-{Black,Bold,ExtraLight,Light,Medium,Regular,SemiBold}.otf
+        "${_sans}"-{Black,Bold,DemiLight,Light,Medium,Regular,Thin}.otf
+        "${_mono}"-{Regular,Bold}.otf)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP' 'SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/fonts/"${pkgname}"
+
+    # pkg files
+	install -Dm644 "${srcdir}"/*.otf \
+                -t "${pkgdir}"/usr/share/fonts/"${pkgname}"/
+}

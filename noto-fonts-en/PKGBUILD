@@ -1,0 +1,54 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=noto-fonts-en
+    #> Version
+pkgver=2024.03.25
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="Noto fonts (English)."
+arch=('any')
+url="https://github.com/notofonts/notofonts.github.io"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+#makedepends=('')
+optdepends=('noto-fonts-cjk: CJK characters'
+            'noto-fonts-emoji: Emoji characters'
+            'noto-fonts-extra: additional variants (condensed, semi-bold, extra-light)')
+    #> Package relations
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+_url="${url}/raw/2c3d6b5b45f3683bbc6db45048df8e02963ba67b"
+_sans="${_url}/fonts/NotoSans/hinted/ttf/NotoSans"
+_serif="${_url}/fonts/NotoSerif/hinted/ttf/NotoSerif"
+_mono="${_url}/fonts/NotoSansMono/hinted/ttf/NotoSansMono"
+source=("${_sans}"-{Black,BlackItalic,Bold,BoldItalic,ExtraBold,ExtraBoldItalic,ExtraLight,ExtraLightItalic,Italic,Light,LightItalic,Medium,MediumItalic,Regular,SemiBold,SemiBoldItalic,Thin,ThinItalic}.ttf
+        "${_serif}"-{Black,BlackItalic,Bold,BoldItalic,ExtraBold,ExtraBoldItalic,ExtraLight,ExtraLightItalic,Italic,Light,LightItalic,Medium,MediumItalic,Regular,SemiBold,SemiBoldItalic,Thin,ThinItalic}.ttf
+        "${_mono}"-{Black,Bold,ExtraBold,ExtraLight,Light,Medium,Regular,SemiBold,Thin}.ttf
+        "${_url}/LICENSE")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP')
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/share/fonts/"${pkgname}"
+    install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
+
+    # pkg files
+	install -Dm644 "${srcdir}"/*.ttf \
+                -t "${pkgdir}"/usr/share/fonts/"${pkgname}"/
+
+    # licenses
+    install -Dm644 "${srcdir}"/LICENSE \
+                   "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+}

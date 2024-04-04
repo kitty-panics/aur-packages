@@ -1,0 +1,14 @@
+pkgbase = libcron-git
+	pkgdesc = A C++ scheduling library using cron formatting.
+	pkgver = r56.41f238ceb0
+	pkgrel = 1
+	url = https://github.com/PerMalmberg/libcron
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	provides = libcron-git
+	provides = libcron
+	conflicts = libcron-git
+	conflicts = libcron
+
+pkgname = libcron-git

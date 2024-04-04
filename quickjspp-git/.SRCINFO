@@ -1,0 +1,14 @@
+pkgbase = quickjspp-git
+	pkgdesc = QuickJS C++ wrapper.
+	pkgver = r204.0c00c48895
+	pkgrel = 1
+	url = https://github.com/ftk/quickjspp
+	arch = x86_64
+	license = unknown
+	makedepends = cmake
+	provides = quickjspp-git
+	provides = quickjspp
+	conflicts = quickjspp-git
+	conflicts = quickjspp
+
+pkgname = quickjspp-git

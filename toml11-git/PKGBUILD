@@ -1,0 +1,59 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=toml11-git
+    #> Version
+pkgver=r1349.85faca9cbe
+pkgrel=2
+#epoch=1
+    #> Generic
+pkgdesc="TOML for Modern C++."
+arch=('x86_64')
+url="https://github.com/ToruNiina/toml11"
+license=('MIT')
+    #> Dependencies
+#depends=('')
+makedepends=('cmake')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+#source=("")
+#noextract=("")
+    #> Integrity
+#sha256sums=('SKIP')
+
+pkgver() {
+    print-github-repo-version "${url}"
+}
+
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+}
+
+build() {
+    cd "${srcdir}"/"${pkgname}"
+    rm -rf build; mkdir build; cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -DTOML11_USE_UNRELEASED_TOML_FEATURES='OFF' \
+          -Dtoml11_BUILD_TEST='OFF' ..
+    cmake --build .
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/include/toml
+    install -dm755 "${pkgdir}"/usr/lib/cmake/toml11
+
+    # pkg files
+    cd "${srcdir}"/"${pkgname}"/build
+    DESTDIR="${pkgdir}"/ cmake --install .
+}

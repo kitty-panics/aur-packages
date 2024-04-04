@@ -1,0 +1,58 @@
+# Maintainer: Kitty Panics
+
+    #> Package name
+#pkgbase=
+pkgname=quickjspp-git
+    #> Version
+pkgver=r204.0c00c48895
+pkgrel=1
+#epoch=1
+    #> Generic
+pkgdesc="QuickJS C++ wrapper."
+arch=('x86_64')
+url="https://github.com/ftk/quickjspp"
+license=('unknown')
+    #> Dependencies
+#depends=('')
+makedepends=('cmake')
+#optdepends=('')
+    #> Package relations
+provides=("${pkgname}" "${pkgname%-*}")
+conflicts=("${pkgname}" "${pkgname%-*}")
+    #> Others
+#backup=("")
+#options=('')
+#install=xyz.install
+    #> Sources
+#source=("")
+#noextract=("")
+    #> Integrity
+#sha256sums=('SKIP')
+
+pkgver() {
+    print-github-repo-version "${url}"
+}
+
+prepare() {
+    if [[ ! -d "${srcdir}"/"${pkgname}" ]]; then
+        git clone --depth=1 "${url}" "${srcdir}"/"${pkgname}"
+    fi
+}
+
+build() {
+    cd "${srcdir}"/"${pkgname}"
+    rm -rf build; mkdir build; cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake --build .
+}
+
+package() {
+    # mkdir
+    install -dm755 "${pkgdir}"/usr/bin
+    install -dm755 "${pkgdir}"/usr/include/quickjs
+    install -dm755 "${pkgdir}"/usr/lib/quickjs
+
+    # pkg files
+    cd "${srcdir}"/"${pkgname}"/build
+    DESTDIR="${pkgdir}"/ cmake --install .
+}

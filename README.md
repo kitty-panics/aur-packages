@@ -32,6 +32,7 @@ Personally maintained AUR packages.
 - [ ] [jetbrains-rubymine]
 - [ ] [jetbrains-webstorm]
 - [X] jsshell
+- [X] libcron-git
 - [X] librime-data
 - [X] libxfce4util-git
 - [X] maconv-git
@@ -55,6 +56,7 @@ Personally maintained AUR packages.
 - [X] picoshare
 - [X] qmk-firmware-git
 - [X] qmk-udev-git
+- [X] quickjspp-git
 - [X] region-restriction-check-git
 - [X] rime-see-me-git
 - [X] rustdesk-server
@@ -63,6 +65,7 @@ Personally maintained AUR packages.
 - [X] spectre-meltdown-checker-git
 - [X] steam-ge-proton
 - [X] tencent-qq
+- [X] toml11-git
 - [X] translator-git
 - [X] ttf-code20x3
 - [X] ttf-code2000

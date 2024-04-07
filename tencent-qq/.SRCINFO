@@ -1,6 +1,6 @@
 pkgbase = tencent-qq
 	pkgdesc = An instant messaging software developed by Tencent.
-	pkgver = 3.2.5_240305
+	pkgver = 3.2.7_240403
 	pkgrel = 1
 	url = https://im.qq.com/rainbow/linuxQQDownload/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tencent-qq
 	optdepends = libappindicator-gtk3: Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray
 	provides = tencent-qq
 	conflicts = tencent-qq
-	source = https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.5_240305_amd64_01.deb
+	source = https://dldir1.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.7_240403_amd64_01.deb
 	source = tencent-qq.desktop
 	sha256sums = SKIP
 	sha256sums = bb8ae7c08ce017d4703e3dc1968ccaa8f7db4296d600cbe67ab3edbd68dd544e

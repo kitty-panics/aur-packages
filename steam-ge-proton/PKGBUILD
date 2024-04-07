@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=steam-ge-proton
     #> Version
-pkgver=8.32
+pkgver=9.2
 pkgrel=1
 #epoch=1
     #> Generic
@@ -24,7 +24,7 @@ conflicts=("${pkgname}")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("${url}/download/GE-Proton8-32/GE-Proton8-32.tar.gz")
+source=("${url}/download/GE-Proton9-2/GE-Proton9-2.tar.gz")
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP')
@@ -35,7 +35,7 @@ package() {
     install -dm755 "${pkgdir}"/usr/share/licenses/"${pkgname}"/protonfixes
 
     # pkg files
-    cp -a "${srcdir}"/GE-Proton8-32/* \
+    cp -a "${srcdir}"/GE-Proton9-2/* \
        -t "${pkgdir}"/usr/share/steam/compatibilitytools.d/ge-proton/
 
     # licenses

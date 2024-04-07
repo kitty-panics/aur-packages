@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=oh-my-zsh-git
     #> Version
-pkgver=r7171.1d09c6bb0a
+pkgver=r7183.bf713e2c11
 pkgrel=1
 #epoch=1
     #> Generic

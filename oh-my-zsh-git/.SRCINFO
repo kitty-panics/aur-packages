@@ -1,6 +1,6 @@
 pkgbase = oh-my-zsh-git
 	pkgdesc = A delightful community-driven framework for managing your zsh configuration.
-	pkgver = r7171.1d09c6bb0a
+	pkgver = r7183.bf713e2c11
 	pkgrel = 1
 	url = https://github.com/ohmyzsh/ohmyzsh
 	arch = x86_64

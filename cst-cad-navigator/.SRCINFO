@@ -1,6 +1,6 @@
 pkgbase = cst-cad-navigator
 	pkgdesc = Quick viewing of 2D drawings and 3D models.
-	pkgver = 1.2.1
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://cadsofttools.com/products/cst-cad-navigator
 	arch = x86_64

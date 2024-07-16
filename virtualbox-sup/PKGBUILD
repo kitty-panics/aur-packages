@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=virtualbox-sup
     #> Version
-pkgver=7.0.14
+pkgver=7.0.20
 pkgrel=1
 #epoch=1
     #> Generic
@@ -24,7 +24,7 @@ conflicts=("${pkgname}")
 #options=('')
 #install=xyz.install
     #> Sources
-source=("vbox.run::${url}/VirtualBox-${pkgver}-159484-Linux_amd64.run")
+source=("vbox.run::${url}/VirtualBox-${pkgver}-163906-Linux_amd64.run")
 #noextract=("")
     #> Integrity
 sha256sums=('SKIP')

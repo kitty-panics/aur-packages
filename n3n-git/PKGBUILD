@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=n3n-git
     #> Version
-pkgver=r2043.ceb46d944c
+pkgver=r2073.81e340fd3a
 pkgrel=1
 #epoch=1
     #> Generic
@@ -87,8 +87,8 @@ package() {
 
     # .service
     find "${pkgdir}"/usr/lib/systemd/system/ -type f -exec sed -i 's|/sbin|/bin|g' {} \;
-    sed -i '/^User=/d'  "${pkgdir}"/usr/lib/systemd/system/supernode.service
-    sed -i '/^Group=/d' "${pkgdir}"/usr/lib/systemd/system/supernode.service
+    sed -i '/^User=/d'  "${pkgdir}"/usr/lib/systemd/system/n3n-supernode.service
+    sed -i '/^Group=/d' "${pkgdir}"/usr/lib/systemd/system/n3n-supernode.service
     # licenses
     install -Dm644 LICENSES/preferred/* \
                 -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/

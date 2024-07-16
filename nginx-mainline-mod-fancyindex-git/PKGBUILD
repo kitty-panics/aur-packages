@@ -5,7 +5,7 @@
 pkgname=nginx-mainline-mod-fancyindex-git
     #> Version
 pkgver=r255.cbc0d3fca4
-pkgrel=7
+pkgrel=8
 #epoch=1
     #> Generic
 pkgdesc="Fancy indexes module for the Nginx web server (mainline)."
@@ -13,8 +13,8 @@ arch=('x86_64')
 url="https://github.com/aperezdc/ngx-fancyindex"
 license=('unknown')
     #> Dependencies
-depends=('nginx-mainline=1.25.4')
-makedepends=('git' 'nginx-mainline-src=1.25.4')
+depends=('nginx-mainline=1.27.0')
+makedepends=('git' 'nginx-mainline-src=1.27.0')
 #optdepends=('')
     #> Package relations
 provides=("${pkgname}" "${pkgname%-*}")

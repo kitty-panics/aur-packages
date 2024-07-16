@@ -4,8 +4,8 @@
 #pkgbase=
 pkgname=gsconnect
     #> Version
-pkgver=56
-pkgrel=2
+pkgver=57
+pkgrel=1
 #epoch=1
     #> Generic
 pkgdesc="KDE Connect implementation for GNOME."

@@ -8,7 +8,7 @@ StateDirectory=rustdesk-server
 
 WorkingDirectory=/var/lib/rustdesk-server/
 Type=simple
-ExecStart=/usr/bin/rustdesk-server-hbbs -k _
+ExecStart=/usr/bin/rustdesk-server-hbbs
 Restart=always
 
 [Install]

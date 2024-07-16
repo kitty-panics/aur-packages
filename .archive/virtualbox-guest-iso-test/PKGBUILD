@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=virtualbox-guest-iso-test
     #> Version
-pkgver=7.0.13_160984
+pkgver=7.0.19_163782
 pkgrel=1
 #epoch=1
     #> Generic

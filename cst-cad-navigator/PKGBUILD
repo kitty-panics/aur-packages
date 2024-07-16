@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=cst-cad-navigator
     #> Version
-pkgver=1.2.1
+pkgver=1.4.1
 pkgrel=1
 #epoch=1
     #> Generic
@@ -48,7 +48,7 @@ package() {
                    "${pkgdir}"/usr/bin/"${pkgname}"
 
     # doc
-    install -Dm644 "${srcdir}"/Linux64/"CST CAD Navigator User Guide".pdf \
+    install -Dm644 "${srcdir}"/Linux64/"CST CAD Navigator User Guide.pdf" \
                    "${pkgdir}"/usr/share/doc/"${pkgname}"/
     # licenses
     install -Dm644 "${srcdir}"/Linux64/License.txt \

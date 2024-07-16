@@ -4,8 +4,8 @@
 #pkgbase=
 pkgname=rustdesk-server
     #> Version
-pkgver=1.1.10_3
-pkgrel=5
+pkgver=1.1.11_1
+pkgrel=1
 #epoch=1
     #> Generic
 pkgdesc="RustDesk Server Program."

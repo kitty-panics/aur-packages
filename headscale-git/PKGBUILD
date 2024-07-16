@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=headscale-git
     #> Version
-pkgver=r3033.1e22f17f36
+pkgver=r3152.14a3f94f0c
 pkgrel=1
 #epoch=1
     #> Generic

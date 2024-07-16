@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=hmcl
     #> Version
-pkgver=3.5.4.234
+pkgver=3.5.8.249
 pkgrel=1
 #epoch=1
     #> Generic

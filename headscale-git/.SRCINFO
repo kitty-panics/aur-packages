@@ -1,6 +1,6 @@
 pkgbase = headscale-git
 	pkgdesc = An open source, self-hosted implementation of the Tailscale control server.
-	pkgver = r3033.1e22f17f36
+	pkgver = r3152.14a3f94f0c
 	pkgrel = 1
 	url = https://github.com/juanfont/headscale
 	arch = x86_64

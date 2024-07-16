@@ -1,13 +1,13 @@
 pkgbase = nginx-mainline-mod-headers-more-git
 	pkgdesc = Set, add, and clear arbitrary output headers in Nginx http servers (mainline).
 	pkgver = r273.06dc0be56e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/openresty/headers-more-nginx-module
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = nginx-mainline-src=1.25.4
-	depends = nginx-mainline=1.25.4
+	makedepends = nginx-mainline-src=1.27.0
+	depends = nginx-mainline=1.27.0
 	provides = nginx-mainline-mod-headers-more-git
 	provides = nginx-mainline-mod-headers-more
 	conflicts = nginx-mainline-mod-headers-more-git

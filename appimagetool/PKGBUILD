@@ -4,7 +4,7 @@
 #pkgbase=
 pkgname=appimagetool-git
     #> Version
-pkgver=r30.bfe6e0c1c6
+pkgver=r38.b9b26c34e8
 pkgrel=1
 #epoch=1
     #> Generic
